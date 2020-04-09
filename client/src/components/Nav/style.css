@@ -1,0 +1,12 @@
+.myNav{
+    background-color: #223a5e;
+   height: 80px;
+}
+
+a{
+    color: white;
+}
+a:hover{
+    color: white;
+    text-decoration: underline;
+}
