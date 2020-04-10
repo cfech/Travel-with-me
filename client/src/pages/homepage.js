@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import API from "../components/API";
-import Poi from "../components/POI"
+import Poi from "../components/POI";
 import { makeStyles } from "@material-ui/styles";
-import Nav from "../components/Nav"
+import Nav from "../components/Nav";
 
 function Home() {
   // Setting our component's initial state
-  const [lat, setLat] = useState(0)
-  const [long, setLong] = useState(0)
-  const [pointsOfInterest, setPointsOfInterest] = useState([])
+  const [lat, setLat] = useState(0);
+  const [long, setLong] = useState(0);
+  const [pointsOfInterest, setPointsOfInterest] = useState([]);
 
   const useStyles = makeStyles(() => ({
     links: {
@@ -20,10 +20,9 @@ function Home() {
         color: "red",
       },
     },
-  }))
+  }));
 
   const classes = useStyles();
-
 
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -32,38 +31,36 @@ function Home() {
     console.log(searchTerm);
   };
 
-
   const handleSubmit = (event) => {
     event.preventDefault();
-    ApiSearch()
+    ApiSearch();
     console.log("clicked");
   };
 
-
-
-
-
   const ApiSearch = () => {
-    API.ApiSearch(searchTerm)
-      .then(res => {
-        console.log(res.data.results[0])
-        setLat(res.data.results[0].coordinates.latitude)
-        setLong(res.data.results[0].coordinates.longitude)
-        PoiSearch()
+    let newTerm = searchTerm
+      .split(" ")
+      .map((val) => val[0].toUpperCase() + val.slice(1))
+      .join("_");
+    API.ApiSearch(newTerm)
+      .then((res) => {
+        console.log(res.data.results[0]);
+        setLat(res.data.results[0].coordinates.latitude);
+        setLong(res.data.results[0].coordinates.longitude);
+        PoiSearch();
       })
-      .catch(err => console.log(err))
-  }
+      .catch((err) => console.log(err));
+  };
 
   const PoiSearch = () => {
     Poi.ApiSearch(lat, long)
-      .then(res => {
-        console.log(res.data)
+      .then((res) => {
+        console.log(res.data.results[0]);
       })
-      .catch(err => console.log(err))
-  }
+      .catch((err) => console.log(err));
+  };
 
   return (
-
     <div>
       <Nav />
       hello
@@ -79,11 +76,9 @@ function Home() {
           search
         </button>
       </form>
-
       <Link className={classes.links} to="/item">
         item page
       </Link>
-
     </div>
   );
 }
