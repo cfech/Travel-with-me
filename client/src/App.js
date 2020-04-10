@@ -4,7 +4,7 @@ import itemPage from "./pages/itemPage";
 import savedPage from "./pages/savedPage";
 import singIn from "./pages/signinPage";
 import Footer from "./components/footer/index";
-import singUp from "./pages/singUp"
+import singUp from "./pages/singUp";
 import "./styles/styles.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./pages/homepage";
