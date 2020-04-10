@@ -13,18 +13,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Travel-with-Me
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -55,10 +44,31 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  links: {
+    "&:hover": {
+      color: "black",
+    },
+    color: "black",
+    textDecoration: "none",
+  },
+
 }));
 
 export default function SignInSide() {
   const classes = useStyles();
+
+  function Copyright() {
+    return (
+      <Typography className={classes.links} variant="body2" color="textSecondary" align="center">
+        {'Copyright © '}
+        <Link color="inherit" href="https://material-ui.com/">
+          Travel-with-Me
+        </Link>{' '}
+        {new Date().getFullYear()}
+        {'.'}
+      </Typography>
+    );
+  }
 
   const [userName, setUserName] = useState("");
 
@@ -129,12 +139,12 @@ export default function SignInSide() {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
+                <Link className = {classes.links} href="#" variant="body2" >
                   Forgot password?
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="/signUp" variant="body2">
+                <Link href="/signUp" variant="body2" className = {classes.links}>
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
