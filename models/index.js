@@ -1,6 +1,5 @@
-
 //require for module 
 
-// module.exports = {
-//   Book: require("./book.js")
-// };
+module.exports = {
+  User: require("./user.js")
+};
