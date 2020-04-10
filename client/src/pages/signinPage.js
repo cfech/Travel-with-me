@@ -19,7 +19,7 @@ function Copyright() {
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
         Your Website
-      </Link>{' '}
+      </Link>{'/signUp'}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
@@ -105,6 +105,7 @@ export default function SignInSide() {
               variant="contained"
               color="primary"
               className={classes.submit}
+              href = "/home"
             >
               Sign In
             </Button>
@@ -115,7 +116,7 @@ export default function SignInSide() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href= "/signUp" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
