@@ -12,20 +12,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import Api from "../utils/API"
 
-function Copyright() {
-
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Travel-with-Me
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -45,15 +33,34 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  links: {
+    "&:hover": {
+      color: "black",
+    },
+    color: "black",
+    textDecoration: "none",
+  },
 }));
 
+
+
 export default function SignUp() {
+
   const classes = useStyles();
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log("clicked");
-  };
+  function Copyright() {
+
+    return (
+      <Typography className={classes.links} variant="body2" color="textSecondary" align="center">
+        {'Copyright © '}
+        <Link color="inherit" href="https://material-ui.com/">
+          Travel-with-Me
+        </Link>{' '}
+        {new Date().getFullYear()}
+        {'.'}
+      </Typography>
+    );
+  }
 
   const [userName, setUserName] = useState("");
 
@@ -82,6 +89,18 @@ export default function SignUp() {
   const handleInputChangeLast = (event) => {
     setLastName(event.target.value);
     console.log(lastName);
+  };
+
+  //Saving person 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("clicked")
+    Api.saveUser({
+      firstName, lastName, userName, password
+
+    }).then(() => {
+      console.log("user created")
+    })
   };
 
   return (
@@ -165,7 +184,7 @@ export default function SignUp() {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="/" variant="body2">
+              <Link href="/" variant="body2" className={classes.links}>
                 Already have an account? Sign in
               </Link>
             </Grid>
