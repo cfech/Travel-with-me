@@ -1,7 +1,7 @@
 import React from "react";
 import itemPage from "./pages/itemPage";
 import savedPage from "./pages/savedPage";
-import signIn from "./pages/signInPage";
+import signIn from "./pages/signinPage";
 import Footer from "./components/footer/index";
 import signUp from "./pages/signUp";
 import "./styles/styles.css";
