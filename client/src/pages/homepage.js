@@ -6,6 +6,9 @@ import { makeStyles } from "@material-ui/styles";
 import Nav from "../components/Nav";
 import Interest from "../components/Interests/interest";
 import Location from "../components/Location/location";
+import { Grid } from "@material-ui/core";
+
+
 
 function Home() {
   // Setting our component's initial state
@@ -77,21 +80,24 @@ function Home() {
 
   if (error) {
     return (
-      <form>
-        <input
-          placeholder="location search"
-          onChange={handleInputChange}
-        ></input>
-        <button className="searchBtn" type="submit" onClick={handleSubmit}>
-          search
+      <>
+        <Nav />
+        <form>
+          <input
+            placeholder="location search"
+            onChange={handleInputChange}
+          ></input>
+          <button className="searchBtn" type="submit" onClick={handleSubmit}>
+            search
         </button>
-      </form>
+        </form>
+      </>
     );
   } else if (!isLoaded) {
+    // this is the default return of the component
     return (
       <div>
         <Nav />
-        hello
         <div>
           <p>Search</p>
         </div>
@@ -112,8 +118,10 @@ function Home() {
     );
   } else {
     return (
+      // loads when state is set to true during api call
       <>
-        <p>page loaded</p>
+
+        <Nav />
         <form>
           <input
             placeholder="location search"
@@ -132,20 +140,24 @@ function Home() {
           snippet={place.snippet}
           image={place.images[0].sizes.medium.url}
         />
-        <div>
+        <Grid item container>
           {interest.map((item) => (
-            <Interest
-              key={item.id}
-              name={item.name}
-              snippet={item.snippet}
-              image={
-                item.images.sizes === undefined
-                  ? "https://via.placeholder.com/150"
-                  : item.images[0].sizes.medium.url
-              }
-            />
+            <Grid key={item.id} item xs={6} sm={4} md={3}>
+              <Interest
+                key={item.id}
+                name={item.name}
+                score={Math.round(item.score)}
+                snippet={item.snippet}
+                image={
+                  item.images.sizes === undefined
+                    ? "https://via.placeholder.com/150"
+                    : item.images[0].sizes.medium.url
+                }
+                attribution={item.attribution}
+              />
+            </Grid>
           ))}
-        </div>
+        </Grid>
       </>
     );
   }
