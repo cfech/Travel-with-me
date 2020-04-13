@@ -7,6 +7,7 @@ import signUp from "./pages/signUp";
 import "./styles/styles.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./pages/homepage";
+// import Search from "./pages/searchPage";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route exact path="/home" component={Home} />
           <Route exact path="/signUp" component={signUp} />
           <Route exact path="*" component={signIn} />
+          {/* <Route exact path="/searchPage" component={search} /> */}
         </Switch>
         <Footer />
       </div>
