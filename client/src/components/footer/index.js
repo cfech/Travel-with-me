@@ -1,8 +1,7 @@
-import "./style.css"
 import React from 'react';
 import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles'; 
+import { makeStyles } from '@material-ui/core/styles';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -32,11 +31,11 @@ function Copyright() {
   );
 }
 function Footer() {
-  const classes = useStyles() 
+  const classes = useStyles()
   return (
-   <footer className={classes.footer}>
-     <Copyright />
-   </footer>
+    <footer className={classes.footer}>
+      <Copyright />
+    </footer>
   );
 }
 
