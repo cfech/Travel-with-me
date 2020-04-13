@@ -57,19 +57,6 @@ const useStyles = makeStyles((theme) => ({
 export default function SignInSide() {
   const classes = useStyles();
 
-  function Copyright() {
-    return (
-      <Typography className={classes.links} variant="body2" color="textSecondary" align="center">
-        {'Copyright © '}
-        <Link color="inherit" href="https://material-ui.com/">
-          Travel-with-Me
-        </Link>{' '}
-        {new Date().getFullYear()}
-        {'.'}
-      </Typography>
-    );
-  }
-
   const [userName, setUserName] = useState("");
 
   const handleInputChangeUserName = (event) => {
@@ -138,20 +125,14 @@ export default function SignInSide() {
               Sign In
             </Button>
             <Grid container>
-              <Grid item xs>
-                <Link className = {classes.links} href="#" variant="body2" >
-                  Forgot password?
-                </Link>
+              <Grid item xs={3}>
               </Grid>
-              <Grid item>
-                <Link href="/signUp" variant="body2" className = {classes.links}>
+              <Grid item xs={6}>
+                <Link href="/signUp" variant="body2" className = {classes.links} >
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
             </Grid>
-            <Box mt={5}>
-              <Copyright />
-            </Box>
           </form>
         </div>
       </Grid>

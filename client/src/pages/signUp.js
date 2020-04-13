@@ -48,19 +48,19 @@ export default function SignUp() {
 
   const classes = useStyles();
 
-  function Copyright() {
+  // function Copyright() {
 
-    return (
-      <Typography className={classes.links} variant="body2" color="textSecondary" align="center">
-        {'Copyright © '}
-        <Link color="inherit" href="https://material-ui.com/">
-          Travel-with-Me
-        </Link>{' '}
-        {new Date().getFullYear()}
-        {'.'}
-      </Typography>
-    );
-  }
+  //   return (
+  //     <Typography className={classes.links} variant="body2" color="textSecondary" align="center">
+  //       {'Copyright © '}
+  //       <Link color="inherit" href="https://material-ui.com/">
+  //         Travel-with-Me
+  //       </Link>{' '}
+  //       {new Date().getFullYear()}
+  //       {'.'}
+  //     </Typography>
+  //   );
+  // }
 
   const [userName, setUserName] = useState("");
 
@@ -182,7 +182,7 @@ export default function SignUp() {
           >
             Sign Up
           </Button>
-          <Grid container justify="flex-end">
+          <Grid container justify="space-around">
             <Grid item>
               <Link href="/" variant="body2" className={classes.links}>
                 Already have an account? Sign in
@@ -191,8 +191,8 @@ export default function SignUp() {
           </Grid>
         </form>
       </div>
-      <Box mt={5}>
-        <Copyright />
+      <Box mt={8}>
+        {/* <Copyright /> */}
       </Box>
     </Container>
   );
