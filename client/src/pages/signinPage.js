@@ -12,8 +12,7 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-
-
+import API from '../utils/API'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -54,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-export default function SignInSide() {
+export default function SignInSide(props) {
   const classes = useStyles();
 
   function Copyright() {
@@ -70,21 +69,55 @@ export default function SignInSide() {
     );
   }
 
-  const [userName, setUserName] = useState("");
+  const [usernameText, setUsernameText] = useState("");
 
   const handleInputChangeUserName = (event) => {
-    setUserName(event.target.value);
-    console.log(userName);
+    setUsernameText(event.target.value);
+    console.log(usernameText);
 
   };
 
-  const [password, setPassword] = useState("");
-
+  const [passwordText, setPasswordText] = useState("");
+  
   const handleInputChangePassword = (event) => {
-    setPassword(event.target.value);
-    console.log(password);
-
+    setPasswordText(event.target.value);
+    console.log(passwordText);
+    
   };
+  
+  
+  const [redirect, setRedirect] = useState("");
+
+// is called when we click our signin button
+  const handleSignIn = (event) => {
+    event.preventDefault()
+    console.log('handleSubmit')
+
+      API.login({
+          userName: usernameText,
+          password: passwordText
+      })
+        .then(response => {
+            console.log('login response: ')
+            console.log(response)
+            if (response.status === 200) {
+                // update App.js state
+                props.updateUser({
+                    loggedIn: true,
+                    userName: response.data.userName
+                })
+                // update the state to redirect to home
+                setRedirect(
+                    '/home'
+                )
+            }
+        }).catch(error => {
+            console.log('login error: ')
+            console.log(error);
+            
+        })
+}
+
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -133,7 +166,7 @@ export default function SignInSide() {
               variant="contained"
               color="primary"
               className={classes.submit}
-              href = "/home"
+              onClick={handleSignIn}
             >
               Sign In
             </Button>

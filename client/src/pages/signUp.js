@@ -98,8 +98,11 @@ export default function SignUp() {
     Api.saveUser({
       firstName, lastName, userName, password
 
-    }).then(() => {
+    }).then((res) => {
       console.log("user created")
+    })
+    .catch(error => {
+      console.log(error)
     })
   };
 
@@ -147,7 +150,7 @@ export default function SignUp() {
                 fullWidth
                 id="email"
                 label="Email Address"
-                name="email"
+                name="userName"
                 onChange={handleInputChangeU}
                 autoComplete="email"
               />
