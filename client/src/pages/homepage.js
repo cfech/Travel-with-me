@@ -28,6 +28,10 @@ function Home() {
         color: "red",
       },
     },
+    cityRow: {
+      background: 'rgb(163, 187, 230)',
+      margin: 0
+    }
   }));
 
   const classes = useStyles();
@@ -88,8 +92,7 @@ function Home() {
             onChange={handleInputChange}
           ></input>
           <button className="searchBtn" type="submit" onClick={handleSubmit}>
-            search
-        </button>
+          </button>
         </form>
       </>
     );
@@ -99,21 +102,23 @@ function Home() {
       <div>
         <Nav />
         <div>
-          <p>Search</p>
         </div>
-        <form>
-          <input
-            placeholder="location search"
-            onChange={handleInputChange}
-          ></input>
-          <button className="searchBtn" type="submit" onClick={handleSubmit}>
-            search
-          </button>
-        </form>
-        <button onClick={handleInterest}>show interests</button>
-        <Link className={classes.links} to="/item">
-          item page
+        <Grid item container>
+          <Grid item xs={12} className={classes.cityRow}>
+            <form>
+              <input
+                placeholder="location search"
+                onChange={handleInputChange}
+              ></input>
+              <button className="searchBtn" type="submit" onClick={handleSubmit}>
+              </button>
+            </form>
+            <button onClick={handleInterest}>show interests</button>
+            <Link className={classes.links} to="/item">
+              item page
         </Link>
+          </Grid>
+        </Grid>
       </div>
     );
   } else {
@@ -122,24 +127,31 @@ function Home() {
       <>
 
         <Nav />
-        <form>
-          <input
-            placeholder="location search"
-            onChange={handleInputChange}
-          ></input>
-          <button className="searchBtn" type="submit" onClick={handleSubmit}>
-            search
-          </button>
-        </form>
-        <form>
-          <button onClick={handleInterest}>show interests</button>
-        </form>
 
         <Location
           name={place.name}
           snippet={place.snippet}
           image={place.images[0].sizes.medium.url}
         />
+
+        <Grid item container>
+          <Grid item xs={12} className={classes.cityRow}>
+            <form>
+              <input
+                placeholder="location search"
+                onChange={handleInputChange}
+              ></input>
+              <button className="searchBtn" type="submit" onClick={handleSubmit}>
+              </button>
+            </form>
+            <button onClick={handleInterest}>show interests</button>
+            <Link className={classes.links} to="/item">
+              item page
+        </Link>
+          </Grid>
+        </Grid>
+
+
         <Grid item container>
           {interest.map((item) => (
             <Grid key={item.id} item xs={6} sm={4} md={3}>
