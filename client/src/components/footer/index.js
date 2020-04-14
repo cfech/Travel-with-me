@@ -4,6 +4,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
 
+
+
 const useStyles = makeStyles((theme) => ({
   footer: {
     background: 'rgb(163, 187, 230)',
@@ -11,9 +13,10 @@ const useStyles = makeStyles((theme) => ({
     color: 'white',
     fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif',
     fontSize: 15,
-    position: 'static',
+    position: "sticky",
     top: 'auto',
     bottom: 0,
+    width: "100%"
   },
 }));
 
@@ -33,9 +36,11 @@ function Copyright() {
 function Footer() {
   const classes = useStyles()
   return (
+
     <footer className={classes.footer}>
       <Copyright />
     </footer>
+
   );
 }
 

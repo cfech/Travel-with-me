@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     transform: 'rotate(180deg)',
   },
   avatar: {
-    backgroundColor: red[500],
+    backgroundColor: red["#ffebee"],
   },
   link: {
     color: "black",
@@ -101,16 +101,16 @@ const Interest = ({ name, score, snippet, image, attribution, id }) => {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>Links:</Typography>
-          <Typography>
+          <CardContent>
 
             <ul>
               {attribution.map(link => (
-                <li className={classes.link} key={link.source_id}><a className={classes.link} href={link.url}>{link.url}</a></li>
+                <li className={classes.link} key={link.source_id}><a className={classes.link} target="_blank" rel="noopener noreferrer" href={link.url}>{link.source_id.charAt(0).toUpperCase() + link.source_id.slice(1)}</a></li>
               ))}
             </ul>
 
 
-          </Typography>
+          </CardContent>
 
 
 

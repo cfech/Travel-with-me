@@ -6,7 +6,6 @@ import { makeStyles } from "@material-ui/styles";
 const useStyles = makeStyles(() => ({
 
   media: {
-    width: "100%",
     height: 300,
     margin: 0,
   },
@@ -27,11 +26,12 @@ const Location = ({ name, snippet, image }) => {
   return (
     <>
       <Grid item container>
-        <Grid item xs={12}>
+        <Grid item xs={3} />
+        <Grid item xs={6}>
           <img className={classes.media} src={image} alt={name} />
         </Grid>
         <Grid item xs={12} className={classes.cityRow}>
-          <p><h2>{name}: <span className={classes.snip}>{snippet}</span></h2></p>
+          <h2><p>{name}: <span className={classes.snip}>{snippet}</span></p></h2>
         </Grid>
       </Grid>
     </>
