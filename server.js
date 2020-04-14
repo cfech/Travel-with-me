@@ -1,6 +1,7 @@
 const express = require("express");
 const session = require('express-session')
 const passport = require('./passport');
+const bodyParser = require('body-parser');
 
 const morgan = require('morgan')
 const mongoose = require("mongoose");
@@ -43,6 +44,14 @@ app.use(passport.session()) // calls serializeUser and deserializeUser
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.use(
+  bodyParser.urlencoded({
+    extended: false
+  })
+);
+app.use(bodyParser.json());
+
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
@@ -60,3 +69,8 @@ mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost/savedLocations`
 app.listen(PORT, function () {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
+
+
+
+
+// Proxy error: Could not proxy request /api/users/ from localhost:3000 to http://localhost:3001/.

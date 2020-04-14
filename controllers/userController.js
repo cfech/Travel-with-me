@@ -41,20 +41,25 @@ module.exports = {
       .then((userModel) => res.json(userModel))
       .catch((err) => res.status(422).json(err));
   },
-  login: function (req, res) {
-    console.log(req.body);
-    console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%");
-    
-    
-    passport.authenticate("local"),
-      (req, res) => {
-        console.log("logged in", req.user);
+
+};
+
+
+/*
+router.post(
+    '/login',
+    function (req, res, next) {
+        console.log('routes/user.js, login, req.body: ');
+        console.log(req.body)
+        next()
+    },
+    passport.authenticate('local'),
+    (req, res) => {
+        console.log('logged in', req.user);
         var userInfo = {
-          userName: req.user.userName,
-          firstName: req.user.firstName,
-          lastName: req.user.lastName,
+            username: req.user.username
         };
         res.send(userInfo);
-      };
-  },
-};
+    }
+)
+*/
