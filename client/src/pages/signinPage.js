@@ -177,20 +177,14 @@ if (redirect) {
               Sign In
             </Button>
             <Grid container>
-              <Grid item xs>
-                <Link className = {classes.links} href="#" variant="body2" >
-                  Forgot password?
-                </Link>
+              <Grid item xs={3}>
               </Grid>
-              <Grid item>
-                <Link href="/signUp" variant="body2" className = {classes.links}>
+              <Grid item xs={6}>
+                <Link href="/signUp" variant="body2" className = {classes.links} >
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
             </Grid>
-            <Box mt={5}>
-              <Copyright />
-            </Box>
           </form>
         </div>
       </Grid>

@@ -12,7 +12,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Api from "../utils/API"
+import Api from "../utils/API";
+import {Redirect} from "react-router-dom";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -48,21 +49,22 @@ export default function SignUp() {
 
   const classes = useStyles();
 
-  function Copyright() {
+  // function Copyright() {
 
-    return (
-      <Typography className={classes.links} variant="body2" color="textSecondary" align="center">
-        {'Copyright © '}
-        <Link color="inherit" href="https://material-ui.com/">
-          Travel-with-Me
-        </Link>{' '}
-        {new Date().getFullYear()}
-        {'.'}
-      </Typography>
-    );
-  }
+  //   return (
+  //     <Typography className={classes.links} variant="body2" color="textSecondary" align="center">
+  //       {'Copyright © '}
+  //       <Link color="inherit" href="https://material-ui.com/">
+  //         Travel-with-Me
+  //       </Link>{' '}
+  //       {new Date().getFullYear()}
+  //       {'.'}
+  //     </Typography>
+  //   );
+  // }
 
   const [userName, setUserName] = useState("");
+  const [redirect, setRedirect] = useState("");
 
   const handleInputChangeU = (event) => {
     setUserName(event.target.value);
@@ -99,12 +101,17 @@ export default function SignUp() {
       firstName, lastName, userName, password
 
     }).then((res) => {
-      console.log("user created")
+      console.log("user created");
+    setRedirect("/")
     })
     .catch(error => {
       console.log(error)
     })
   };
+
+  if (redirect) {
+    return <Redirect to={{ pathname: redirect }} />
+  } else {
 
   return (
     <Container component="main" maxWidth="xs">
@@ -185,7 +192,7 @@ export default function SignUp() {
           >
             Sign Up
           </Button>
-          <Grid container justify="flex-end">
+          <Grid container justify="space-around">
             <Grid item>
               <Link href="/" variant="body2" className={classes.links}>
                 Already have an account? Sign in
@@ -194,9 +201,10 @@ export default function SignUp() {
           </Grid>
         </form>
       </div>
-      <Box mt={5}>
-        <Copyright />
+      <Box mt={8}>
+        {/* <Copyright /> */}
       </Box>
     </Container>
   );
+  }
 }

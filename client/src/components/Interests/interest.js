@@ -1,17 +1,126 @@
-import React from "react";
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import clsx from 'clsx';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
+import Collapse from '@material-ui/core/Collapse';
+import Avatar from '@material-ui/core/Avatar';
+import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
+import { red } from '@material-ui/core/colors';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import ShareIcon from '@material-ui/icons/Share';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
 
-const Interest = ({ name, score, snippet, image }) => {
+const useStyles = makeStyles((theme) => ({
+  root: {
+    maxWidth: 345,
+  },
+  media: {
+    height: 0,
+    paddingTop: '56.25%', // 16:9
+  },
+  expand: {
+    transform: 'rotate(0deg)',
+    marginLeft: 'auto',
+    transition: theme.transitions.create('transform', {
+      duration: theme.transitions.duration.shortest,
+    }),
+  },
+  expandOpen: {
+    transform: 'rotate(180deg)',
+  },
+  avatar: {
+    backgroundColor: red["500"],
+  },
+  link: {
+    color: "black",
+    textDecoration: "none",
+    "&:hover": {
+      color: "black",
+    }
+  },
+  heart: {
+    color: red["200"]
+  },
+  textArea: {
+    height: 140,
+  },
+  header: {
+    backgroundImage: "linear-gradient(to top, #6a85b6 0%, #bac8e0 100%)"
+  }
+}));
+
+const Interest = ({ name, score, snippet, image, attribution, id }) => {
+  const classes = useStyles();
+  const [expanded, setExpanded] = React.useState(false);
+
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
+
   return (
-    <>
-      <div>
-        <p>name</p>
-        <p>{score}</p>
-        <p>{snippet}</p>
-        <img src={image} alt={name} />
-        <p>------</p>
-      </div>
-    </>
+    <Card className={classes.root}>
+      <CardHeader className={classes.header}
+        title={name}
+
+        avatar={
+          <Avatar aria-label="recipe" className={classes.avatar}>
+            {score}
+          </Avatar>
+        }
+
+
+      />
+      <CardMedia
+        className={classes.media}
+        image={image}
+        title={name}
+      />
+      <CardContent>
+        <Typography variant="body2" color="textSecondary" component="p" className={classes.textArea}>
+          {snippet}
+        </Typography>
+      </CardContent>
+      <CardActions disableSpacing>
+        <IconButton aria-label="add to favorites">
+          <FavoriteIcon className={classes.heart} />
+        </IconButton>
+        <IconButton
+          className={clsx(classes.expand, {
+            [classes.expandOpen]: expanded,
+          })}
+          onClick={handleExpandClick}
+          aria-expanded={expanded}
+          aria-label="show more"
+        >
+          <ExpandMoreIcon />
+        </IconButton>
+      </CardActions>
+      <Collapse in={expanded} timeout="auto" unmountOnExit>
+        <CardContent>
+          <Typography paragraph>Links:</Typography>
+          <CardContent>
+
+            <ul>
+              {attribution.map(link => (
+                <li className={classes.link} key={link.source_id}><a className={classes.link} target="_blank" rel="noopener noreferrer" href={link.url}>{link.source_id.charAt(0).toUpperCase() + link.source_id.slice(1)}</a></li>
+              ))}
+            </ul>
+
+
+          </CardContent>
+
+
+
+        </CardContent>
+      </Collapse>
+    </Card>
   );
-};
+}
 
 export default Interest;
