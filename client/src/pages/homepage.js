@@ -136,9 +136,9 @@ function Home() {
         <Grid item container>
           <Grid item xs={false} s={3} />
           <Grid item xs={12} s={6}>
-            <img className={classes.media} src="https://cdn2.slidemodel.com/wp-content/uploads/2074-01-worldmap-connections-16x9-2.jpg" />
+            <img className={classes.media} image={require('../img/map-1.png')} />
           </Grid>
-        </Grid>
+        </Grid> 
         <div>
         </div>
         {/* buttons container */}
