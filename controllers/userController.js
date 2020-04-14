@@ -1,5 +1,5 @@
 const db = require("../models");
-const passport = require("passport");
+const passport = require("../passport");
 
 module.exports = {
   findAll: function (req, res) {
@@ -43,7 +43,9 @@ module.exports = {
   },
   login: function (req, res) {
     console.log(req.body);
-
+    console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%");
+    
+    
     passport.authenticate("local"),
       (req, res) => {
         console.log("logged in", req.user);
