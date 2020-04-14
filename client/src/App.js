@@ -13,7 +13,8 @@ class App extends React.Component {
     super()
     this.state = {
       loggedIn: false,
-      userName: null
+      userName: null,
+      id:""
     }
 
     this.getUser = this.getUser.bind(this)
@@ -33,12 +34,14 @@ class App extends React.Component {
     axios.get('/api/users/').then(response => {
       console.log('Get user response: ')
       console.log(response.data)
+      console.log(response.data.user._id)
       if (response.data.user) {
         console.log('Get User: There is a user saved in the server session: ')
 
         this.setState({
           loggedIn: true,
-          userName: response.data.user.userName
+          userName: response.data.user.userName,
+          id: response.data.user._id
         })
       } else {
         console.log('Get user: no user');
@@ -57,13 +60,10 @@ class App extends React.Component {
     <BrowserRouter>
       <div>
         <Switch>
-          <Route exact path="/" 
-            render={() =>
-              <SignIn
-                updateUser={this.updateUser}
-              />}/>
-          <Route exact path="/saved" render={() => <SavedPage loggedIn={this.state.loggedIn} /> }/>
-          <Route exact path="/home" component={Home} />
+          <Route exact path="/" render={() =><SignIn updateUser={this.updateUser}/>}/>
+          <Route exact path="/saved" render={() => <SavedPage loggedIn={this.state.loggedIn} userId={this.state.id}/> }/>
+          <Route exact path="/home" render={() => <Home loggedIn={this.state.loggedIn}  userId={this.state.id} /> }/>
+          {/* <Route exact path="/home" component={Home} /> */}
           <Route exact path="/signUp" component={SignUp} />
           <Route exact path="*" 
             render={() =>

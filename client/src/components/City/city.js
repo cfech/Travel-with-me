@@ -32,8 +32,12 @@ const City = ({ name, state, country, handleThree, id, snippet }) => {
                     title="Contemplative Reptile"
                 />
                 <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                        {name}:{state}:{country}
+                    <Typography gutterBottom variant="h6" component="h3">
+                        {name},
+                        {state}
+                    </Typography>
+                    <Typography gutterBottom variant="h6" component="h5">
+                        {country}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
                         {snippet}
@@ -42,7 +46,7 @@ const City = ({ name, state, country, handleThree, id, snippet }) => {
             </CardActionArea>
             <CardActions className={classes.bottomRow} >
                 <Button size="small" color="primary" onClick={(event) => handleThree(event, id)}>
-                    GO
+                    Go Here!!
         </Button>
 
             </CardActions>

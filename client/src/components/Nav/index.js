@@ -1,21 +1,3 @@
-// import React from "react";
-// import {Link} from "react-router-dom"
-// import "./style.css"
-
-// function Nav() {
-//   return (
-
-
-//     <nav className="navbar navbar-expand-lg myNav">
-
-
-
-//     </nav>
-//   );
-// }
-
-// export default Nav;
-
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -87,17 +69,16 @@ export default function SearchAppBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="center">
+      <AppBar position="static">
         <Toolbar>
-
-
           <Typography className={classes.title} variant="h4" noWrap>
             Travel-with-Me
-            <Link className="navbar-brand" to="/"> singin</Link>
+            <Link className="navbar-brand" to="/"> Sign In</Link>
 
             <Link className="navbar-brand" to="/home"> Home</Link>
 
             <Link className="navbar-brand" to="/saved"> Saved</Link>
+            <Link className="navbar-brand" to="/logout"> Log Out</Link>
           </Typography>
 
 

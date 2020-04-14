@@ -11,12 +11,12 @@ import DayTrip from "../components/Day/dayTrip"
 import { Grid } from "@material-ui/core";
 import Button from '@material-ui/core/Button';
 import City from "../components/City/city";
-import CityApi from "../components/CITY"
+import CityApi from "../components/CITY";
+import tripApi from "../utils/tripApi"
 
 
 
-
-function Home() {
+function Home(props) {
   // Setting our component's initial state
   const [lat, setLat] = useState(0);
   const [long, setLong] = useState(0);
@@ -28,11 +28,17 @@ function Home() {
   const [dayTrip, setDayTrip] = useState([])
   const [searchTerm, setSearchTerm] = useState("");
   const [city, setCity] = useState([]);
-  const [stateOne, setStaetOne] = useState(true)
+  const [stateOne, setStateOne] = useState(true)
   const [stateTwo, setStateTwo] = useState(false)
   const [stateThree, setStateThree] = useState(false)
   const [stateFour, setStateFour] = useState(false)
   const [stateFive, setStateFive] = useState(false)
+  const [userId, setUserId] = useState("")
+
+    useEffect(() => {
+      setUserId(props.userId)
+
+  });
 
 
   const useStyles = makeStyles(() => ({
@@ -59,10 +65,6 @@ function Home() {
   }));
 
   const classes = useStyles();
-
-
-
-
   // need error validation for blank search term
 
   //search to set the city using return from city search
@@ -74,6 +76,7 @@ function Home() {
         setLong(res.data.results[0].coordinates.longitude);
         setPlace(res.data.results[0]);
         setDaySearch(res.data.results[0].id)
+          //call tripapi.savetrip and pass what we want to save 
       })
       .catch((err) => console.log(err));
   };
@@ -121,7 +124,6 @@ function Home() {
   //city search
   const handleSubmit = (event) => {
     event.preventDefault();
-
     setStateTwo(true)
     console.log("clicked");
     console.log(stateTwo)
@@ -129,16 +131,18 @@ function Home() {
   };
 
 
+  //User Name and Id console.log
+  console.log(props.loggedIn)
+  console.log(userId)
+
   const handleThree = (event, id) => {
     event.preventDefault();
     console.log("three!!")
     setStateThree(true)
     console.log(id)
     ApiSearch(id)
-
-
+  
   }
-
   // point of interest
   const handleInterest = (event) => {
     event.preventDefault();
@@ -156,11 +160,6 @@ function Home() {
     console.log("day search")
   }
 
-
-
-
-
-
   if (error) {
     return (
       <>
@@ -175,17 +174,6 @@ function Home() {
         </form>
       </>
     );
-
-
-
-
-
-
-
-
-
-
-
 
     // STATE FIVE!!  STATE FIVE!!STATE FIVE!!STATE FIVE!!STATE FIVE!!STATE FIVE!!STATE FIVE!!STATE FIVE!!STATE FIVE!!STATE FIVE!!
   }
@@ -224,15 +212,7 @@ function Home() {
             </Grid>
           ))}
         </div>
-
-
-
-
-
-
       </div>
-
-
     )
 
     // STATE FOUR!! STATE FOUR!! STATE FOUR!! STATE FOUR!! STATE FOUR!! STATE FOUR!! STATE FOUR!! STATE FOUR!! STATE FOUR!! STATE FOUR!! STATE FOUR!
@@ -246,19 +226,14 @@ function Home() {
           name={place.name}
           snippet={place.snippet}
         // image={place.images[0].source_url}
-
         />
         <Grid item container>
           <Grid item xs={12} className={classes.cityRow}>
             <form>
               <Button variant="contained" color="primary" disableElevation type="submit">Reset</Button>
             </form>
-
           </Grid>
         </Grid>
-
-
-
 
         <Grid item container>
           {/* map through places of interest */}
@@ -279,20 +254,12 @@ function Home() {
             </Grid>
           ))}
         </Grid>
-
-
-
-
       </div>
-
-
     )
-
-
   }
+
   // STATE THREE!! STATE THREE!! STATE THREE!! STATE THREE!! STATE THREE!! STATE THREE!! STATE THREE!! STATE THREE!! STATE THREE!!
   else if (stateOne && stateTwo && stateThree && !stateFour) {
-
     return (
       <div>
         <h1>three</h1>
@@ -323,24 +290,8 @@ function Home() {
           </Grid>
         </Grid>
 
-        {/* <Grid item container>
-          {city.map((item) => (
-            <City
-              name={item.name}
-              state={item.parent_id}
-              country={item.country_id}
-              id={item.id}
-              handleThree={handleThree}
-            />
-
-          ))}
-
-        </Grid> */}
-
       </div>
     )
-
-
   }
   // STATE TWO!!! STATE TWO!!! STATE TWO!!! STATE TWO!!! STATE TWO!!! STATE TWO!!! STATE TWO!!! STATE TWO!!! STATE TWO!!! STATE TWO!!!
   else if (stateOne && stateTwo && !stateThree && !stateFour) {
@@ -359,50 +310,40 @@ function Home() {
 
               <Button variant="contained" color="primary" disableElevation type="submit" onClick={handleSubmit}>
                 Search
-        </Button>
+            </Button>
+            </form>
+
+            <form>
+              <Button variant="contained" color="primary" disableElevation type="submit">Reset</Button>
             </form>
           </Grid>
         </Grid>
+
+        <h2>Choose which {searchTerm} you would like to go to, or search for new destination!</h2>
 
 
 
         <Grid item container>
           {city.map((item) => (
-            <City
+            <City key={item.score}
               name={item.name}
               state={item.parent_id}
               country={item.country_id}
               id={item.id}
               handleThree={handleThree}
-
-
+              snippet={item.snippet}
             />
-
           ))}
-
         </Grid>
-
       </div>
     )
-
-
   }
   // STATE ONE!! STATE ONE!! STATE ONE!! STATE ONE!! STATE ONE!! STATE ONE!! STATE ONE!! STATE ONE!! STATE ONE!! STATE ONE!! STATE ONE!!
   else if (stateOne && !stateTwo && !stateThree && !stateFour) {
-
-
-
     // this is the default return of the component
     return (
       <div>
         <Nav />
-        {/* <Grid item container>
-          <Grid item xs={false} s={3} />
-          <Grid item xs={12} s={6}>
-            <img className={classes.media} image={require('../img/map-1.png')} />
-          </Grid>
-        </Grid> */}
-
         {/* buttons container */}
         <Grid item container>
           <Grid item xs={12} className={classes.cityRow}>
@@ -416,63 +357,11 @@ function Home() {
                 Search
               </Button>
             </form>
-            <Button variant="contained" color="primary" disableElevation >show interests</Button>
-            <Button variant="contained" color="primary" disableElevation >Day Trip</Button>
 
           </Grid>
         </Grid>
       </div>
     );
-    // } else {
-    //   return (
-    //     // loads when state is set to true during api call
-    //     <>
-
-    //       <Nav />
-
-    //       <Location
-    //         name={place.name}
-    //         snippet={place.snippet}
-    //         image={place.images[0].source_url}
-    //       />
-    //       {/* Buttons container */}
-    //       <Grid item container>
-    //         <Grid item xs={12} className={classes.cityRow}>
-    //           <form>
-    //             <input
-    //               placeholder="location search"
-    //               onChange={handleInputChange}
-    //             ></input>
-    //             <Button variant="contained" color="primary" disableElevation type="submit" onClick={handleSubmit}>
-    //               Search
-    //             </Button>
-    //           </form>
-    //           <Button variant="contained" color="primary" disableElevation onClick={handleInterest}>show interests</Button>
-    //           <Button variant="contained" color="primary" disableElevation onClick={handleDay}>Day Trip</Button>
-    //         </Grid>
-    //         <Grid item xs={12} className={classes.empty}>
-
-    //         </Grid>
-    //       </Grid>
-    //       <div>
-    //         {/* map through daytrip items */}
-    //         {dayTrip.map((item) => (
-    //           <Grid key={item.description} item xs={12}>
-    //             <DayTrip
-    //               title={item.title}
-    //               description={item.description}
-    //               snippet={item.snippet}
-    //               name={item.poi.name}
-    //               score={Math.round(item.poi.score)}
-    //             />
-    //           </Grid>
-    //         ))}
-    //       </div>
-
-
-
-    //     </>
-    //   );
   }
 }
 
