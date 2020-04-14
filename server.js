@@ -2,12 +2,13 @@ const express = require("express");
 const session = require('express-session')
 const passport = require('./passport');
 const bodyParser = require('body-parser');
-
+const MongoStore = require('connect-mongo')(session);
 const morgan = require('morgan')
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
+
 require("dotenv").config()
 
 // sign up makes database record (example: username / password). getEntry remembers U+P and encrypts using bcrypt. One way encryption pases a string, which gets encrypted = is this the salt?
@@ -18,6 +19,7 @@ app.use(morgan('dev'))
 // express sessions
 app.use(
   session({
+  store: new MongoStore({ mongooseConnection: mongoose.connection }),
   secret: "secret", //pick a random string to make the hash that is generated secure
   resave: false,
   saveUninitialized: false
