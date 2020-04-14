@@ -8,12 +8,8 @@
 
 //     <nav className="navbar navbar-expand-lg myNav">
 
-//       <Link className= "navbar-brand" to="/"> singin</Link>
 
-//       <Link className= "navbar-brand" to="/home"> Home</Link>
-     
-//       <Link className= "navbar-brand" to="/saved"> Saved</Link>
-    
+
 //     </nav>
 //   );
 // }
@@ -29,6 +25,7 @@ import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+import { Link } from "react-router-dom"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -92,9 +89,18 @@ export default function SearchAppBar() {
     <div className={classes.root}>
       <AppBar position="center">
         <Toolbar>
+
+
           <Typography className={classes.title} variant="h4" noWrap>
-           Travel-with-Me
+            Travel-with-Me
+            <Link className="navbar-brand" to="/"> singin</Link>
+
+            <Link className="navbar-brand" to="/home"> Home</Link>
+
+            <Link className="navbar-brand" to="/saved"> Saved</Link>
           </Typography>
+
+
         </Toolbar>
       </AppBar>
     </div>
