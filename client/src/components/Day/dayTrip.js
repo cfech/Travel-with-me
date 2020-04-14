@@ -10,6 +10,7 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 import StarBorder from '@material-ui/icons/StarBorder';
 import Avatar from '@material-ui/core/Avatar';
 import { red } from '@material-ui/core/colors';
+import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -37,35 +38,37 @@ const DayTrip = ({ title, description, name, score }) => {
     };
 
     return (
-        <List
-            component="nav"
-            aria-labelledby="nested-list-subheader"
-            className={classes.root}>
-            <ListItem>
-                {title}
-            </ListItem>
-            <ListItem>
-                {description}
-            </ListItem>
-            <ListItem className={classes.items} button onClick={handleClick}>
-                {open ? <ExpandLess /> : <ExpandMore />}
-                {name} {<Avatar aria-label="recipe" className={classes.avatar}>{score}</Avatar>
-                }
-            </ListItem>
-            <Collapse in={open} timeout="auto" unmountOnExit>
-                <List component="div" disablePadding>
-                    <ListItem>
+        <Box width="100%">
+            <List
+                component="nav"
+                aria-labelledby="nested-list-subheader"
+                className={classes.root}>
+                <ListItem>
+                    {title}
+                </ListItem>
+                <ListItem>
+                    {description}
+                </ListItem>
+                <ListItem className={classes.items} button onClick={handleClick}>
+                    {open ? <ExpandLess /> : <ExpandMore />}
+                    {name} {<Avatar aria-label="recipe" className={classes.avatar}>{score}</Avatar>
+                    }
+                </ListItem>
+                <Collapse in={open} timeout="auto" unmountOnExit>
+                    <List component="div" disablePadding>
+                        <ListItem>
 
-                    </ListItem>
-                    <ListItem button className={classes.nested}>
-                        <ListItemIcon>
-                            <StarBorder />
-                        </ListItemIcon>
-                        <ListItemText primary="Starred" />
-                    </ListItem>
-                </List>
-            </Collapse>
-        </List>
+                        </ListItem>
+                        <ListItem button className={classes.nested}>
+                            <ListItemIcon>
+                                <StarBorder />
+                            </ListItemIcon>
+                            <ListItemText primary="Starred" />
+                        </ListItem>
+                    </List>
+                </Collapse>
+            </List>
+        </Box>
     );
 }
 
