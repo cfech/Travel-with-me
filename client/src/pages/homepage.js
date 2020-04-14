@@ -208,6 +208,7 @@ function Home(props) {
                 snippet={item.snippet}
                 name={item.poi.name}
                 score={Math.round(item.poi.score)}
+                
               />
             </Grid>
           ))}
@@ -332,6 +333,7 @@ function Home(props) {
               id={item.id}
               handleThree={handleThree}
               snippet={item.snippet}
+              userId = {userId}
             />
           ))}
         </Grid>

@@ -5,10 +5,10 @@ const Schema = mongoose.Schema;
 mongoose.promise = Promise;
 
 const tripSchema = new Schema({
-    location: String,
+    name: String,
     state: String,
     country: String,
-    description: String, 
+    snippet: String, 
     userID: String
 }, {
     timestamps: true

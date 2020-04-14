@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import tripApi from "../../utils/tripApi"
 
 const useStyles = makeStyles({
     root: {
@@ -20,9 +21,26 @@ const useStyles = makeStyles({
     }
 });
 
-const City = ({ name, state, country, handleThree, id, snippet }) => {
+const City = ({ name, state, country, handleThree, id, snippet ,userId}) => {
     const classes = useStyles();
 
+const saveTrip =() =>{
+    tripApi.saveTrip(
+        {
+        name, state, country, snippet, userId
+        }
+    
+    ).then((res) => {
+        console.log("trip created");
+      })
+}
+
+const saveTrip2 =() =>{
+    // tripApi.saveTrip({
+    //     name, state, country, snippet, userId
+    // })
+    console.log("clicked")
+}
     return (
         <Card className={classes.root}>
             <CardActionArea>
@@ -45,7 +63,7 @@ const City = ({ name, state, country, handleThree, id, snippet }) => {
                 </CardContent>
             </CardActionArea>
             <CardActions className={classes.bottomRow} >
-                <Button size="small" color="primary" onClick={(event) => handleThree(event, id)}>
+                <Button size="small" color="primary" onClick={(event) =>{ handleThree(event, id); saveTrip();}}>
                     Go Here!!
         </Button>
 
