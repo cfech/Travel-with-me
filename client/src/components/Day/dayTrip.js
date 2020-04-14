@@ -1,3 +1,4 @@
+//Imports
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
@@ -12,6 +13,7 @@ import Avatar from '@material-ui/core/Avatar';
 import { red } from '@material-ui/core/colors';
 import Box from '@material-ui/core/Box';
 
+//Styling
 const useStyles = makeStyles((theme) => ({
     root: {
         width: '100%',
@@ -29,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
+//Day Trip component
 const DayTrip = ({ title, description, name, score }) => {
     const classes = useStyles();
     const [open, setOpen] = React.useState(true);
@@ -71,7 +74,5 @@ const DayTrip = ({ title, description, name, score }) => {
         </Box>
     );
 }
-
-
 
 export default DayTrip

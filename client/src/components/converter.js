@@ -1,5 +1,7 @@
+//Imports
 import React, { useEffect, useState } from "react";
 
+//Currency Converter
 const Converter = () => {
   const [value, setValue] = useState("");
   useEffect(() => {

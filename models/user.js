@@ -4,9 +4,9 @@ const bcrypt = require("bcryptjs");
 // models for database
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
 mongoose.promise = Promise;
 
+//User schema 
 const userSchema = new Schema({
     firstName: {type: String},
     lastName: {type: String},
@@ -16,7 +16,7 @@ const userSchema = new Schema({
     timestamps: true
 });
 
-// Define schema methods
+// Schema methods to check and hash passwords
 userSchema.methods = {
 	checkPassword: function (inputPassword) {
 		return bcrypt.compareSync(inputPassword, this.password)
