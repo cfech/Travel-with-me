@@ -1,3 +1,4 @@
+//Imports
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -9,6 +10,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import { Link } from "react-router-dom"
 
+//styling 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -64,6 +66,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+//Nav bar component
 export default function SearchAppBar() {
   const classes = useStyles();
 

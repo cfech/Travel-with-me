@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 mongoose.promise = Promise;
 
+//Schema for trip item
 const itemSchema = new Schema({
     location: String,
     score: Number,
@@ -15,7 +16,7 @@ const itemSchema = new Schema({
     timestamps: true
 });
 
-
+//Create an Item Table with the item schema
 const item = mongoose.model("Item", itemSchema);
 
 module.exports = item;

@@ -1,6 +1,7 @@
 const db = require("../models");
 const passport = require("../passport");
 
+//Controllers for Trips, references the models and is referenced by the routes 
 module.exports = {
     findAll: function (req, res) {
         db.Trip.find(req.query)

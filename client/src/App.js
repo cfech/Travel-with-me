@@ -1,3 +1,4 @@
+//Imports
 import React from "react";
 import SavedPage from "./pages/savedPage";
 import SignIn from "./pages/signinPage";
@@ -8,7 +9,9 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./pages/homepage";
 import axios from "axios";
 
+//App component
 class App extends React.Component {
+  //Constructor for states 
   constructor() {
     super()
     this.state = {
@@ -22,14 +25,17 @@ class App extends React.Component {
     this.updateUser = this.updateUser.bind(this)
   }
 
+  //when component mounts get user 
   componentDidMount() {
     this.getUser()
   }
 
+  //Update the user 
   updateUser (userObject) {
     this.setState(userObject)
   }
 
+  //get the user form database
   getUser() {
     axios.get('/api/users/').then(response => {
       console.log('Get user response: ')
@@ -53,9 +59,8 @@ class App extends React.Component {
     })
   }
 
-  
+  //Render the website with several different routes 
   render() {
-
   return (
     <BrowserRouter>
       <div>

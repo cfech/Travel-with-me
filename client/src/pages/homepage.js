@@ -1,3 +1,4 @@
+//Imports
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import API from "../components/API";
@@ -20,7 +21,6 @@ function Home(props) {
   // Setting our component's initial state
   const [lat, setLat] = useState(0);
   const [long, setLong] = useState(0);
-  // const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState(null);
   const [place, setPlace] = useState({});
   const [interest, setInterest] = useState([]);
@@ -35,12 +35,13 @@ function Home(props) {
   const [stateFive, setStateFive] = useState(false)
   const [userId, setUserId] = useState("")
 
+  //setting the user id on load
     useEffect(() => {
       setUserId(props.userId)
 
   });
 
-
+//styling 
   const useStyles = makeStyles(() => ({
     links: {
       color: "black",
@@ -64,10 +65,13 @@ function Home(props) {
 
   }));
 
+  //using styles 
   const classes = useStyles();
   // need error validation for blank search term
 
   //search to set the city using return from city search
+
+  //Function to perform the api search for location with correct id
   const ApiSearch = (id) => {
     API.ApiSearch(id)
       .then((res) => {
@@ -76,12 +80,11 @@ function Home(props) {
         setLong(res.data.results[0].coordinates.longitude);
         setPlace(res.data.results[0]);
         setDaySearch(res.data.results[0].id)
-          //call tripapi.savetrip and pass what we want to save 
       })
       .catch((err) => console.log(err));
   };
 
-  // point of interest search
+  // point of interest api search
   const PoiSearch = () => {
     Poi.ApiSearch(lat, long)
       .then((res) => {
@@ -92,7 +95,7 @@ function Home(props) {
       .catch((err) => console.log(err));
   };
 
-  // day trip search
+  // day trip api search
   const DaySearch = () => {
     Day.ApiSearch(daySearch)
       .then((res) => {
@@ -104,24 +107,23 @@ function Home(props) {
       .catch((err) => console.log(err))
   }
 
-  //city search
-
+  //city api search
   const CitySearch = () => {
     CityApi.ApiSearch(searchTerm)
       .then((res) => {
         console.log("city search");
         console.log(res.data.results)
         setCity(res.data.results)
-
       })
   }
-  // input change
+
+  // input change for search tearm
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
     console.log(searchTerm);
   };
 
-  //city search
+  //function to ste the 2nd state to true nad call the city search api call
   const handleSubmit = (event) => {
     event.preventDefault();
     setStateTwo(true)
@@ -135,6 +137,8 @@ function Home(props) {
   console.log(props.loggedIn)
   console.log(userId)
 
+
+//Function to set the third state to true and call the place api search with the location id
   const handleThree = (event, id) => {
     event.preventDefault();
     console.log("three!!")
@@ -143,16 +147,16 @@ function Home(props) {
     ApiSearch(id)
   
   }
-  // point of interest
+
+  // Set the state of four to true and call point of interest api search for the selected location
   const handleInterest = (event) => {
     event.preventDefault();
     PoiSearch();
     setStateFour(true)
     console.log("poisearch");
-
   };
 
-  // day search 
+  // Set the state of five to true and execute the daily plan search for the selected location
   const handleDay = (event) => {
     event.preventDefault();
     DaySearch();
@@ -160,6 +164,7 @@ function Home(props) {
     console.log("day search")
   }
 
+  //If error return error page 
   if (error) {
     return (
       <>

@@ -62,19 +62,19 @@ router.route("/trips")
     .get(tripController.findById)
     .delete(tripController.remove);
 
-    router
+router
     .route("/trips/:id")
     .get(tripController.findById)
     .put(tripController.update)
     .delete(tripController.remove);
 
-    //routes for items
-    router.route("/items")
+//routes for items
+router.route("/items")
     .post(itemController.create)
     .delete(itemController.remove)
     .get(itemController.findById);
 
-    router
+router
     .route("/items/:id")
     .get(itemController.findById)
     .put(itemController.update)

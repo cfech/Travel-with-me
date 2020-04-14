@@ -1,6 +1,7 @@
 const db = require("../models");
 const passport = require("../passport");
 
+//Controllers for users, references the models and is referenced by the routes 
 module.exports = {
   findAll: function (req, res) {
     db.User.find(req.query)

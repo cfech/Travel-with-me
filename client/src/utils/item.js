@@ -1,22 +1,21 @@
+//Imports
 import axios from "axios";
 
-//for front end routes 
-
-
+//front end routes for trip items 
 export default {
-    // Gets all books
+    // Gets all items
     getItem: function () {
         return axios.get("/api/users/items");
     },
-    // Gets the book with the given id
+    // Gets the item with the given id
     getItems: function (id) {
         return axios.get("/api/users/items" + id);
     },
-    // Deletes the book with the given id
+    // Deletes the item with the given id
     deleteItem: function (id) {
         return axios.delete("/api/users/items" + id);
     },
-    // Saves a book to the database
+    // Saves a item to the database
     saveItem: function (tripData) {
         return axios.post("/api/users/items", tripData);
     }

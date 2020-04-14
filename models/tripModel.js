@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 
 mongoose.promise = Promise;
 
+//Schema for trip
 const tripSchema = new Schema({
     name: String,
     state: String,
@@ -14,7 +15,7 @@ const tripSchema = new Schema({
     timestamps: true
 });
 
-
+//Create a trip table with the tripSchema
 const Trip = mongoose.model("Trip", tripSchema);
 
 module.exports = Trip;

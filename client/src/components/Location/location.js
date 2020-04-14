@@ -1,8 +1,9 @@
+//Imports 
 import React from "react";
 import { Grid } from "@material-ui/core"
 import { makeStyles } from "@material-ui/styles";
 
-
+//Styling
 const useStyles = makeStyles(() => ({
 
   media: {
@@ -21,7 +22,7 @@ const useStyles = makeStyles(() => ({
 
 }));
 
-
+//Location
 const Location = ({ name, snippet, image }) => {
   const classes = useStyles();
   return (

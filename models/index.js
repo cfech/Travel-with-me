@@ -1,4 +1,4 @@
-//require for module 
+//require for the routes 
 
 module.exports = {
   User: require("./user.js"),

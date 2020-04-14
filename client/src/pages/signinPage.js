@@ -1,3 +1,4 @@
+//Imports
 import React, {useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -15,6 +16,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Redirect } from 'react-router-dom';
 import API from '../utils/API'
 
+//Styling
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '100vh',
@@ -54,9 +56,11 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
+//Signin component
 export default function SignInSide(props) {
   const classes = useStyles();
 
+  //Copyright 
   function Copyright() {
     return (
       <Typography className={classes.links} variant="body2" color="textSecondary" align="center">
@@ -70,26 +74,30 @@ export default function SignInSide(props) {
     );
   }
 
+  //Username hook
   const [usernameText, setUsernameText] = useState("");
 
+  //Setting the state of username
   const handleInputChangeUserName = (event) => {
     setUsernameText(event.target.value);
     console.log(usernameText);
 
   };
 
+  //Password Hook
   const [passwordText, setPasswordText] = useState("");
   
+  //Setting the state of password
   const handleInputChangePassword = (event) => {
     setPasswordText(event.target.value);
     console.log(passwordText);
     
   };
   
-  
+  //Redirect hook
   const [redirect, setRedirect] = useState("");
 
-// is called when we click our signin button
+// Called when we click our signIn button
   const handleSignIn = (event) => {
     event.preventDefault()
     console.log('handleSubmit')
@@ -120,7 +128,7 @@ export default function SignInSide(props) {
 }
 
 
-  
+  //If redirect is true , redirect to the path name or else show the sign in component
 if (redirect) {
   return <Redirect to={{ pathname: redirect }} />
 } else {
