@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     transform: 'rotate(180deg)',
   },
   avatar: {
-    backgroundColor: red["#ffebee"],
+    backgroundColor: red["500"],
   },
   link: {
     color: "black",
@@ -43,6 +43,15 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       color: "black",
     }
+  },
+  heart: {
+    color: red["200"]
+  },
+  textArea: {
+    height: 140,
+  },
+  header: {
+    backgroundImage: "linear-gradient(to top, #6a85b6 0%, #bac8e0 100%)"
   }
 }));
 
@@ -56,19 +65,16 @@ const Interest = ({ name, score, snippet, image, attribution, id }) => {
 
   return (
     <Card className={classes.root}>
-      <CardHeader
+      <CardHeader className={classes.header}
+        title={name}
+
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
             {score}
           </Avatar>
         }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-        title={name}
-        subheader="something?"
+
+
       />
       <CardMedia
         className={classes.media}
@@ -76,16 +82,13 @@ const Interest = ({ name, score, snippet, image, attribution, id }) => {
         title={name}
       />
       <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
+        <Typography variant="body2" color="textSecondary" component="p" className={classes.textArea}>
           {snippet}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
+          <FavoriteIcon className={classes.heart} />
         </IconButton>
         <IconButton
           className={clsx(classes.expand, {
