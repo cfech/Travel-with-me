@@ -21,8 +21,8 @@ import itemApi from "../../utils/item"
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
-    margin: 12,
-    boxShadow: "0px 5px 20px rgb(71, 71, 71)"
+    // margin: 12,
+    boxShadow: "0px 5px 20px rgb(71, 71, 71)",
   },
   media: {
     height: 0,

@@ -60,7 +60,18 @@ const City = ({ name, state, country, handleThree, id, snippet, image, userId })
                 <CardContent className={classes.header}>
                     <Typography gutterBottom variant="h6" component="h3">
                         {name},
-                        {state.replace(/[0-9]/g, "").replace(/_/g, " ")}
+
+                        {/* image={
+                  item.images[0]
+                    ? item.images[0].sizes.medium.url
+                    : "https://via.placeholder.com/150"
+                } */}
+
+
+                        {country !== "United_States"
+                        ? ""
+                        :
+                        state.replace(/[0-9]/g, "").replace(/_/g, " ")}
                     </Typography>
                     <Typography gutterBottom variant="h6" component="h5">
                         {country.replace(/_/g, " ").replace(/[0-9]/g, "")}
