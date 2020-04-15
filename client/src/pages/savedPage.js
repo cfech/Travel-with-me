@@ -9,8 +9,6 @@ import itemApi from "../utils/item"
 
 //Saved page component
 function savedPage(props) {
-  const [userId, setUserId] = useState(props.userId)
-
 
   const getUserTrips = () => {
     tripApi.getUserTrips(props.userId)
