@@ -10,7 +10,8 @@ const itemSchema = new Schema({
     description: String, 
     image: String,
     attribute: String,
-    tripID: String
+    tripID: String,
+    userId: String,
 
 }, {
     timestamps: true

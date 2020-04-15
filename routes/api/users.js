@@ -64,7 +64,7 @@ router.route("/trips")
 
 router
     .route("/trips/:id")
-    .get(tripController.findById)
+    .get(tripController.findByUserId)
     .put(tripController.update)
     .delete(tripController.remove);
 

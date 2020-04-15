@@ -1,5 +1,5 @@
 ///Imports
-import React from 'react';
+import React, {useEffect}from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -16,6 +16,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import tripApi from "../../utils/tripApi"
 
 //Styling
 const useStyles = makeStyles((theme) => ({
@@ -60,13 +61,22 @@ const useStyles = makeStyles((theme) => ({
 
 
 //Interest component
-const Interest = ({ name, score, snippet, image, attribution, id }) => {
+const Interest = ({ name, score, snippet, image, attribution, id, userId }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+  useEffect(() => {
+    tripApi.getUserTrips(userId)
+    .then((res) => {
+      console.log(res)
+    })
+    .catch((err) =>{ console.log(err)})
+  },[])
+
 
   return (
     <Card className={classes.root}>

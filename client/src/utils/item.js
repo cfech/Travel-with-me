@@ -16,7 +16,10 @@ export default {
         return axios.delete("/api/users/items" + id);
     },
     // Saves a item to the database
-    saveItem: function (tripData) {
-        return axios.post("/api/users/items", tripData);
-    }
+    saveItem: function (itemData) {
+        return axios.post("/api/users/items", itemData);
+    },
+    getTripItems: function (id) {
+        return axios.get("/api/users/trips/" + id);
+    },
 };
