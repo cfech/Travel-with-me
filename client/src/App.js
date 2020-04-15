@@ -8,6 +8,7 @@ import "./styles/styles.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./pages/homepage";
 import axios from "axios";
+import Credits from "./pages/credits"
 
 //App component
 class App extends React.Component {
@@ -70,6 +71,7 @@ class App extends React.Component {
           <Route exact path="/home" render={() => <Home loggedIn={this.state.loggedIn}  userId={this.state.id} /> }/>
           {/* <Route exact path="/home" component={Home} /> */}
           <Route exact path="/signUp" component={SignUp} />
+          <Route exact path="/credits" component={Credits} />
           <Route exact path="*" 
             render={() =>
               <SignIn

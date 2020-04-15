@@ -62,6 +62,9 @@ function Home(props) {
       margin: 0,
       width: "100%"
     },
+    image:{
+      width: "100%",
+    }
 
   }));
 
@@ -317,6 +320,11 @@ function Home(props) {
         <h1>two</h1>
         <Nav />
         <Grid item container>
+          <img src= {require("../img/map-1.png")} className = {classes.image} ></img>
+        </Grid>
+
+
+        <Grid item container>
           <Grid item xs={12} className={classes.cityRow}>
             <form style={{postion: 'center'}}>
               <input
@@ -361,14 +369,19 @@ function Home(props) {
     return (
       <div style={{backgroundColor: 'blue'}}>
         <Nav />
+        <Grid item container>
+          <img src= {require("../img/map-1.png")} className = {classes.image} ></img>
+        </Grid>
         {/* buttons container */}
         <Grid item container>
           
           <Grid item xs={12} className={classes.cityRow}>
             <form style={{postion: 'center'}}>
               <input
+
               style={{width: '70%', height: '50px', marginLeft: '240px', marginTop: '40px', fontFamily: 'serif', fontSize: '20px'}}
                 placeholder="Please Choose a Destination..."
+              
                 onChange={handleInputChange}
               ></input>
 
