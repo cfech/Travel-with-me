@@ -21,6 +21,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
+    margin: 10
   },
   media: {
     height: 0,
@@ -73,7 +74,7 @@ const Interest = ({ name, score, snippet, image, attribution, id }) => {
         title={name}
 
         avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
+          <Avatar aria-label="rating" className={classes.avatar}>
             {score}
           </Avatar>
         }
