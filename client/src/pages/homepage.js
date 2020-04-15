@@ -67,7 +67,7 @@ function Home(props) {
       width: "100%",
     },
     options: {
-marginBottom: 50,
+      marginBottom: 50,
     }
 
   }));
@@ -175,7 +175,7 @@ marginBottom: 50,
   if (error) {
     return (
       <>
-        <Nav updateUser ={props.updateUser}/>
+        <Nav updateUser={props.updateUser} />
         <form>
           <input
             style={{ width: '800px' }}
@@ -194,8 +194,8 @@ marginBottom: 50,
 
     return (
       <div>
-       
-        <Nav updateUser ={props.updateUser}/>
+
+        <Nav updateUser={props.updateUser} />
         <Location
           name={place.name} np
           snippet={place.snippet}
@@ -211,7 +211,7 @@ marginBottom: 50,
         </Grid>
 
 
-        <div>
+        <Grid item container display="row">
           {/* map through daytrip items */}
           {dayTrip.map((item) => (
             <Grid key={item.description} item xs={12}>
@@ -225,7 +225,7 @@ marginBottom: 50,
               />
             </Grid>
           ))}
-        </div>
+        </Grid>
       </div>
     )
 
@@ -234,17 +234,17 @@ marginBottom: 50,
 
     return (
       <div>
-       
-        <Nav updateUser ={props.updateUser}/>
+
+        <Nav updateUser={props.updateUser} />
         <Location
           name={place.name}
           snippet={place.snippet}
         />
         <Grid item container>
           <Grid item xs={12} className={classes.cityRow}>
-          <h3>Click on the heart icons to add an item to your trip</h3> 
+            <h3>Click on the heart icons to add an item to your trip</h3>
             <h4>You can restart your search by clicking the reset button</h4>
-            
+
             <form>
               <Button variant="contained" color="primary" style={{ width: "200px", marginLeft: '10px', marginTop: '10px' }} disableElevation type="submit">Reset</Button>
             </form>
@@ -280,28 +280,28 @@ marginBottom: 50,
   else if (stateOne && stateTwo && stateThree && !stateFour) {
     return (
       <div>
-   
-        <Nav updateUser ={props.updateUser} />
+
+        <Nav updateUser={props.updateUser} />
         <Location
           name={place.name}
           snippet={place.snippet}
         />
-        <Grid item container style={{position: 'center'}}>
+        <Grid item container style={{ position: 'center' }}>
           <Grid item xs={12} className={classes.cityRow}>
 
-            <h3>Please choose if you would like to build a custom trip, or  plan a day trip</h3> 
+            <h3>Please choose if you would like to build a custom trip, or  plan a day trip</h3>
             <h4>You can restart your search by clicking the reset button</h4>
-            
+
             <form style={{ postion: 'center' }}>
               <Button variant="contained" color="primary" style={{ width: "200px", marginLeft: '10px', marginTop: '10px' }} disableElevation type="submit" >Reset</Button>
             </form>
           </Grid>
         </Grid>
         {/* compontent for options (day trip or places) */}
-        <Grid item container display="row" className= {useStyles.options}>
+        <Grid item container display="row" className={useStyles.options}>
           <Grid item xs={false} sm={1} />
           <Grid item xs={12} sm={10}>
-            <Options 
+            <Options
               handleDay={handleDay}
               handleInterest={handleInterest} />
           </Grid>
@@ -316,8 +316,8 @@ marginBottom: 50,
 
     return (
       <div>
-     
-        <Nav updateUser ={props.updateUser}/>
+
+        <Nav updateUser={props.updateUser} />
         <Grid item container>
           <img src={require("../img/map-1.png")} className={classes.image} ></img>
         </Grid>
@@ -372,7 +372,7 @@ marginBottom: 50,
     // this is the default return of the component
     return (
       <div style={{ backgroundColor: 'blue' }}>
-        <Nav updateUser ={props.updateUser}/>
+        <Nav updateUser={props.updateUser} />
         <Grid item container>
           <img src={require("../img/map-1.png")} className={classes.image} ></img>
         </Grid>
