@@ -288,11 +288,8 @@ function Home(props) {
 
             <form style={{ postion: 'center' }}>
              
-            </form>
-
-            <form>
-    
-
+        
+          
               <Button variant="contained" color="primary" style={{ width: "200px", marginLeft: '35px', marginTop: '10px' }} disableElevation type="submit" onClick={handleInterest}>
                 Show Interest
               </Button>

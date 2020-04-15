@@ -1,5 +1,5 @@
 ///Imports
-import React, {useEffect}from 'react';
+import React, {useEffect, useState}from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -17,6 +17,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import tripApi from "../../utils/tripApi"
+import itemApi from "../../utils/item"
 
 //Styling
 const useStyles = makeStyles((theme) => ({
@@ -69,13 +70,30 @@ const Interest = ({ name, score, snippet, image, attribution, id, userId }) => {
     setExpanded(!expanded);
   };
 
+  const [tripId ,setTripId] = useState("")
   useEffect(() => {
     tripApi.getUserTrips(userId)
     .then((res) => {
-      console.log(res)
+      console.log(res.data)
+      console.log(res.data[0]._id)
+      setTripId(res.data[0]._id)
     })
     .catch((err) =>{ console.log(err)})
   },[])
+
+  const saveItem  = () => {
+    itemApi.saveItem({
+      name, score, snippet, image, attribution, tripId, userId
+    }).then((res) => {
+      console.log("item created");
+  })
+  }
+  // const saveItem2  = () => {
+  //  console.log("click")
+  // }
+
+
+  
 
 
   return (
@@ -102,7 +120,7 @@ const Interest = ({ name, score, snippet, image, attribution, id, userId }) => {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
+        <IconButton aria-label="add to favorites" onClick = {saveItem}>
           <FavoriteIcon className={classes.heart} />
         </IconButton>
         <IconButton
@@ -112,6 +130,7 @@ const Interest = ({ name, score, snippet, image, attribution, id, userId }) => {
           onClick={handleExpandClick}
           aria-expanded={expanded}
           aria-label="show more"
+    
         >
           <ExpandMoreIcon />
         </IconButton>
