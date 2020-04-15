@@ -14,7 +14,8 @@ import tripApi from "../../utils/tripApi"
 const useStyles = makeStyles({
     root: {
         maxWidth: 345,
-        margin: 10
+        margin: 10,
+        boxShadow: "0px 5px 20px rgb(71, 71, 71)"
     },
     media: {
         height: 140,
@@ -23,7 +24,11 @@ const useStyles = makeStyles({
         justifyContent: "space-around"
     },
     header: {
-        backgroundImage: "linear-gradient(to top, #6a85b6 0%, #bac8e0 100%)"
+        backgroundImage: "linear-gradient(to top, #6a85b6 0%, #bac8e0 100%)",
+        height: 100
+    },
+    textArea: {
+        height: 100
     }
 });
 
@@ -46,7 +51,7 @@ const City = ({ name, state, country, handleThree, id, snippet, image, userId })
     //What the component will return
     return (
         <Card className={classes.root}>
-            <CardActionArea>
+            <CardActionArea onClick={(event) => { handleThree(event, id); saveTrip(); }}>
                 <CardMedia
                     className={classes.media}
                     image={image}
@@ -55,23 +60,18 @@ const City = ({ name, state, country, handleThree, id, snippet, image, userId })
                 <CardContent className={classes.header}>
                     <Typography gutterBottom variant="h6" component="h3">
                         {name},
-                        {state.replace(/[0-9]/g, "").replace(/_/g, " ").replace(/"wv"/, "")}
+                        {state.replace(/[0-9]/g, "").replace(/_/g, " ")}
                     </Typography>
                     <Typography gutterBottom variant="h6" component="h5">
                         {country.replace(/_/g, " ").replace(/[0-9]/g, "")}
                     </Typography>
                 </CardContent>
                 <CardContent>
-                    <Typography variant="body2" color="textSecondary" component="p">
+                    <Typography variant="body2" color="textSecondary" component="p" className={classes.textArea}>
                         {snippet}
                     </Typography>
                 </CardContent>
             </CardActionArea>
-            <CardActions className={classes.bottomRow} >
-                <Button size="small" color="primary" onClick={(event) => { handleThree(event, id); saveTrip(); }}>
-                    Go Here!!
-        </Button>
-            </CardActions>
         </Card>
     );
 }

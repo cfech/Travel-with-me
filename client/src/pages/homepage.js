@@ -9,6 +9,7 @@ import Nav from "../components/Nav";
 import Interest from "../components/Interests/interest";
 import Location from "../components/Location/location";
 import DayTrip from "../components/Day/dayTrip"
+import Options from "../components/Options/options"
 import { Grid } from "@material-ui/core";
 import Button from '@material-ui/core/Button';
 import City from "../components/City/city";
@@ -260,7 +261,7 @@ function Home(props) {
                     : "https://via.placeholder.com/150"
                 }
                 attribution={item.attribution}
-                userId = {userId}
+                userId={userId}
               />
             </Grid>
           ))}
@@ -287,9 +288,8 @@ function Home(props) {
 
 
             <form style={{ postion: 'center' }}>
-             
-        
-          
+
+
               <Button variant="contained" color="primary" style={{ width: "200px", marginLeft: '35px', marginTop: '10px' }} disableElevation type="submit" onClick={handleInterest}>
                 Show Interest
               </Button>
@@ -299,6 +299,16 @@ function Home(props) {
               <Button variant="contained" color="primary" style={{ width: "200px", marginLeft: '10px', marginTop: '10px' }} disableElevation type="submit" >Reset</Button>
             </form>
           </Grid>
+        </Grid>
+        {/* compontent for options (day trip or places) */}
+        <Grid item container display="row">
+          <Grid item xs={false} sm={1} />
+          <Grid item xs={12} sm={10}>
+            <Options
+              handleDay={handleDay}
+              handleInterest={handleInterest} />
+          </Grid>
+          <Grid item xs={false} sm={1} />
         </Grid>
 
       </div>
@@ -340,16 +350,18 @@ function Home(props) {
 
         <Grid item container>
           {city.map((item) => (
-            <City key={item.score}
-              name={item.name}
-              state={item.parent_id}
-              country={item.country_id}
-              id={item.id}
-              handleThree={handleThree}
-              snippet={item.snippet}
-              image={item.images[0].sizes.medium.url}
-              userId={userId}
-            />
+            <Grid key={item.id} item xs={6} sm={4} md={3}>
+              <City key={item.score}
+                name={item.name}
+                state={item.parent_id}
+                country={item.country_id}
+                id={item.id}
+                handleThree={handleThree}
+                snippet={item.snippet}
+                image={item.images[0].sizes.medium.url}
+                userId={userId}
+              />
+            </Grid>
           ))}
         </Grid>
       </div>
@@ -376,6 +388,9 @@ function Home(props) {
 
                 onChange={handleInputChange}
               ></input>
+
+
+
 
               <Button variant="contained" style={{ width: "300px", position: 'center', marginTop: '10px', marginBottom: '20px', background: '#ff9800', fontFamily: 'serif' }} disableElevation type="submit" onClick={handleSubmit}>
                 Search
