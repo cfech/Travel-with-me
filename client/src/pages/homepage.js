@@ -285,6 +285,19 @@ function Home(props) {
         <Grid item container>
           <Grid item xs={12} className={classes.cityRow}>
 
+
+
+            <form style={{ postion: 'center' }}>
+
+
+              <Button variant="contained" color="primary" style={{ width: "200px", marginLeft: '35px', marginTop: '10px' }} disableElevation type="submit" onClick={handleInterest}>
+                Show Interest
+              </Button>
+              <Button variant="contained" color="primary" style={{ width: "200px", marginLeft: '10px', marginTop: '10px' }} onClick={handleDay} disableElevation >Day Trip</Button>
+
+
+              <Button variant="contained" color="primary" style={{ width: "200px", marginLeft: '10px', marginTop: '10px' }} disableElevation type="submit" >Reset</Button>
+            </form>
           </Grid>
         </Grid>
         {/* compontent for options (day trip or places) */}
