@@ -279,23 +279,28 @@ function Home(props) {
         />
         <Grid item container>
           <Grid item xs={12} className={classes.cityRow}>
-            <form>
+
+            
+
+<form style={{postion: 'center'}}>
               <input
-                placeholder="location search3"
+              style={{width: '70%', height: '50px', marginLeft: '240px', marginTop: '40px', fontFamily: 'serif', fontSize: '20px'}}
+                placeholder="Change your mind? Choose Another Destination..."
                 onChange={handleInputChange}
               ></input>
-
-              <Button variant="contained" color="primary" style={{width: "200px", marginLeft: '10px', marginTop: '10px'}} disableElevation type="submit" onClick={handleSubmit}>
+            </form>
+            
+            <form>
+            <Button variant="contained" color="primary" style={{width: "200px", marginLeft: '10px', marginTop: '10px'}} disableElevation type="submit" onClick={handleSubmit}>
                 Search
         </Button>
-            </form>
 
             <Button variant="contained" color="primary" style={{width: "200px", marginLeft: '35px', marginTop: '10px'}}disableElevation type="submit" onClick={handleInterest}>
                 Show Interest
               </Button>
             <Button variant="contained" color="primary" style={{width: "200px", marginLeft: '10px', marginTop: '10px'}} onClick={handleDay} disableElevation >Day Trip</Button>
             
-            <form>
+           
               <Button variant="contained" color="primary" style={{width: "200px", marginLeft: '10px', marginTop: '10px'}} disableElevation type="submit" >Reset</Button>
             </form>
           </Grid>
@@ -313,19 +318,18 @@ function Home(props) {
         <Nav />
         <Grid item container>
           <Grid item xs={12} className={classes.cityRow}>
-            <form>
+            <form style={{postion: 'center'}}>
               <input
-                placeholder="location search2"
+              style={{width: '70%', height: '50px', marginLeft: '240px', marginTop: '40px', fontFamily: 'serif', fontSize: '20px'}}
+                placeholder="Change your mind? Choose Another Destination..."
                 onChange={handleInputChange}
               ></input>
-
-<Button variant="contained" color="primary" style={{width: "200px", marginLeft: '35px', marginTop: '10px'}}disableElevation type="submit" onClick={handleSubmit}>
-                Search
-            </Button>
             </form>
-
             <form>
-              <Button variant="contained" color="primary" disableElevation type="submit">Reset</Button>
+            <Button variant="contained" style={{width: "200px", position: 'center',  marginLeft: '20px', marginTop: '10px', marginBottom: '20px', background: '#ff9800', fontFamily: 'serif'}} disableElevation type="submit" onClick={handleSubmit}>
+                Search
+              </Button>
+              <Button variant="contained" style={{width: "200px", position: 'center', marginLeft: '20px', marginTop: '10px', marginBottom: '20px', background: '#388e3c', fontFamily: 'serif'}} disableElevation type="submit">Reset</Button>
             </form>
           </Grid>
         </Grid>
@@ -343,6 +347,7 @@ function Home(props) {
               id={item.id}
               handleThree={handleThree}
               snippet={item.snippet}
+              // image={item.images[0].sizes.medium.url}
               userId = {userId}
             />
           ))}
@@ -358,11 +363,12 @@ function Home(props) {
         <Nav />
         {/* buttons container */}
         <Grid item container>
+          
           <Grid item xs={12} className={classes.cityRow}>
-            <form>
+            <form style={{postion: 'center'}}>
               <input
-              style={{width: '80%', height: '30px', marginLeft: '10px'}}
-                placeholder="location search1"
+              style={{width: '70%', height: '50px', marginLeft: '240px', marginTop: '40px', fontFamily: 'serif', fontSize: '20px'}}
+                placeholder="Please Choose a Destination..."
                 onChange={handleInputChange}
               ></input>
 
@@ -370,7 +376,7 @@ function Home(props) {
             </form>
             <form>
   
-            <Button variant="contained" color="primary" style={{width: "200px", marginLeft: '35px', marginTop: '10px'}}disableElevation type="submit" onClick={handleSubmit}>
+            <Button variant="contained" style={{width: "300px", position: 'center', marginTop: '10px', marginBottom: '20px', background: '#ff9800', fontFamily: 'serif'}}disableElevation type="submit" onClick={handleSubmit}>
                 Search
               </Button>
             </form>
