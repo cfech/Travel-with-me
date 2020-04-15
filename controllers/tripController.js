@@ -14,6 +14,7 @@ module.exports = {
             .catch((err) => res.status(422).json(err));
     },
     create: function (req, res) {
+        console.log(req.body)
         db.Trip.create(req.body)
             .then((TripModel) => res.json(TripModel))
             .catch((err) => res.status(422).json(err));
@@ -29,5 +30,10 @@ module.exports = {
             .then((TripModel) => res.json(TripModel))
             .catch((err) => res.status(422).json(err));
     },
-
+    findByUserId: function(req, res){
+        db.Trip.find({ userId: req.params.id })
+        .sort({createdAt: -1})
+        .then((TripModel) => res.json(TripModel))
+        .catch((err) => res.status(422).json(err));
+    }
 };

@@ -5,18 +5,21 @@ import axios from "axios";
 export default {
     // Gets all items
     getItem: function () {
-        return axios.get("/api/users/items");
+        return axios.get("/api/items");
     },
     // Gets the item with the given id
     getItems: function (id) {
-        return axios.get("/api/users/items" + id);
+        return axios.get("/api/items/" + id);
     },
     // Deletes the item with the given id
     deleteItem: function (id) {
-        return axios.delete("/api/users/items" + id);
+        return axios.delete("/api/items/" + id);
     },
     // Saves a item to the database
-    saveItem: function (tripData) {
-        return axios.post("/api/users/items", tripData);
-    }
+    saveItem: function (itemData) {
+        return axios.post("/api/items", itemData);
+    },
+    getTripItems: function (id) {
+        return axios.get("/api/trips/items/" + id);
+    },
 };

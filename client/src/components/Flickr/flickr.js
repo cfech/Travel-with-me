@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
 
-var apiKeyFlickr = "a55b7a9ab67be43cec0b31508eeb8447"
-var galleryID = "66911286-72157647277042064"
+var apiKeyFlickr = process.env.FLICKRKEY
 
-var flickrURL1 = "https://api.flickr.com/services/rest/?method=flickr.galleries.getPhotos&api_key=APIKEY&gallery_id=66911286-72157647277042064&format=json&nojsoncallback=1"
+var galleryID = process.env.FLICKRGALLERY
 
-var flickrURL2 = "https://api.flickr.com/services/rest/?method=flickr.galleries.getPhotos&api_key=" + apiKeyFlickr + "&gallery_id=" + galleryID + "&format=json&nojsoncallback=1";
+var flickrURL1 = "https://www.flickr.com/services/rest/?method=flickr.galleries.getPhotos&api_key=APIKEY&gallery_id=66911286-72157647277042064&format=json&nojsoncallback=1"
+
+var flickrURL2 = "https://www.flickr.com/services/rest/?method=flickr.galleries.getPhotos&api_key=" + apiKeyFlickr + "&gallery_id=" + galleryID + "&format=json&nojsoncallback=1";
+
+var flickrURL3 = "https://www.flickr.com/services/rest/?method=flickr.galleries.getPhotos&api_key=a55b7a9ab67be43cec0b31508eeb8447&gallery_id=66911286-72157647277042064&format=json&nojsoncallback=1" + test
+
+var flickrURL4 = "https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg"
 
 function flickrComponent() {
     const [error, setError] = useState(null);
@@ -15,10 +20,13 @@ function flickrComponent() {
   
     // Note: the empty deps array [] means this useEffect will run once similar to componentDidMount()
     useEffect(() => {
-      fetch(flickrURL2)
+      fetch(flickrURL3)
         .then(res => res.json())
         .then(
           (result) => {
+            console.log(result);
+            // console.log(result.photos.photo[0].id)
+            console.log("https://farm" + result.photos.photo[0].farm + ".staticflickr.com/" + result.photos.photo[0].server +  "/" + result.photos.photo[0].id + "_" + result.photos.photo[0].secret + ".jpg")
             setIsLoaded(true);
             setItems(result.items);
           },

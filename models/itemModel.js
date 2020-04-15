@@ -5,12 +5,11 @@ mongoose.promise = Promise;
 
 //Schema for trip item
 const itemSchema = new Schema({
-    location: String,
+    name: String,
     score: Number,
-    description: String, 
-    image: String,
-    attribute: String,
-    tripID: String
+    snippet: String, 
+    tripId: String,
+    userId: String,
 
 }, {
     timestamps: true

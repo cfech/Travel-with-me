@@ -1,5 +1,5 @@
 ///Imports
-import React from 'react';
+import React, {useEffect, useState}from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -16,11 +16,14 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import tripApi from "../../utils/tripApi"
+import itemApi from "../../utils/item"
 
 //Styling
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
+    margin: 10
   },
   media: {
     height: 0,
@@ -59,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 //Interest component
-const Interest = ({ name, score, snippet, image, attribution, id }) => {
+const Interest = ({ name, score, snippet, image, attribution, id, userId }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -67,13 +70,39 @@ const Interest = ({ name, score, snippet, image, attribution, id }) => {
     setExpanded(!expanded);
   };
 
+  const [tripId ,setTripId] = useState("")
+  useEffect(() => {
+    tripApi.getUserTrips(userId)
+    .then((res) => {
+      console.log(res.data)
+      console.log(res.data[0]._id)
+      setTripId(res.data[0]._id)
+    })
+    .catch((err) =>{ console.log(err)})
+  },[])
+
+  const saveItem  = () => {
+    itemApi.saveItem({
+      name, score, snippet, image, attribution, tripId, userId
+    }).then((res) => {
+      console.log("item created");
+  })
+  }
+  // const saveItem2  = () => {
+  //  console.log("click")
+  // }
+
+
+  
+
+
   return (
     <Card className={classes.root}>
       <CardHeader className={classes.header}
         title={name}
 
         avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
+          <Avatar aria-label="rating" className={classes.avatar}>
             {score}
           </Avatar>
         }
@@ -91,7 +120,7 @@ const Interest = ({ name, score, snippet, image, attribution, id }) => {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
+        <IconButton aria-label="add to favorites" onClick = {saveItem}>
           <FavoriteIcon className={classes.heart} />
         </IconButton>
         <IconButton
@@ -101,6 +130,7 @@ const Interest = ({ name, score, snippet, image, attribution, id }) => {
           onClick={handleExpandClick}
           aria-expanded={expanded}
           aria-label="show more"
+    
         >
           <ExpandMoreIcon />
         </IconButton>
