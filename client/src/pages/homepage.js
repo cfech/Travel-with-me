@@ -287,14 +287,8 @@ function Home(props) {
 
 
             <form style={{ postion: 'center' }}>
-              <input
-                style={{ width: '70%', height: '50px', marginLeft: '240px', marginTop: '40px', fontFamily: 'serif', fontSize: '20px' }}
-                placeholder="Change your mind? Choose Another Destination..."
-                onChange={handleInputChange}
-              ></input>
-            </form>
-
-            <form>
+             
+        
           
               <Button variant="contained" color="primary" style={{ width: "200px", marginLeft: '35px', marginTop: '10px' }} disableElevation type="submit" onClick={handleInterest}>
                 Show Interest
