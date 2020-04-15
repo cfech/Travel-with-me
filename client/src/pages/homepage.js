@@ -295,10 +295,7 @@ function Home(props) {
             </form>
 
             <form>
-              <Button variant="contained" color="primary" style={{ width: "200px", marginLeft: '10px', marginTop: '10px' }} disableElevation type="submit" onClick={handleSubmit}>
-                Search
-        </Button>
-
+          
               <Button variant="contained" color="primary" style={{ width: "200px", marginLeft: '35px', marginTop: '10px' }} disableElevation type="submit" onClick={handleInterest}>
                 Show Interest
               </Button>
@@ -385,10 +382,6 @@ function Home(props) {
 
                 onChange={handleInputChange}
               ></input>
-
-
-            </form>
-            <form>
 
               <Button variant="contained" style={{ width: "300px", position: 'center', marginTop: '10px', marginBottom: '20px', background: '#ff9800', fontFamily: 'serif' }} disableElevation type="submit" onClick={handleSubmit}>
                 Search
