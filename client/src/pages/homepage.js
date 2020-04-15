@@ -171,7 +171,8 @@ function Home(props) {
         <Nav />
         <form>
           <input
-            placeholder="location search"
+          style={{width: '800px'}}
+            placeholder="location search4" 
             onChange={handleInputChange}
           ></input>
           <button className="searchBtn" type="submit" onClick={handleSubmit}>
@@ -189,7 +190,7 @@ function Home(props) {
         <h1>five</h1>
         <Nav />
         <Location
-          name={place.name}
+          name={place.name}np
           snippet={place.snippet}
         // image={place.images[0].source_url}
 
@@ -197,7 +198,7 @@ function Home(props) {
         <Grid item container>
           <Grid item xs={12} className={classes.cityRow}>
             <form>
-              <Button variant="contained" color="primary" disableElevation type="submit">Reset</Button>
+              <Button variant="contained" color="primary" style={{width: "200px", marginLeft: '10px', marginTop: '10px'}} disableElevation type="submit">Reset</Button>
             </form>
           </Grid>
         </Grid>
@@ -236,7 +237,7 @@ function Home(props) {
         <Grid item container>
           <Grid item xs={12} className={classes.cityRow}>
             <form>
-              <Button variant="contained" color="primary" disableElevation type="submit">Reset</Button>
+              <Button variant="contained" color="primary" style={{width: "200px", marginLeft: '10px', marginTop: '10px'}} disableElevation type="submit">Reset</Button>
             </form>
           </Grid>
         </Grid>
@@ -280,18 +281,22 @@ function Home(props) {
           <Grid item xs={12} className={classes.cityRow}>
             <form>
               <input
-                placeholder="location search"
+                placeholder="location search3"
                 onChange={handleInputChange}
               ></input>
 
-              <Button variant="contained" color="primary" disableElevation type="submit" onClick={handleSubmit}>
+              <Button variant="contained" color="primary" style={{width: "200px", marginLeft: '10px', marginTop: '10px'}} disableElevation type="submit" onClick={handleSubmit}>
                 Search
         </Button>
             </form>
-            <Button variant="contained" color="primary" disableElevation onClick={handleInterest}>show interests</Button>
-            <Button variant="contained" color="primary" disableElevation onClick={handleDay}>Day Trip</Button>
+
+            <Button variant="contained" color="primary" style={{width: "200px", marginLeft: '35px', marginTop: '10px'}}disableElevation type="submit" onClick={handleInterest}>
+                Show Interest
+              </Button>
+            <Button variant="contained" color="primary" style={{width: "200px", marginLeft: '10px', marginTop: '10px'}} onClick={handleDay} disableElevation >Day Trip</Button>
+            
             <form>
-              <Button variant="contained" color="primary" disableElevation type="submit">Reset</Button>
+              <Button variant="contained" color="primary" style={{width: "200px", marginLeft: '10px', marginTop: '10px'}} disableElevation type="submit" >Reset</Button>
             </form>
           </Grid>
         </Grid>
@@ -310,11 +315,11 @@ function Home(props) {
           <Grid item xs={12} className={classes.cityRow}>
             <form>
               <input
-                placeholder="location search"
+                placeholder="location search2"
                 onChange={handleInputChange}
               ></input>
 
-              <Button variant="contained" color="primary" disableElevation type="submit" onClick={handleSubmit}>
+<Button variant="contained" color="primary" style={{width: "200px", marginLeft: '35px', marginTop: '10px'}}disableElevation type="submit" onClick={handleSubmit}>
                 Search
             </Button>
             </form>
@@ -349,18 +354,23 @@ function Home(props) {
   else if (stateOne && !stateTwo && !stateThree && !stateFour) {
     // this is the default return of the component
     return (
-      <div>
+      <div style={{backgroundColor: 'blue'}}>
         <Nav />
         {/* buttons container */}
         <Grid item container>
           <Grid item xs={12} className={classes.cityRow}>
             <form>
               <input
-                placeholder="location search"
+              style={{width: '80%', height: '30px', marginLeft: '10px'}}
+                placeholder="location search1"
                 onChange={handleInputChange}
               ></input>
 
-              <Button variant="contained" color="primary" disableElevation type="submit" onClick={handleSubmit}>
+            
+            </form>
+            <form>
+  
+            <Button variant="contained" color="primary" style={{width: "200px", marginLeft: '35px', marginTop: '10px'}}disableElevation type="submit" onClick={handleSubmit}>
                 Search
               </Button>
             </form>
