@@ -62,6 +62,9 @@ function Home(props) {
       margin: 0,
       width: "100%"
     },
+    image:{
+      width: "100%",
+    }
 
   }));
 
@@ -312,6 +315,11 @@ function Home(props) {
         <h1>two</h1>
         <Nav />
         <Grid item container>
+          <img src= {require("../img/map-1.png")} className = {classes.image} ></img>
+        </Grid>
+
+
+        <Grid item container>
           <Grid item xs={12} className={classes.cityRow}>
             <form>
               <input
@@ -356,15 +364,16 @@ function Home(props) {
     return (
       <div style={{backgroundColor: 'blue'}}>
         <Nav />
-          {/* <img src=() className="float-left mr-2 col-3 "></img> */}
-
+        <Grid item container>
+          <img src= {require("../img/map-1.png")} className = {classes.image} ></img>
+        </Grid>
         {/* buttons container */}
         <Grid item container>
           <Grid item xs={12} className={classes.cityRow}>
             <form>
               <input
               style={{width: '80%', height: '30px', marginLeft: '10px'}}
-                placeholder="location search1"
+                placeholder="Search for a city!"
                 onChange={handleInputChange}
               ></input>
 
