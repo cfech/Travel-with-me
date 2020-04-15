@@ -10,6 +10,13 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import { Link } from "react-router-dom"
 
+import Icon from '@material-ui/core/Icon';
+import HomeIcon from '@material-ui/icons/Home';
+// import AccountBoxIcon from '@material-ui/icons/AccountBox';
+// import SaveIcon from '@material-ui/icons/Save';
+// import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+
+
 //styling 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -74,19 +81,23 @@ export default function SearchAppBar() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <Typography className={classes.title} variant="h4" noWrap>
+          <form> <Typography className={classes.title} style={{fontFamily: 'serif', fontSize: "35px", position: 'left', marginLeft: '15px' }}noWrap>
             Travel-with-Me
-            <Link className="navbar-brand" to="/"> Sign In</Link>
-
-            <Link className="navbar-brand" to="/home"> Home</Link>
-
-            <Link className="navbar-brand" to="/saved"> Saved</Link>
-            <Link className="navbar-brand" to="/logout"> Log Out</Link>
+            </Typography>
+            </form>
+          <Typography className={classes.title} style={{ marginLeft: "700px"}} >
+          
+            <Link className="navbar-brand" to="/home" style={{ fontSize: '20px'}}> <HomeIcon></HomeIcon>  </Link>
+         
+            <Link className="navbar-brand" to="/saved" style={{fontFamily: 'serif', marginLeft: '10px', fontSize: "20px", postion:'right'}} > Saved </Link>
+            
+           <Link className="navbar-brand" to="/logout" style={{fontFamily: 'serif', marginLeft: '10px', fontSize: "20px", postion:'right'}} > Log-Out </Link> 
           </Typography>
-
 
         </Toolbar>
       </AppBar>
     </div>
   );
 }
+
+
