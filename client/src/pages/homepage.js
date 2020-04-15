@@ -278,16 +278,7 @@ function Home(props) {
         />
         <Grid item container>
           <Grid item xs={12} className={classes.cityRow}>
-            <form>
-              <input
-                placeholder="location search"
-                onChange={handleInputChange}
-              ></input>
-
-              <Button variant="contained" color="primary" disableElevation type="submit" onClick={handleSubmit}>
-                Search
-        </Button>
-            </form>
+          
             <Button variant="contained" color="primary" disableElevation onClick={handleInterest}>show interests</Button>
             <Button variant="contained" color="primary" disableElevation onClick={handleDay}>Day Trip</Button>
             <form>
@@ -315,7 +306,7 @@ function Home(props) {
               ></input>
 
               <Button variant="contained" color="primary" disableElevation type="submit" onClick={handleSubmit}>
-                Search
+              Re-search
             </Button>
             </form>
 
@@ -351,6 +342,8 @@ function Home(props) {
     return (
       <div>
         <Nav />
+          {/* <img src=() className="float-left mr-2 col-3 "></img> */}
+
         {/* buttons container */}
         <Grid item container>
           <Grid item xs={12} className={classes.cityRow}>
