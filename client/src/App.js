@@ -8,6 +8,7 @@ import "./styles/styles.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./pages/homepage";
 import axios from "axios";
+import Flickr from "../src/components/Flickr/flickr";
 
 //App component
 class App extends React.Component {
@@ -77,6 +78,7 @@ class App extends React.Component {
               />}
             />
         </Switch>
+        <Flickr />
         <Footer />
       </div>
     </BrowserRouter>
