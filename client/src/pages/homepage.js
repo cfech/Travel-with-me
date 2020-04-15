@@ -172,7 +172,7 @@ function Home(props) {
   if (error) {
     return (
       <>
-        <Nav />
+        <Nav updateUser ={props.updateUser}/>
         <form>
           <input
             style={{ width: '800px' }}
@@ -192,7 +192,7 @@ function Home(props) {
     return (
       <div>
         <h1>five</h1>
-        <Nav />
+        <Nav updateUser ={props.updateUser}/>
         <Location
           name={place.name} np
           snippet={place.snippet}
@@ -232,7 +232,7 @@ function Home(props) {
     return (
       <div>
         <h1>four</h1>
-        <Nav />
+        <Nav updateUser ={props.updateUser}/>
         <Location
           name={place.name}
           snippet={place.snippet}
@@ -275,7 +275,7 @@ function Home(props) {
     return (
       <div>
         <h1>three</h1>
-        <Nav />
+        <Nav updateUser ={props.updateUser} />
         <Location
           name={place.name}
           snippet={place.snippet}
@@ -320,7 +320,7 @@ function Home(props) {
     return (
       <div>
         <h1>two</h1>
-        <Nav />
+        <Nav updateUser ={props.updateUser}/>
         <Grid item container>
           <img src={require("../img/map-1.png")} className={classes.image} ></img>
         </Grid>
@@ -372,7 +372,7 @@ function Home(props) {
     // this is the default return of the component
     return (
       <div style={{ backgroundColor: 'blue' }}>
-        <Nav />
+        <Nav updateUser ={props.updateUser}/>
         <Grid item container>
           <img src={require("../img/map-1.png")} className={classes.image} ></img>
         </Grid>
