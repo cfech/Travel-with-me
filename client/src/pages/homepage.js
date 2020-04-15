@@ -260,6 +260,7 @@ function Home(props) {
                     : "https://via.placeholder.com/150"
                 }
                 attribution={item.attribution}
+                userId = {userId}
               />
             </Grid>
           ))}

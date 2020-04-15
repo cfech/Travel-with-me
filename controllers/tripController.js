@@ -28,6 +28,10 @@ module.exports = {
             .then((TripModel) => TripModel.remove())
             .then((TripModel) => res.json(TripModel))
             .catch((err) => res.status(422).json(err));
-    },
-
+    },findByUserId: function(req, res){
+        db.Trip.find({ userId: req.params.id })
+        .sort({createdAt: -1}).limit(1)
+        .then((TripModel) => res.json(TripModel))
+        .catch((err) => res.status(422).json(err));
+    }
 };
