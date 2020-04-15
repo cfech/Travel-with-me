@@ -10,7 +10,7 @@ const tripSchema = new Schema({
     state: String,
     country: String,
     snippet: String, 
-    userID: String
+    userId: String
 }, {
     timestamps: true
 });
