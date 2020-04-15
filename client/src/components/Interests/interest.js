@@ -75,7 +75,7 @@ const Interest = ({ name, score, snippet, image, attribution, id, userId }) => {
       .then((res) => {
         console.log(res.data)
         console.log(res.data[0]._id)
-      setTripId(res.data[0]._id)
+        setTripId(res.data[0]._id)
       })
       .catch((err) => { console.log(err) })
   }, [])
@@ -87,12 +87,6 @@ const Interest = ({ name, score, snippet, image, attribution, id, userId }) => {
       console.log("item created");
     })
   }
-  // const saveItem2  = () => {
-  //  console.log("click")
-  // }
-
-
-
 
 
   return (
