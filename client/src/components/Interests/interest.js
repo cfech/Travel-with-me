@@ -1,5 +1,5 @@
 ///Imports
-import React, {useEffect}from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -22,7 +22,8 @@ import tripApi from "../../utils/tripApi"
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
-    margin: 10
+    margin: 12,
+    boxShadow: "0px 5px 20px rgb(71, 71, 71)"
   },
   media: {
     height: 0,
@@ -71,11 +72,11 @@ const Interest = ({ name, score, snippet, image, attribution, id, userId }) => {
 
   useEffect(() => {
     tripApi.getUserTrips(userId)
-    .then((res) => {
-      console.log(res)
-    })
-    .catch((err) =>{ console.log(err)})
-  },[])
+      .then((res) => {
+        console.log(res)
+      })
+      .catch((err) => { console.log(err) })
+  }, [])
 
 
   return (
