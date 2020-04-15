@@ -17,8 +17,20 @@ function savedPage(props) {
       })
   }
 
+
+// const [tripId, setTripId] = useState(res.data.)
+  
+const getUserTripItems = () => {
+    itemApi.getTripItems(props.userId)
+      .then((res) => {
+        console.log(res.data);
+      })
+  }
+
+
   useEffect (() => {
     getUserTrips()
+    getUserTripItems()
   })
 
 
