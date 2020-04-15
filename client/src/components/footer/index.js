@@ -15,8 +15,9 @@ const useStyles = makeStyles((theme) => ({
     position: "fixed",
     top: 'auto',
     bottom: 0,
-    width: "100%"
-  },
+    width: "100%",
+    marginTop: 20
+  }, 
 }));
 
 //Copyright note

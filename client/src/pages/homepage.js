@@ -15,7 +15,7 @@ import Button from '@material-ui/core/Button';
 import City from "../components/City/city";
 import CityApi from "../components/CITY";
 import tripApi from "../utils/tripApi"
-
+// import footer from "../components/footer"
 
 
 function Home(props) {
@@ -65,6 +65,9 @@ function Home(props) {
     },
     image: {
       width: "100%",
+    },
+    options: {
+marginBottom: 50,
     }
 
   }));
@@ -191,7 +194,7 @@ function Home(props) {
 
     return (
       <div>
-        <h1>five</h1>
+       
         <Nav updateUser ={props.updateUser}/>
         <Location
           name={place.name} np
@@ -231,18 +234,21 @@ function Home(props) {
 
     return (
       <div>
-        <h1>four</h1>
+       
         <Nav updateUser ={props.updateUser}/>
         <Location
           name={place.name}
           snippet={place.snippet}
-        // image={place.images[0].source_url}
         />
         <Grid item container>
           <Grid item xs={12} className={classes.cityRow}>
+          <h3>Click on the heart icons to add an item to your trip</h3> 
+            <h4>You can restart your search by clicking the reset button</h4>
+            
             <form>
               <Button variant="contained" color="primary" style={{ width: "200px", marginLeft: '10px', marginTop: '10px' }} disableElevation type="submit">Reset</Button>
             </form>
+
           </Grid>
         </Grid>
 
@@ -274,37 +280,28 @@ function Home(props) {
   else if (stateOne && stateTwo && stateThree && !stateFour) {
     return (
       <div>
-        <h1>three</h1>
+   
         <Nav updateUser ={props.updateUser} />
         <Location
           name={place.name}
           snippet={place.snippet}
-        // image={place.images[0].source_url}
-
         />
-        <Grid item container>
+        <Grid item container style={{position: 'center'}}>
           <Grid item xs={12} className={classes.cityRow}>
 
-
-
+            <h3>Please choose if you would like to build a custom trip, or  plan a day trip</h3> 
+            <h4>You can restart your search by clicking the reset button</h4>
+            
             <form style={{ postion: 'center' }}>
-
-
-              <Button variant="contained" color="primary" style={{ width: "200px", marginLeft: '35px', marginTop: '10px' }} disableElevation type="submit" onClick={handleInterest}>
-                Show Interest
-              </Button>
-              <Button variant="contained" color="primary" style={{ width: "200px", marginLeft: '10px', marginTop: '10px' }} onClick={handleDay} disableElevation >Day Trip</Button>
-
-
               <Button variant="contained" color="primary" style={{ width: "200px", marginLeft: '10px', marginTop: '10px' }} disableElevation type="submit" >Reset</Button>
             </form>
           </Grid>
         </Grid>
         {/* compontent for options (day trip or places) */}
-        <Grid item container display="row">
+        <Grid item container display="row" className= {useStyles.options}>
           <Grid item xs={false} sm={1} />
           <Grid item xs={12} sm={10}>
-            <Options
+            <Options 
               handleDay={handleDay}
               handleInterest={handleInterest} />
           </Grid>
@@ -319,7 +316,7 @@ function Home(props) {
 
     return (
       <div>
-        <h1>two</h1>
+     
         <Nav updateUser ={props.updateUser}/>
         <Grid item container>
           <img src={require("../img/map-1.png")} className={classes.image} ></img>
@@ -358,8 +355,11 @@ function Home(props) {
                 id={item.id}
                 handleThree={handleThree}
                 snippet={item.snippet}
-                image={item.images[0].sizes.medium.url}
-                userId={userId}
+                image={
+                  item.images[0]
+                    ? item.images[0].sizes.medium.url
+                    : "https://via.placeholder.com/150"
+                }
               />
             </Grid>
           ))}
@@ -379,6 +379,8 @@ function Home(props) {
         {/* buttons container */}
         <Grid item container>
 
+          <h3>Plan a new trip by searching for the city you would like to visit or go to the saved page to see your saved trips </h3>
+
           <Grid item xs={12} className={classes.cityRow}>
             <form style={{ postion: 'center' }}>
               <input
@@ -391,11 +393,12 @@ function Home(props) {
 
 
 
-
               <Button variant="contained" style={{ width: "300px", position: 'center', marginTop: '10px', marginBottom: '20px', background: '#ff9800', fontFamily: 'serif' }} disableElevation type="submit" onClick={handleSubmit}>
                 Search
               </Button>
             </form>
+
+            <h1> some stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuff </h1>
 
           </Grid>
         </Grid>
