@@ -36,12 +36,12 @@ function Home(props) {
   const [userId, setUserId] = useState("")
 
   //setting the user id on load
-    useEffect(() => {
-      setUserId(props.userId)
+  useEffect(() => {
+    setUserId(props.userId)
 
   });
 
-//styling 
+  //styling 
   const useStyles = makeStyles(() => ({
     links: {
       color: "black",
@@ -62,7 +62,7 @@ function Home(props) {
       margin: 0,
       width: "100%"
     },
-    image:{
+    image: {
       width: "100%",
     }
 
@@ -141,14 +141,14 @@ function Home(props) {
   console.log(userId)
 
 
-//Function to set the third state to true and call the place api search with the location id
+  //Function to set the third state to true and call the place api search with the location id
   const handleThree = (event, id) => {
     event.preventDefault();
     console.log("three!!")
     setStateThree(true)
     console.log(id)
     ApiSearch(id)
-  
+
   }
 
   // Set the state of four to true and call point of interest api search for the selected location
@@ -174,8 +174,8 @@ function Home(props) {
         <Nav />
         <form>
           <input
-          style={{width: '800px'}}
-            placeholder="location search4" 
+            style={{ width: '800px' }}
+            placeholder="location search4"
             onChange={handleInputChange}
           ></input>
           <button className="searchBtn" type="submit" onClick={handleSubmit}>
@@ -193,7 +193,7 @@ function Home(props) {
         <h1>five</h1>
         <Nav />
         <Location
-          name={place.name}np
+          name={place.name} np
           snippet={place.snippet}
         // image={place.images[0].source_url}
 
@@ -201,7 +201,7 @@ function Home(props) {
         <Grid item container>
           <Grid item xs={12} className={classes.cityRow}>
             <form>
-              <Button variant="contained" color="primary" style={{width: "200px", marginLeft: '10px', marginTop: '10px'}} disableElevation type="submit">Reset</Button>
+              <Button variant="contained" color="primary" style={{ width: "200px", marginLeft: '10px', marginTop: '10px' }} disableElevation type="submit">Reset</Button>
             </form>
           </Grid>
         </Grid>
@@ -217,7 +217,7 @@ function Home(props) {
                 snippet={item.snippet}
                 name={item.poi.name}
                 score={Math.round(item.poi.score)}
-                
+
               />
             </Grid>
           ))}
@@ -240,7 +240,7 @@ function Home(props) {
         <Grid item container>
           <Grid item xs={12} className={classes.cityRow}>
             <form>
-              <Button variant="contained" color="primary" style={{width: "200px", marginLeft: '10px', marginTop: '10px'}} disableElevation type="submit">Reset</Button>
+              <Button variant="contained" color="primary" style={{ width: "200px", marginLeft: '10px', marginTop: '10px' }} disableElevation type="submit">Reset</Button>
             </form>
           </Grid>
         </Grid>
@@ -283,28 +283,28 @@ function Home(props) {
         <Grid item container>
           <Grid item xs={12} className={classes.cityRow}>
 
-            
 
-<form style={{postion: 'center'}}>
+
+            <form style={{ postion: 'center' }}>
               <input
-              style={{width: '70%', height: '50px', marginLeft: '240px', marginTop: '40px', fontFamily: 'serif', fontSize: '20px'}}
+                style={{ width: '70%', height: '50px', marginLeft: '240px', marginTop: '40px', fontFamily: 'serif', fontSize: '20px' }}
                 placeholder="Change your mind? Choose Another Destination..."
                 onChange={handleInputChange}
               ></input>
             </form>
-            
+
             <form>
-            <Button variant="contained" color="primary" style={{width: "200px", marginLeft: '10px', marginTop: '10px'}} disableElevation type="submit" onClick={handleSubmit}>
+              <Button variant="contained" color="primary" style={{ width: "200px", marginLeft: '10px', marginTop: '10px' }} disableElevation type="submit" onClick={handleSubmit}>
                 Search
         </Button>
 
-            <Button variant="contained" color="primary" style={{width: "200px", marginLeft: '35px', marginTop: '10px'}}disableElevation type="submit" onClick={handleInterest}>
+              <Button variant="contained" color="primary" style={{ width: "200px", marginLeft: '35px', marginTop: '10px' }} disableElevation type="submit" onClick={handleInterest}>
                 Show Interest
               </Button>
-            <Button variant="contained" color="primary" style={{width: "200px", marginLeft: '10px', marginTop: '10px'}} onClick={handleDay} disableElevation >Day Trip</Button>
-            
-           
-              <Button variant="contained" color="primary" style={{width: "200px", marginLeft: '10px', marginTop: '10px'}} disableElevation type="submit" >Reset</Button>
+              <Button variant="contained" color="primary" style={{ width: "200px", marginLeft: '10px', marginTop: '10px' }} onClick={handleDay} disableElevation >Day Trip</Button>
+
+
+              <Button variant="contained" color="primary" style={{ width: "200px", marginLeft: '10px', marginTop: '10px' }} disableElevation type="submit" >Reset</Button>
             </form>
           </Grid>
         </Grid>
@@ -320,24 +320,24 @@ function Home(props) {
         <h1>two</h1>
         <Nav />
         <Grid item container>
-          <img src= {require("../img/map-1.png")} className = {classes.image} ></img>
+          <img src={require("../img/map-1.png")} className={classes.image} ></img>
         </Grid>
 
 
         <Grid item container>
           <Grid item xs={12} className={classes.cityRow}>
-            <form style={{postion: 'center'}}>
+            <form style={{ postion: 'center' }}>
               <input
-              style={{width: '70%', height: '50px', marginLeft: '240px', marginTop: '40px', fontFamily: 'serif', fontSize: '20px'}}
+                style={{ width: '70%', height: '50px', marginLeft: '240px', marginTop: '40px', fontFamily: 'serif', fontSize: '20px' }}
                 placeholder="Change your mind? Choose Another Destination..."
                 onChange={handleInputChange}
               ></input>
             </form>
             <form>
-            <Button variant="contained" style={{width: "200px", position: 'center',  marginLeft: '20px', marginTop: '10px', marginBottom: '20px', background: '#ff9800', fontFamily: 'serif'}} disableElevation type="submit" onClick={handleSubmit}>
+              <Button variant="contained" style={{ width: "200px", position: 'center', marginLeft: '20px', marginTop: '10px', marginBottom: '20px', background: '#ff9800', fontFamily: 'serif' }} disableElevation type="submit" onClick={handleSubmit}>
                 Search
               </Button>
-              <Button variant="contained" style={{width: "200px", position: 'center', marginLeft: '20px', marginTop: '10px', marginBottom: '20px', background: '#388e3c', fontFamily: 'serif'}} disableElevation type="submit">Reset</Button>
+              <Button variant="contained" style={{ width: "200px", position: 'center', marginLeft: '20px', marginTop: '10px', marginBottom: '20px', background: '#388e3c', fontFamily: 'serif' }} disableElevation type="submit">Reset</Button>
             </form>
           </Grid>
         </Grid>
@@ -355,8 +355,8 @@ function Home(props) {
               id={item.id}
               handleThree={handleThree}
               snippet={item.snippet}
-              // image={item.images[0].sizes.medium.url}
-              userId = {userId}
+              image={item.images[0].sizes.medium.url}
+              userId={userId}
             />
           ))}
         </Grid>
@@ -367,29 +367,29 @@ function Home(props) {
   else if (stateOne && !stateTwo && !stateThree && !stateFour) {
     // this is the default return of the component
     return (
-      <div style={{backgroundColor: 'blue'}}>
+      <div style={{ backgroundColor: 'blue' }}>
         <Nav />
         <Grid item container>
-          <img src= {require("../img/map-1.png")} className = {classes.image} ></img>
+          <img src={require("../img/map-1.png")} className={classes.image} ></img>
         </Grid>
         {/* buttons container */}
         <Grid item container>
-          
+
           <Grid item xs={12} className={classes.cityRow}>
-            <form style={{postion: 'center'}}>
+            <form style={{ postion: 'center' }}>
               <input
 
-              style={{width: '70%', height: '50px', marginLeft: '240px', marginTop: '40px', fontFamily: 'serif', fontSize: '20px'}}
+                style={{ width: '70%', height: '50px', marginLeft: '240px', marginTop: '40px', fontFamily: 'serif', fontSize: '20px' }}
                 placeholder="Please Choose a Destination..."
-              
+
                 onChange={handleInputChange}
               ></input>
 
-            
+
             </form>
             <form>
-  
-            <Button variant="contained" style={{width: "300px", position: 'center', marginTop: '10px', marginBottom: '20px', background: '#ff9800', fontFamily: 'serif'}}disableElevation type="submit" onClick={handleSubmit}>
+
+              <Button variant="contained" style={{ width: "300px", position: 'center', marginTop: '10px', marginBottom: '20px', background: '#ff9800', fontFamily: 'serif' }} disableElevation type="submit" onClick={handleSubmit}>
                 Search
               </Button>
             </form>
