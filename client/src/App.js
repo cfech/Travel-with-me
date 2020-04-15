@@ -28,6 +28,7 @@ class App extends React.Component {
 
   //when component mounts get user 
   componentDidMount() {
+
     this.getUser()
   }
 
@@ -41,7 +42,6 @@ class App extends React.Component {
     axios.get('/api/users/').then(response => {
       console.log('Get user response: ')
       console.log(response.data)
-      console.log(response.data.user._id)
       if (response.data.user) {
         console.log('Get User: There is a user saved in the server session: ')
 
@@ -67,8 +67,8 @@ class App extends React.Component {
       <div>
         <Switch>
           <Route exact path="/" render={() =><SignIn updateUser={this.updateUser}/>}/>
-          <Route exact path="/saved" render={() => <SavedPage loggedIn={this.state.loggedIn} userId={this.state.id}/> }/>
-          <Route exact path="/home" render={() => <Home loggedIn={this.state.loggedIn}  userId={this.state.id} /> }/>
+          <Route exact path="/saved" render={() => <SavedPage loggedIn={this.state.loggedIn} userId={this.state.id} updateUser={this.updateUser}/> }/>
+          <Route exact path="/home" render={() => <Home loggedIn={this.state.loggedIn}  userId={this.state.id} updateUser={this.updateUser} /> }/>
           {/* <Route exact path="/home" component={Home} /> */}
           <Route exact path="/signUp" component={SignUp} />
           <Route exact path="/credits" component={Credits} />

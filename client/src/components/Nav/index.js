@@ -1,5 +1,5 @@
 //Imports
-import React from 'react';
+import React, { useState } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -8,10 +8,11 @@ import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import { Link } from "react-router-dom"
+import { Link, Redirect } from "react-router-dom"
 
 import Icon from '@material-ui/core/Icon';
 import HomeIcon from '@material-ui/icons/Home';
+import Api from "../../utils/API"
 // import AccountBoxIcon from '@material-ui/icons/AccountBox';
 // import SaveIcon from '@material-ui/icons/Save';
 // import ExitToAppIcon from '@material-ui/icons/ExitToApp';
@@ -77,27 +78,48 @@ const useStyles = makeStyles((theme) => ({
 export default function SearchAppBar() {
   const classes = useStyles();
 
-  return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <form> <Typography className={classes.title} style={{fontFamily: 'serif', fontSize: "35px", position: 'left', marginLeft: '15px' }}noWrap>
-            Travel-with-Me
+  const [redirect, setRedirect] = useState("")
+
+  const logout = () => {
+    Api.logout().then(response => {
+      console.log(response.data)
+      if (response.status === 200) {
+           setRedirect("/")
+     
+      }
+    }).catch(error => {
+      console.log('Logout error')
+      console.log(error)
+    })
+  }
+
+  if (redirect) {
+    return <Redirect to={{ pathname: redirect }} />
+  } else {
+    return (
+
+      <div className={classes.root}>
+        <AppBar position="static">
+          <Toolbar>
+            <form> <Typography className={classes.title} style={{ fontFamily: 'serif', fontSize: "35px", position: 'left', marginLeft: '15px' }} noWrap>
+              Travel-with-Me
             </Typography>
             </form>
-          <Typography className={classes.title} style={{ marginLeft: "700px"}} >
-          
-            <Link className="navbar-brand" to="/home" style={{ fontSize: '20px'}}> <HomeIcon></HomeIcon>  </Link>
-         
-            <Link className="navbar-brand" to="/saved" style={{fontFamily: 'serif', marginLeft: '10px', fontSize: "20px", postion:'right'}} > Saved </Link>
-            
-           <Link className="navbar-brand" to="/logout" style={{fontFamily: 'serif', marginLeft: '10px', fontSize: "20px", postion:'right'}} > Log-Out </Link> 
-          </Typography>
+            <Typography className={classes.title} style={{ marginLeft: "700px" }} >
 
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
+              <Link className="navbar-brand" to="/home" style={{ fontSize: '20px' }}> <HomeIcon></HomeIcon>  </Link>
+
+              <Link className="navbar-brand" to="/saved" style={{ fontFamily: 'serif', marginLeft: '10px', fontSize: "20px", postion: 'right' }} > Saved </Link>
+
+              <button onClick={logout}>Log Out</button>
+
+
+            </Typography>
+
+          </Toolbar>
+        </AppBar>
+      </div>
+    );
+  }
+
 }
-
-
