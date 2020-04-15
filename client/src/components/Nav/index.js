@@ -1,21 +1,4 @@
-// import React from "react";
-// import {Link} from "react-router-dom"
-// import "./style.css"
-
-// function Nav() {
-//   return (
-
-
-//     <nav className="navbar navbar-expand-lg myNav">
-
-
-
-//     </nav>
-//   );
-// }
-
-// export default Nav;
-
+//Imports
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -27,6 +10,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import { Link } from "react-router-dom"
 
+//styling 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -82,22 +66,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+//Nav bar component
 export default function SearchAppBar() {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <AppBar position="center">
+      <AppBar position="static">
         <Toolbar>
-
-
           <Typography className={classes.title} variant="h4" noWrap>
             Travel-with-Me
-            <Link className="navbar-brand" to="/"> singin</Link>
+            <Link className="navbar-brand" to="/"> Sign In</Link>
 
             <Link className="navbar-brand" to="/home"> Home</Link>
 
             <Link className="navbar-brand" to="/saved"> Saved</Link>
+            <Link className="navbar-brand" to="/logout"> Log Out</Link>
           </Typography>
 
 

@@ -1,3 +1,4 @@
+//Imports
 import React, { useEffect, useState } from "react";
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -15,7 +16,7 @@ import Container from '@material-ui/core/Container';
 import Api from "../utils/API";
 import {Redirect} from "react-router-dom";
 
-
+//Styling
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -44,63 +45,61 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-
+//SignUp component
 export default function SignUp() {
 
   const classes = useStyles();
 
-  // function Copyright() {
-
-  //   return (
-  //     <Typography className={classes.links} variant="body2" color="textSecondary" align="center">
-  //       {'Copyright © '}
-  //       <Link color="inherit" href="https://material-ui.com/">
-  //         Travel-with-Me
-  //       </Link>{' '}
-  //       {new Date().getFullYear()}
-  //       {'.'}
-  //     </Typography>
-  //   );
-  // }
-
-  const [userName, setUserName] = useState("");
+  //Redirect hook
   const [redirect, setRedirect] = useState("");
+  
+  //Hook for username
+  const [userName, setUserName] = useState("");
+  
 
+  //handle input change for username 
   const handleInputChangeU = (event) => {
     setUserName(event.target.value);
     console.log(userName);
   };
 
+  //Password hook
   const [password, setPassword] = useState("");
 
+  //Handle input change for password
   const handleInputChangeP = (event) => {
     setPassword(event.target.value);
     console.log(password);
-
   };
+
+  //firstName hook
   const [firstName, setFirstName] = useState("");
 
+  //Handle input change for first name 
   const handleInputChangeFirst = (event) => {
     setFirstName(event.target.value);
     console.log(firstName);
 
   };
 
+  //Last name hook
   const [lastName, setLastName] = useState("");
 
+   //Handle input change for last name 
   const handleInputChangeLast = (event) => {
     setLastName(event.target.value);
     console.log(lastName);
   };
 
-  //Saving person 
+  //Saving person in database 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("clicked")
-    Api.saveUser({
+    Api.saveUser(
+      {
       firstName, lastName, userName, password
-
-    }).then((res) => {
+      }
+    ).then((res) => {
       console.log("user created");
     setRedirect("/")
     })
@@ -109,6 +108,7 @@ export default function SignUp() {
     })
   };
 
+  //If redirect is true redirect, or else show signup page
   if (redirect) {
     return <Redirect to={{ pathname: redirect }} />
   } else {

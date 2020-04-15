@@ -36,13 +36,6 @@ app.use((req, res, next) => {
 app.use(passport.initialize()) // initializes the passport
 app.use(passport.session()) // calls serializeUser and deserializeUser
 
-// app.post('/user', (req, res) => {
-//   console.log('user signup');
-//   req.session.username = req.body.userName;
-//   console.log(req.session.username)
-//   res.end()
-// })
-
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -61,8 +54,6 @@ if (process.env.NODE_ENV === "production") {
 // Add routes, both API and view
 app.use(routes);
 
-// console.log("Username" , process.env.DBUser)
-
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost/savedLocations`);
 
@@ -71,8 +62,3 @@ mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost/savedLocations`
 app.listen(PORT, function () {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
-
-
-
-
-// Proxy error: Could not proxy request /api/users/ from localhost:3000 to http://localhost:3001/.

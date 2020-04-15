@@ -1,9 +1,8 @@
+//Imports
 import axios from "axios";
 const accountId = "ATLA5P09"
 const token = "m7g4scv247ukxknlbfaf7kcltpl1srho"
-//api call
-
-
+//api call for day trip
 
 export default {
     ApiSearch: function (daySearch) {

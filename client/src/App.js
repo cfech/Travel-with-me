@@ -1,3 +1,4 @@
+//Imports
 import React from "react";
 import SavedPage from "./pages/savedPage";
 import SignIn from "./pages/signinPage";
@@ -8,12 +9,15 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./pages/homepage";
 import axios from "axios";
 
+//App component
 class App extends React.Component {
+  //Constructor for states 
   constructor() {
     super()
     this.state = {
       loggedIn: false,
-      userName: null
+      userName: null,
+      id:""
     }
 
     this.getUser = this.getUser.bind(this)
@@ -21,24 +25,29 @@ class App extends React.Component {
     this.updateUser = this.updateUser.bind(this)
   }
 
+  //when component mounts get user 
   componentDidMount() {
     this.getUser()
   }
 
+  //Update the user 
   updateUser (userObject) {
     this.setState(userObject)
   }
 
+  //get the user form database
   getUser() {
     axios.get('/api/users/').then(response => {
       console.log('Get user response: ')
       console.log(response.data)
+      console.log(response.data.user._id)
       if (response.data.user) {
         console.log('Get User: There is a user saved in the server session: ')
 
         this.setState({
           loggedIn: true,
-          userName: response.data.user.userName
+          userName: response.data.user.userName,
+          id: response.data.user._id
         })
       } else {
         console.log('Get user: no user');
@@ -50,20 +59,16 @@ class App extends React.Component {
     })
   }
 
-  
+  //Render the website with several different routes 
   render() {
-
   return (
     <BrowserRouter>
       <div>
         <Switch>
-          <Route exact path="/" 
-            render={() =>
-              <SignIn
-                updateUser={this.updateUser}
-              />}/>
-          <Route exact path="/saved" render={() => <SavedPage loggedIn={this.state.loggedIn} /> }/>
-          <Route exact path="/home" component={Home} />
+          <Route exact path="/" render={() =><SignIn updateUser={this.updateUser}/>}/>
+          <Route exact path="/saved" render={() => <SavedPage loggedIn={this.state.loggedIn} userId={this.state.id}/> }/>
+          <Route exact path="/home" render={() => <Home loggedIn={this.state.loggedIn}  userId={this.state.id} /> }/>
+          {/* <Route exact path="/home" component={Home} /> */}
           <Route exact path="/signUp" component={SignUp} />
           <Route exact path="*" 
             render={() =>

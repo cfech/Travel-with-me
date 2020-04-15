@@ -1,11 +1,10 @@
+//Imports
 import React from 'react';
 import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
-
-
-
+//Styling
 const useStyles = makeStyles((theme) => ({
   footer: {
     background: 'rgb(163, 187, 230)',
@@ -20,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+//Copyright note
 function Copyright() {
   return (
 
@@ -33,6 +33,8 @@ function Copyright() {
     </Typography>
   );
 }
+
+//Footer component
 function Footer() {
   const classes = useStyles()
   return (

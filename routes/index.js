@@ -1,5 +1,4 @@
-// setting up api routes 
-
+// building backend routes 
 const path = require("path");
 const router = require("express").Router();
 const apiRoutes = require("./api");

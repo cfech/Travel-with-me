@@ -1,3 +1,4 @@
+//Imports
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import API from "../components/API";
@@ -11,16 +12,15 @@ import DayTrip from "../components/Day/dayTrip"
 import { Grid } from "@material-ui/core";
 import Button from '@material-ui/core/Button';
 import City from "../components/City/city";
-import CityApi from "../components/CITY"
+import CityApi from "../components/CITY";
+import tripApi from "../utils/tripApi"
 
 
 
-
-function Home() {
+function Home(props) {
   // Setting our component's initial state
   const [lat, setLat] = useState(0);
   const [long, setLong] = useState(0);
-  // const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState(null);
   const [place, setPlace] = useState({});
   const [interest, setInterest] = useState([]);
@@ -28,13 +28,20 @@ function Home() {
   const [dayTrip, setDayTrip] = useState([])
   const [searchTerm, setSearchTerm] = useState("");
   const [city, setCity] = useState([]);
-  const [stateOne, setStaetOne] = useState(true)
+  const [stateOne, setStateOne] = useState(true)
   const [stateTwo, setStateTwo] = useState(false)
   const [stateThree, setStateThree] = useState(false)
   const [stateFour, setStateFour] = useState(false)
   const [stateFive, setStateFive] = useState(false)
+  const [userId, setUserId] = useState("")
 
+  //setting the user id on load
+    useEffect(() => {
+      setUserId(props.userId)
 
+  });
+
+//styling 
   const useStyles = makeStyles(() => ({
     links: {
       color: "black",
@@ -58,14 +65,13 @@ function Home() {
 
   }));
 
+  //using styles 
   const classes = useStyles();
-
-
-
-
   // need error validation for blank search term
 
   //search to set the city using return from city search
+
+  //Function to perform the api search for location with correct id
   const ApiSearch = (id) => {
     API.ApiSearch(id)
       .then((res) => {
@@ -78,7 +84,7 @@ function Home() {
       .catch((err) => console.log(err));
   };
 
-  // point of interest search
+  // point of interest api search
   const PoiSearch = () => {
     Poi.ApiSearch(lat, long)
       .then((res) => {
@@ -89,7 +95,7 @@ function Home() {
       .catch((err) => console.log(err));
   };
 
-  // day trip search
+  // day trip api search
   const DaySearch = () => {
     Day.ApiSearch(daySearch)
       .then((res) => {
@@ -101,27 +107,25 @@ function Home() {
       .catch((err) => console.log(err))
   }
 
-  //city search
-
+  //city api search
   const CitySearch = () => {
     CityApi.ApiSearch(searchTerm)
       .then((res) => {
         console.log("city search");
         console.log(res.data.results)
         setCity(res.data.results)
-
       })
   }
-  // input change
+
+  // input change for search tearm
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
     console.log(searchTerm);
   };
 
-  //city search
+  //function to ste the 2nd state to true nad call the city search api call
   const handleSubmit = (event) => {
     event.preventDefault();
-
     setStateTwo(true)
     console.log("clicked");
     console.log(stateTwo)
@@ -129,26 +133,30 @@ function Home() {
   };
 
 
+  //User Name and Id console.log
+  console.log(props.loggedIn)
+  console.log(userId)
+
+
+//Function to set the third state to true and call the place api search with the location id
   const handleThree = (event, id) => {
     event.preventDefault();
     console.log("three!!")
     setStateThree(true)
     console.log(id)
     ApiSearch(id)
-
-
+  
   }
 
-  // point of interest
+  // Set the state of four to true and call point of interest api search for the selected location
   const handleInterest = (event) => {
     event.preventDefault();
     PoiSearch();
     setStateFour(true)
     console.log("poisearch");
-
   };
 
-  // day search 
+  // Set the state of five to true and execute the daily plan search for the selected location
   const handleDay = (event) => {
     event.preventDefault();
     DaySearch();
@@ -156,11 +164,7 @@ function Home() {
     console.log("day search")
   }
 
-
-
-
-
-
+  //If error return error page 
   if (error) {
     return (
       <>
@@ -176,17 +180,6 @@ function Home() {
         </form>
       </>
     );
-
-
-
-
-
-
-
-
-
-
-
 
     // STATE FIVE!!  STATE FIVE!!STATE FIVE!!STATE FIVE!!STATE FIVE!!STATE FIVE!!STATE FIVE!!STATE FIVE!!STATE FIVE!!STATE FIVE!!
   }
@@ -221,19 +214,12 @@ function Home() {
                 snippet={item.snippet}
                 name={item.poi.name}
                 score={Math.round(item.poi.score)}
+                
               />
             </Grid>
           ))}
         </div>
-
-
-
-
-
-
       </div>
-
-
     )
 
     // STATE FOUR!! STATE FOUR!! STATE FOUR!! STATE FOUR!! STATE FOUR!! STATE FOUR!! STATE FOUR!! STATE FOUR!! STATE FOUR!! STATE FOUR!! STATE FOUR!
@@ -247,20 +233,14 @@ function Home() {
           name={place.name}
           snippet={place.snippet}
         // image={place.images[0].source_url}
-
         />
         <Grid item container>
           <Grid item xs={12} className={classes.cityRow}>
             <form>
               <Button variant="contained" color="primary" style={{width: "200px", marginLeft: '10px', marginTop: '10px'}} disableElevation type="submit">Reset</Button>
             </form>
-
           </Grid>
         </Grid>
-
-        style={{width: "200px", marginLeft: '10px', marginTop: '10px'}}
-
-
 
         <Grid item container>
           {/* map through places of interest */}
@@ -281,20 +261,12 @@ function Home() {
             </Grid>
           ))}
         </Grid>
-
-
-
-
       </div>
-
-
     )
-
-
   }
+
   // STATE THREE!! STATE THREE!! STATE THREE!! STATE THREE!! STATE THREE!! STATE THREE!! STATE THREE!! STATE THREE!! STATE THREE!!
   else if (stateOne && stateTwo && stateThree && !stateFour) {
-
     return (
       <div>
         <h1>three</h1>
@@ -318,35 +290,19 @@ function Home() {
         </Button>
             </form>
 
-            <Button variant="contained" color="primary" style={{width: "200px", marginLeft: '35px', marginTop: '10px'}}disableElevation type="submit" onClick={handleSubmit}>
+            <Button variant="contained" color="primary" style={{width: "200px", marginLeft: '35px', marginTop: '10px'}}disableElevation type="submit" onClick={handleInterest}>
                 Show Interest
               </Button>
-            <Button variant="contained" color="primary" style={{width: "200px", marginLeft: '10px', marginTop: '10px'}} disableElevation >Day Trip</Button>
+            <Button variant="contained" color="primary" style={{width: "200px", marginLeft: '10px', marginTop: '10px'}} onClick={handleDay} disableElevation >Day Trip</Button>
             
             <form>
-              <Button variant="contained" color="primary" style={{width: "200px", marginLeft: '10px', marginTop: '10px'}} disableElevation type="submit">Reset</Button>
+              <Button variant="contained" color="primary" style={{width: "200px", marginLeft: '10px', marginTop: '10px'}} disableElevation type="submit" >Reset</Button>
             </form>
           </Grid>
         </Grid>
 
-        {/* <Grid item container>
-          {city.map((item) => (
-            <City
-              name={item.name}
-              state={item.parent_id}
-              country={item.country_id}
-              id={item.id}
-              handleThree={handleThree}
-            />
-
-          ))}
-
-        </Grid> */}
-
       </div>
     )
-
-
   }
   // STATE TWO!!! STATE TWO!!! STATE TWO!!! STATE TWO!!! STATE TWO!!! STATE TWO!!! STATE TWO!!! STATE TWO!!! STATE TWO!!! STATE TWO!!!
   else if (stateOne && stateTwo && !stateThree && !stateFour) {
@@ -365,50 +321,41 @@ function Home() {
 
 <Button variant="contained" color="primary" style={{width: "200px", marginLeft: '35px', marginTop: '10px'}}disableElevation type="submit" onClick={handleSubmit}>
                 Search
-        </Button>
+            </Button>
+            </form>
+
+            <form>
+              <Button variant="contained" color="primary" disableElevation type="submit">Reset</Button>
             </form>
           </Grid>
         </Grid>
 
-       
+        <h2>Choose which {searchTerm} you would like to go to, or search for new destination!</h2>
+
+
 
         <Grid item container>
           {city.map((item) => (
-            <City
+            <City key={item.score}
               name={item.name}
               state={item.parent_id}
               country={item.country_id}
               id={item.id}
               handleThree={handleThree}
-
-
+              snippet={item.snippet}
+              userId = {userId}
             />
-
           ))}
-
         </Grid>
-
       </div>
     )
-
-
   }
   // STATE ONE!! STATE ONE!! STATE ONE!! STATE ONE!! STATE ONE!! STATE ONE!! STATE ONE!! STATE ONE!! STATE ONE!! STATE ONE!! STATE ONE!!
   else if (stateOne && !stateTwo && !stateThree && !stateFour) {
-
-
-
     // this is the default return of the component
     return (
       <div style={{backgroundColor: 'blue'}}>
         <Nav />
-        {/* <Grid item container>
-          <Grid item xs={false} s={3} />
-          <Grid item xs={12} s={6}>
-            <img className={classes.media} image={require('../img/map-1.png')} />
-          </Grid>
-        </Grid> */}
-
         {/* buttons container */}
         <Grid item container>
           <Grid item xs={12} className={classes.cityRow}>
@@ -419,69 +366,19 @@ function Home() {
                 onChange={handleInputChange}
               ></input>
 
-             
+            
             </form>
+            <form>
   
             <Button variant="contained" color="primary" style={{width: "200px", marginLeft: '35px', marginTop: '10px'}}disableElevation type="submit" onClick={handleSubmit}>
                 Search
               </Button>
-            <Button variant="contained" color="primary" style={{width: "200px", marginLeft: '10px', marginTop: '10px'}} disableElevation >show interests</Button>
-            <Button variant="contained" color="primary" style={{width: "200px", marginLeft: '10px', marginTop: '10px'}} disableElevation >Day Trip</Button>
+            </form>
 
           </Grid>
         </Grid>
       </div>
     );
-    // } else {
-    //   return (
-    //     // loads when state is set to true during api call
-    //     <>
-
-    //       <Nav />
-
-    //       <Location
-    //         name={place.name}
-    //         snippet={place.snippet}
-    //         image={place.images[0].source_url}
-    //       />
-    //       {/* Buttons container */}
-    //       <Grid item container>
-    //         <Grid item xs={12} className={classes.cityRow}>
-    //           <form>
-    //             <input
-    //               placeholder="location search"
-    //               onChange={handleInputChange}
-    //             ></input>
-    //             <Button variant="contained" color="primary" disableElevation type="submit" onClick={handleSubmit}>
-    //               Search
-    //             </Button>
-    //           </form>
-    //           <Button variant="contained" color="primary" disableElevation onClick={handleInterest}>show interests</Button>
-    //           <Button variant="contained" color="primary" disableElevation onClick={handleDay}>Day Trip</Button>
-    //         </Grid>
-    //         <Grid item xs={12} className={classes.empty}>
-
-    //         </Grid>
-    //       </Grid>
-    //       <div>
-    //         {/* map through daytrip items */}
-    //         {dayTrip.map((item) => (
-    //           <Grid key={item.description} item xs={12}>
-    //             <DayTrip
-    //               title={item.title}
-    //               description={item.description}
-    //               snippet={item.snippet}
-    //               name={item.poi.name}
-    //               score={Math.round(item.poi.score)}
-    //             />
-    //           </Grid>
-    //         ))}
-    //       </div>
-
-
-
-    //     </>
-    //   );
   }
 }
 

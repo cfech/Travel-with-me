@@ -1,3 +1,4 @@
+///Imports
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
@@ -16,6 +17,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
+//Styling
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
@@ -55,6 +57,8 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+
+//Interest component
 const Interest = ({ name, score, snippet, image, attribution, id }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);

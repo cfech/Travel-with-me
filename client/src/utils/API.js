@@ -1,48 +1,30 @@
+//Imports
 import axios from "axios";
 
-//for front end routes 
-
-
+//front end routes for users 
 export default {
-  // Gets all books
+  // Gets all users
   getUser: function() {
     return axios.get("/api/users/");
   },
-  // Gets the book with the given id
+  // Gets the user with the given id
   getUsers: function(id) {
     return axios.get("/api/users/" + id);
   },
-  // Deletes the book with the given id
+  // Deletes the user with the given id
   deleteUser: function(id) {
     return axios.delete("/api/users/" + id);
   },
-  // Saves a book to the database
+  // Saves a user to the database
   saveUser: function(userData) {
     return axios.post("/api/users/", userData);
   },
-  // login
+  // login user
   login: function(userData) {
     return axios.post("/api/users/login", userData);
+  },
+  //logout user
+  logout: function(userData) {
+    return axios.post("/api/users/logout", userData);
   }
 };
-
-
-
-// export default {
-//     // Gets all books
-//     getBooks: function() {
-//       return axios.get("/api/books");
-//     },
-//     // Gets the book with the given id
-//     getBook: function(id) {
-//       return axios.get("/api/books/" + id);
-//     },
-//     // Deletes the book with the given id
-//     deleteBook: function(id) {
-//       return axios.delete("/api/books/" + id);
-//     },
-//     // Saves a book to the database
-//     saveBook: function(bookData) {
-//       return axios.post("/api/books", bookData);
-//     }
-//   };
