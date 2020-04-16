@@ -9,11 +9,18 @@
 ## Description
 
 *Travel With Me* is a mobile application that allows users to discover cities around the world and save their destinations.
+<br />
+<img src="./client/public/picture-4.png" style="width:300px;">
+<br />
+<img src="./client/public/picture-5.png" style="width:300px;">
+<br />
+<img src="./client/public/picture-6.png" style="width:300px;">
+<br />
+<img src="./client/public/picture-1.png" style="width:300px;">
+<br />
+<img src="./client/public/picture-3.png" style="width:300px;">
+<br />
 
-<img src="../react-travel-app-1/client/public/3.png" style="width:300px;">
-<br />
-<img src="../react-travel-app-1/client/public/1.png" style="width:300px;">
-<br />
 
 ## Installation
   To install necessary dependencies, run the following command:
