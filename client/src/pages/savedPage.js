@@ -58,48 +58,44 @@ function savedPage(props) {
 
   console.log(props.userId)
 
+  let tripPlaces = []
+
   return (
     <div>
       <Nav updateUser={props.updateUser} />
 
 
 
-      {trips.map((trip) => (
-        <MyTrips
-          tripItem={tripItem}
-          name={trip.name}
-          country={trip.country}
-          mainId={trip._id}
-
-        />
-      ))}
-
-
-
-
+     
 
       <h1>Your Saved Trips!</h1>
 
       <div> trips
-
-      {trips.map((trip) => (
+ {trips.map((trip) => (
+        <MyTrips 
+          tripItem={tripItem}
+          name={trip.name}
+          country={trip.country}
+          mainId={trip._id}
+          key = {trip._id}
+          getUserTrips = { getUserTrips
+            }
+        getTripItems = {getUserTripItems}
+        />
+      ))}
+     
+     
+     
+      {/* {trips.map((trip) => (
         <div key={trip._id}>
 
           <div>{trip.name}, {trip.state}, {trip.country}</div>
           <button onClick={tripDelete}>delete</button>
 
-          {tripItem.map((item) => (
-            <div key={item._id}>
+             
+          ))} */}
 
-              <div>{item.name}</div>
-              <button onClick={itemDelete}>delete</button>
-            </div>
-
-          ))}
-
-        </div>
-
-      ))}
+  
 
 
         {/* {trips.map((trip) => (

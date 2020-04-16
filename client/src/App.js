@@ -48,8 +48,10 @@ class App extends React.Component {
         this.setState({
           loggedIn: true,
           userName: response.data.user.userName,
-          id: response.data.user._id
+           id: response.data.user._id
         })
+        console.log("app.js id")
+        console.log(this.state.id)
       } else {
         console.log('Get user: no user');
         this.setState({
@@ -68,7 +70,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" render={() =><SignIn updateUser={this.updateUser}/>}/>
           <Route exact path="/saved" render={() => <SavedPage loggedIn={this.state.loggedIn} userId={this.state.id} updateUser={this.updateUser}/> }/>
-          <Route exact path="/home" render={() => <Home loggedIn={this.state.loggedIn}  userId={this.state.id} updateUser={this.updateUser} /> }/>
+          <Route exact path="/home" render={() => <Home loggedIn={this.state.loggedIn}  userId={this.state.id} updateUser={this.updateUser} getUser = {this.getUser}/> }/>
           {/* <Route exact path="/home" component={Home} /> */}
           <Route exact path="/signUp" component={SignUp} />
           <Route exact path="/credits" component={Credits} />
