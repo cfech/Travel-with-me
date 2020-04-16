@@ -68,6 +68,10 @@ function Home(props) {
     },
     options: {
       marginBottom: 50,
+    },
+    int:
+    {
+      justifyContent: "center"
     }
 
   }));
@@ -221,6 +225,7 @@ function Home(props) {
                 snippet={item.snippet}
                 name={item.poi.name}
                 score={Math.round(item.poi.score)}
+                attribution={item.poi.attribution}
 
               />
             </Grid>
@@ -252,7 +257,7 @@ function Home(props) {
           </Grid>
         </Grid>
 
-        <Grid item container>
+        <Grid item container spacing={2} className={classes.int}>
           {/* map through places of interest */}
           {interest.map((item) => (
             <Grid key={item.id} item xs={6} sm={4} md={3}>
@@ -348,7 +353,7 @@ function Home(props) {
         <Grid item container>
           {city.map((item) => (
             <Grid key={item.id} item xs={6} sm={4} md={3}>
-              <City key={item.score}
+              <City key={item.id}
                 name={item.name}
                 state={item.parent_id}
                 country={item.country_id}

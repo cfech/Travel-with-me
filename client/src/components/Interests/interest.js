@@ -23,6 +23,9 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 345,
     // margin: 12,
     boxShadow: "0px 5px 20px rgb(71, 71, 71)",
+    marginTop: 10,
+    marginBottom: 10,
+    justifyContent: "center"
   },
   media: {
     height: 0,
