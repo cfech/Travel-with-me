@@ -39,6 +39,7 @@
     "passport-local": "^1.0.0",
     "react-router-dom": "^5.1.2",
     "react-toast-notifications": "^2.4.0",
+    "request": "^2.88.2",
     "spectre.css": "^0.5.8"
   }
 }

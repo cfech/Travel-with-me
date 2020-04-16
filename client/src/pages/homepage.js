@@ -41,16 +41,18 @@ function Home(props) {
   const [mapImage, setMapImage] = useState("")
 
 
-  // Bing API Function
-  const bingFunction = () => {
-    BING.ApiSearch(searchTerm)
-      .then(res => {
-        console.log(res)
-      })
-      .catch(err => {
-        console.log(err)
-      })
-  }
+// Bing API Function
+const bingFunction = () => {
+  BING.ApiSearch(searchTerm)
+  .then(res => {
+    console.log("==== BING ====")
+    console.log(res)
+    setMapImage(res.value[0].contentUrl)
+  })
+  .catch(err => {
+    console.log(err)
+  })
+}
 
   //setting the user id on load
   useEffect(() => {
@@ -211,7 +213,7 @@ function Home(props) {
     return (
       <div>
         <Nav updateUser={props.updateUser} />
-        <img src = {require("../img/dayTrip1.jpg")} className={classes.image} ></img>
+        <img src = {require("../img/state-5.png")} className={classes.image} ></img>
         <Location
           name={place.name}
           np
@@ -253,7 +255,7 @@ function Home(props) {
     return (
       <div>
         <Nav updateUser={props.updateUser} />
-        <img src = {require("../img/plan.jpg")} className={classes.image} ></img>
+        <img src = {require("../img/state-4.png")} className={classes.image} ></img>
         <Location name={place.name} snippet={place.snippet} />
         <Grid item container>
           <Grid item xs={12} className={classes.cityRow}>
@@ -330,7 +332,7 @@ function Home(props) {
       <div>
         <Nav updateUser={props.updateUser} />
         <Grid item container>
-          <img src = {require("../img/seattle.jpg")} className={classes.image} ></img>
+          <img src = {require("../img/state-2.png")} className={classes.image} ></img>
         </Grid>
 
         <Grid item container>
@@ -389,7 +391,7 @@ function Home(props) {
       <div style={{ backgroundColor: "blue" }}>
         <Nav updateUser={props.updateUser} />
         <Grid item container> 
-          <img src={require("../img/travel.png")} className={classes.image} ></img>
+          <img src={require("../img/state-1.png")} className={classes.image} ></img>
         </Grid>
         {/* buttons container */}
         <Grid item container>

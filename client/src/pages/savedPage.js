@@ -85,7 +85,9 @@ function savedPage(props) {
     <div>
       <Nav updateUser={props.updateUser} />
 
-
+      <Grid item container> 
+          <img src={require("../img/saved.png")} className={classes.image} ></img>
+        </Grid>
 
 
 
