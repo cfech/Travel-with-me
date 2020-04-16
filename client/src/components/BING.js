@@ -1,3 +1,29 @@
+// bing api info = https://azure.microsoft.com/en-us/try/cognitive-services/my-apis/?api=search-api-v7
+
+// https://docs.microsoft.com/en-us/azure/cognitive-services/bing-custom-search/call-endpoint-nodejs
+
+//Imports
+import request from "request";
+
+const cors = "https://cors-anywhere.herokuapp.com/"
+// const accountId = process.env.BINGKEY
+const accountId = "a9e8ad7e4ef64d6395ffb41a6d1a24a5"
+
+//api call for state 3 picture 
+
+export default {
+    ApiSearch: function (searchTerm) {
+        const url = cors + "https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=" + searchTerm
+const info = {
+    headers: {'Ocp-Apim-Subscription-Key' : accountId}, url: url
+}       
+        console.log("==== CORS ====")
+        console.log(info)
+        return request(info)
+
+    }
+}
+
 //Imports
 // import axios from "axios";
 
@@ -15,25 +41,3 @@
 //         let img = document.querySelector("img")
 //         img.setAttribute("src", imgSrc)
 //     })
-    
-//Imports
-import axios from "axios";
-
-const accountId = process.env.BINGKEY
-
-const headers = {
-    'Ocp-Apim-Subscription-Key' : accountId,
-}
-
-const cors = "https://cors-anywhere.herokuapp.com/"
-
-//api call for state 3 picture 
-
-export default {
-    ApiSearch: function (searchTerm) {
-        const url = cors + "https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=" + searchTerm
-        console.log(url)
-        return axios.get(url, { headers })
-
-    }
-}

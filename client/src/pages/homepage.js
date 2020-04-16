@@ -43,6 +43,7 @@ function Home(props) {
 const bingFunction = () => {
   BING.ApiSearch(searchTerm)
   .then(res => {
+    console.log("==== BING ====")
     console.log(res)
   })
   .catch(err => {
