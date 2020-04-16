@@ -13,6 +13,8 @@ function savedPage(props) {
   console.log(props)
 
 
+console.log("users saved page")
+console.log(props.user)
 
   useEffect(() => {
     if (props.userId) {
