@@ -13,6 +13,7 @@ import Options from "../components/Options/options";
 import { Grid } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import City from "../components/City/city";
+import Credits from "../components/Credits/credits"
 import CityApi from "../components/CITY";
 import tripApi from "../utils/tripApi";
 import BING from "../components/BING";
@@ -38,23 +39,23 @@ function Home(props) {
   const [mapImage, setMapImage] = useState("")
 
 
-// Bing API Function
-const bingFunction = () => {
-  BING.ApiSearch(searchTerm)
-  .then(res => {
-    console.log(res)
-  })
-  .catch(err => {
-    console.log(err)
-  })
-}
+  // Bing API Function
+  const bingFunction = () => {
+    BING.ApiSearch(searchTerm)
+      .then(res => {
+        console.log(res)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
 
   //setting the user id on load
   useEffect(() => {
     props.getUser();
     // console.log(props.userId)
     //setUserId(props.userId);
-  },[]);
+  }, []);
 
   //styling
   const useStyles = makeStyles(() => ({
@@ -213,14 +214,14 @@ const bingFunction = () => {
           name={place.name}
           np
           snippet={place.snippet}
-          // image={place.images[0].source_url}
+        // image={place.images[0].source_url}
         />
         <Grid item container>
           <Grid item xs={12} className={classes.cityRow}>
             <form>
-            
-              
-  <Button variant="contained" style={{ width: "20%", marginLeft: '40%', marginRight: '40%', marginTop: '10px', marginBottom: '10px', background: '#33882D', fontFamily: 'serif'}} disableElevation type="submit" >
+
+
+              <Button variant="contained" style={{ width: "20%", marginLeft: '40%', marginRight: '40%', marginTop: '10px', marginBottom: '10px', background: '#33882D', fontFamily: 'serif' }} disableElevation type="submit" >
                 Reset
               </Button>
             </form>
@@ -256,11 +257,11 @@ const bingFunction = () => {
           <Grid item xs={12} className={classes.cityRow}>
             <h3>Click on the heart icons to add an item to your trip</h3>
             <h4>You can restart your search by clicking the reset button</h4>
-<form>
-            <Button variant="contained" style={{ width: "20%", marginLeft: '40%', marginRight: '40%', marginTop: '10px', marginBottom: '10px', background: '#33882D', fontFamily: 'serif'}} disableElevation type="submit" >
+            <form>
+              <Button variant="contained" style={{ width: "20%", marginLeft: '40%', marginRight: '40%', marginTop: '10px', marginBottom: '10px', background: '#33882D', fontFamily: 'serif' }} disableElevation type="submit" >
                 Reset
               </Button>
-              </form>
+            </form>
           </Grid>
         </Grid>
 
@@ -304,7 +305,7 @@ const bingFunction = () => {
             <h4>You can restart your search by clicking the reset button</h4>
 
             <form style={{ postion: 'center' }}>
-              <Button variant="contained" color="primary" style={{ width: "20%", marginLeft: '40%', marginRight: '40%', marginTop: '10px', backgroundColor: '#388e3c'}} disableElevation type="submit" >New Search</Button>
+              <Button variant="contained" color="primary" style={{ width: "20%", marginLeft: '40%', marginRight: '40%', marginTop: '10px', backgroundColor: '#388e3c' }} disableElevation type="submit" >New Search</Button>
             </form>
           </Grid>
         </Grid>
@@ -339,8 +340,8 @@ const bingFunction = () => {
               ></input>
             </form>
             <form>
-      
-              <Button variant="contained" style={{ width: "20%", marginLeft: '40%', marginRight: '40%', marginTop: '10px', marginBottom: '10px', background: '#E0E0E0E0', fontFamily: 'serif'}} disableElevation type="submit" onClick={handleSubmit}>
+
+              <Button variant="contained" style={{ width: "20%", marginLeft: '40%', marginRight: '40%', marginTop: '10px', marginBottom: '10px', background: '#E0E0E0E0', fontFamily: 'serif' }} disableElevation type="submit" onClick={handleSubmit}>
                 Search
               </Button>
 
@@ -407,24 +408,12 @@ const bingFunction = () => {
 
 
 
-              <Button variant="contained" style={{ width: "20%", marginLeft: '40%', marginRight: '40%', marginTop: '10px', marginBottom: '20px', background: '#E0E0E0E0', fontFamily: 'serif'}} disableElevation type="submit" onClick={handleSubmit}>
+              <Button variant="contained" style={{ width: "20%", marginLeft: '40%', marginRight: '40%', marginTop: '10px', marginBottom: '20px', background: '#E0E0E0E0', fontFamily: 'serif' }} disableElevation type="submit" onClick={handleSubmit}>
                 Search
               </Button>
             </form>
 
-            <h1>
-              {" "}
-              some stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome
-              stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome
-              stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome
-              stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome
-              stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome
-              stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome
-              stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome
-              stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome
-              stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome
-              stuffsome stuffsome stuffsome stuffsome stuffsome stuff{" "}
-            </h1>
+            <Credits />
           </Grid>
         </Grid>
       </div>
