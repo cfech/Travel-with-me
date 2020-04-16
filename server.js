@@ -55,7 +55,20 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 // Connect to the Mongo DB
+
+//When you pull from github comment out connection 1 and uncomment out connection 2
+
+//connection 1
+// mongoose.connect(process.env.MONGODB_URI || `mongodb://${process.env.DBuser}:${process.env.DBpass}@ds359298.mlab.com:59298/heroku_dgwwpqkh`);
+//connection 1
+
+//When you push to github comment out connection 2 and uncomment out connection 1
+
+//connection 2
 mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost/savedLocations`);
+//connection 2
+
+// Connect to the Mongo DB
 
 
 // Start the API server

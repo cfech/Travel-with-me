@@ -3,22 +3,21 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 import Collapse from '@material-ui/core/Collapse';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
-import StarBorder from '@material-ui/icons/StarBorder';
 import Avatar from '@material-ui/core/Avatar';
 import { red } from '@material-ui/core/colors';
-import Box from '@material-ui/core/Box';
+import { Grid } from "@material-ui/core";
 
 //Styling
 const useStyles = makeStyles((theme) => ({
     root: {
         width: '100%',
-        maxWidth: 360,
         backgroundColor: theme.palette.background.paper,
+        border: "1px solid gray",
+        boxShadow: "0px 5px 20px rgb(71, 71, 71)"
+
     },
     nested: {
         paddingLeft: theme.spacing(4),
@@ -27,51 +26,77 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: red[500],
     },
     items: {
-        justifyContent: "space-around"
-    }
+        justifyContent: "space-around",
+        backgroundImage: "linear-gradient(to top, #6a85b6 0%, #bac8e0 100%)",
+        color: "white"
+
+    },
+    cont: {
+        margin: 2
+    },
+    link: {
+        color: "black",
+        textDecoration: "none",
+        "&:hover": {
+            color: "black",
+        }
+    },
+
 }));
 
 //Day Trip component
-const DayTrip = ({ title, description, name, score }) => {
+const DayTrip = ({ title, description, name, score, attribution }) => {
     const classes = useStyles();
-    const [open, setOpen] = React.useState(true);
+    const [open, setOpen] = React.useState(false);
+    console.log(attribution)
 
     const handleClick = () => {
         setOpen(!open);
     };
 
     return (
-        <Box width="100%">
-            <List
-                component="nav"
-                aria-labelledby="nested-list-subheader"
-                className={classes.root}>
-                <ListItem>
-                    {title}
-                </ListItem>
-                <ListItem>
-                    {description}
-                </ListItem>
-                <ListItem className={classes.items} button onClick={handleClick}>
-                    {open ? <ExpandLess /> : <ExpandMore />}
-                    {name} {<Avatar aria-label="recipe" className={classes.avatar}>{score}</Avatar>
-                    }
-                </ListItem>
-                <Collapse in={open} timeout="auto" unmountOnExit>
-                    <List component="div" disablePadding>
-                        <ListItem>
+        <Grid item container className={classes.cont}>
+            <Grid item xs={false} sm={1} md={2} />
 
-                        </ListItem>
-                        <ListItem button className={classes.nested}>
-                            <ListItemIcon>
-                                <StarBorder />
-                            </ListItemIcon>
-                            <ListItemText primary="Starred" />
-                        </ListItem>
-                    </List>
-                </Collapse>
-            </List>
-        </Box>
+            <Grid item xs={12} sm={10} md={8}>
+                <List
+                    component="nav"
+                    aria-labelledby="nested-list-subheader"
+                    className={classes.root}>
+                    <ListItem>
+                        <h3>{title.charAt(0).toUpperCase() + title.slice(1)}</h3>
+                    </ListItem>
+                    <ListItem >
+                        {description}
+                    </ListItem>
+                    <ListItem className={classes.items} button onClick={handleClick} >
+                        {open ? <ExpandLess /> : <ExpandMore />}
+                        {name} {<Avatar aria-label="Trip" className={classes.avatar}>{score}</Avatar>
+                        }
+                    </ListItem>
+                    <Collapse in={open} timeout="auto" unmountOnExit>
+                        <List component="div" disablePadding>
+                            <ListItem>
+
+                            </ListItem>
+                            <ListItem button className={classes.nested}>
+                                <ul>
+                                    {attribution.map(link => (
+                                        <li className={classes.link} key={link.source_id}><a className={classes.link} target="_blank" rel="noopener noreferrer" href={link.url}>{link.source_id.charAt(0).toUpperCase() + link.source_id.slice(1)}</a></li>
+                                    ))}
+                                </ul>
+
+
+
+
+
+                            </ListItem>
+                        </List>
+                    </Collapse>
+                </List>
+            </Grid>
+            <Grid item xs={false} sm={1} md={2} />
+        </Grid>
     );
 }
 

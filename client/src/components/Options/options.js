@@ -9,20 +9,15 @@ import Typography from '@material-ui/core/Typography';
 import { Grid } from "@material-ui/core";
 
 
-
-
-
-
-
-
 const useStyles = makeStyles({
     root: {
         width: "97%",
         marginTop: 10,
-        boxShadow: "0px 5px 20px rgb(71, 71, 71)"
+        boxShadow: "0px 5px 20px rgb(71, 71, 71)",
+        marginBottom: 40
     },
     media: {
-        height: 140,
+        height: 300,
     },
     textArea: {
         backgroundImage: "linear-gradient(to top, #6a85b6 0%, #bac8e0 100%)",
@@ -53,10 +48,7 @@ const Options = ({ handleInterest, handleDay }) => {
                             />
                             <CardContent className={classes.textArea}>
                                 <Typography gutterBottom variant="h5" component="h2">
-                                    Places of Interest
-                                </Typography>
-                                <Typography variant="body2" component="p">
-                                    find places blah blah
+                                    Plan a custom trip
                                 </Typography>
                             </CardContent>
                         </CardActionArea>
@@ -65,7 +57,7 @@ const Options = ({ handleInterest, handleDay }) => {
                 </Grid>
                 {/* ////////////////////second card////////////////////////// */}
 
-                <Grid item xs={6} spacing={2}>
+                <Grid item xs={6}>
                     <Card className={classes.root}>
                         <CardActionArea onClick={(event) => { handleDay(event) }}>
                             <CardMedia
@@ -75,11 +67,9 @@ const Options = ({ handleInterest, handleDay }) => {
                             />
                             <CardContent className={classes.textArea}>
                                 <Typography gutterBottom variant="h5" component="h2">
-                                    Day trippin'
+                                    Day trip
                                 </Typography>
-                                <Typography variant="body2" component="p" >
-                                    day trips
-                                </Typography>
+                               
                             </CardContent>
                         </CardActionArea>
 
