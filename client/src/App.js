@@ -18,8 +18,10 @@ class App extends React.Component {
     this.state = {
       loggedIn: false,
       userName: null,
-      id:"",
-      user:{}
+      id: "",
+      user: {},
+      firstName: "",
+      lastName: ""
     }
 
 
@@ -35,8 +37,9 @@ class App extends React.Component {
   }
 
   //Update the user 
-  updateUser (userObject) {
+  updateUser(userObject) {
     this.setState({ user: userObject })
+    console.log(userObject)
   }
 
   //get the user form database
@@ -50,7 +53,9 @@ class App extends React.Component {
         this.setState({
           loggedIn: true,
           userName: response.data.user.userName,
-           id: response.data.user._id
+          id: response.data.user._id,
+          firstName: response.data.user.firstName,
+          lastName: response.data.user.lastName
         })
         console.log("app.js id")
         console.log(this.state.id)
@@ -67,28 +72,28 @@ class App extends React.Component {
 
   //Render the website with several different routes 
   render() {
-  return (
-    <BrowserRouter>
-      <div>
-        <Switch>
-          <Route exact path="/" render={() =><SignIn updateUser={this.updateUser}/>}/>
-          <Route exact path="/saved" render={() => <SavedPage loggedIn={this.state.loggedIn} userId={this.state.id} updateUser={this.updateUser} user={this.state.user}/> }/>
-          <Route exact path="/home" render={() => <Home loggedIn={this.state.loggedIn}  userId={this.state.id} updateUser={this.updateUser} getUser = {this.getUser}/> }/>
-          {/* <Route exact path="/home" component={Home} /> */}
-          <Route exact path="/signUp" component={SignUp} />
-          <Route exact path="/credits" component={Credits} />
-          <Route exact path="*" 
-            render={() =>
-              <SignIn
-                updateUser={this.updateUser}
-              />}
+    return (
+      <BrowserRouter>
+        <div>
+          <Switch>
+            <Route exact path="/" render={() => <SignIn updateUser={this.updateUser} />} />
+            <Route exact path="/saved" render={() => <SavedPage loggedIn={this.state.loggedIn} userId={this.state.id} updateUser={this.updateUser} user={this.state.user} userName={this.state.userName} firstName={this.state.firstName} lastName={this.state.lastName} />} />
+            <Route exact path="/home" render={() => <Home loggedIn={this.state.loggedIn} userId={this.state.id} updateUser={this.updateUser} getUser={this.getUser} />} />
+            {/* <Route exact path="/home" component={Home} /> */}
+            <Route exact path="/signUp" component={SignUp} />
+            <Route exact path="/credits" component={Credits} />
+            <Route exact path="*"
+              render={() =>
+                <SignIn
+                  updateUser={this.updateUser}
+                />}
             />
-        </Switch>
-        {/* <Footer /> */}
-      </div>
-    </BrowserRouter>
-  );
-}
+          </Switch>
+          {/* <Footer /> */}
+        </div>
+      </BrowserRouter>
+    );
+  }
 }
 
 export default App;

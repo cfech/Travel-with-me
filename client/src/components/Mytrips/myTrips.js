@@ -9,7 +9,6 @@ import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import IconButton from '@material-ui/core/IconButton'
-import CardTravelIcon from '@material-ui/icons/CardTravel';
 import items from "../../utils/item"
 import trips from "../../utils/tripApi"
 
@@ -17,13 +16,13 @@ import trips from "../../utils/tripApi"
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        width: '100%',
-        maxWidth: 360,
+        width: "100%",
+
         backgroundColor: "#9499A7",
     },
     nested: {
         paddingLeft: theme.spacing(4),
-        justifyContent: "flex-end"
+        justifyContent: "flex-beginning"
     },
     delete: {
         color: "red",
@@ -45,21 +44,21 @@ const MyTrips = ({ name, mainId, tripItem, country, key, getUserTrips, getTripIt
 
     const itemDelete = (id) => {
         items.deleteItem(id)
-        
-        .then (() => {
-            console.log("item Deleted ")
-            getTripItems()
-        } )
-    
+
+            .then(() => {
+                console.log("item Deleted ")
+                getTripItems()
+            })
+
     }
 
     const tripDelete = (id) => {
 
         trips.deleteTrip(id)
-        .then(() => {
-            console.log("trip Deleted")
-            getUserTrips()
-        })
+            .then(() => {
+                console.log("trip Deleted")
+                getUserTrips()
+            })
     }
 
 
@@ -82,7 +81,7 @@ const MyTrips = ({ name, mainId, tripItem, country, key, getUserTrips, getTripIt
 
                 <ListItem button onClick={handleClick} key={key} className={classes.top}>
                     <ListItemIcon className={classes.travelIcon}>
-                        <CardTravelIcon onClick={() => tripDelete(mainId)} />
+                        <HighlightOffIcon className={classes.delete} onClick={() => tripDelete(mainId)} />
                     </ListItemIcon>
                     <ListItemText>{name}, {country.replace(/_/g, " ").replace(/[0-9]/g, "")}</ListItemText>
                     {open ? <ExpandLess /> : <ExpandMore />}
@@ -94,8 +93,9 @@ const MyTrips = ({ name, mainId, tripItem, country, key, getUserTrips, getTripIt
 
                         {tripPlaces.map((item) => (
                             <ListItem button className={classes.nested} key={item._id}>
-                                {item.name}
                                 <IconButton className={classes.delete} onClick={() => itemDelete(item._id)}><HighlightOffIcon /></IconButton>
+                                {item.name}
+
                             </ListItem>
                         ))}
                     </List>

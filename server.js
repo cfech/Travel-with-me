@@ -66,7 +66,7 @@ mongoose.connect(process.env.MONGODB_URI || `mongodb://${process.env.DBuser}:${p
 
 //connection 2
 
- //mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost/savedLocations`);
+//mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost/savedLocations`);
 
 // Connect to the Mongo DB
 
