@@ -30,22 +30,22 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     color: "#00355F",
     fontFamily: 'serif',
-    },
-    links: {
-      color: "#00355F",
-      textDecoration: "none",
-      fontSize: 20,
-      fontFamily: 'serif',
-    },
-    home: {
-      color: "#00355F",
-      fontSize: 30,
-      fontFamily: 'serif',
-    },
-    navBar: {
-      background: "#F5c71a"
-    }
-    
+  },
+  links: {
+    color: "#00355F",
+    textDecoration: "none",
+    fontSize: 20,
+    fontFamily: 'serif',
+  },
+  home: {
+    color: "#00355F",
+    fontSize: 30,
+    fontFamily: 'serif',
+  },
+  navBar: {
+    background: "#F5c71a"
+  }
+
 }));
 
 //Nav bar component
@@ -58,8 +58,8 @@ export default function SearchAppBar() {
     Api.logout().then(response => {
       console.log(response.data)
       if (response.status === 200) {
-           setRedirect("/")
-     
+        setRedirect("/")
+
       }
     }).catch(error => {
       console.log('Logout error')
@@ -72,25 +72,26 @@ export default function SearchAppBar() {
   } else {
     return (
 
-    <div className={classes.root}>
-      <AppBar position="static" className={classes.navBar}>
-        <Toolbar>
-          <Typography variant="h4" className={classes.title}>
-              Travel-with-Me 
+      <div className={classes.root}>
+        <AppBar position="static" className={classes.navBar}>
+          <Toolbar>
+            <Typography variant="h4" className={classes.title}>
+              Travel-with-Me
           </Typography>
 
-          <IconButton>
-          <Link  to="/home" > <HomeIcon className={classes.home} />  </Link>
-          </IconButton>
-          <IconButton>
-          <Link className={classes.links} to="/saved"  > PROFILE </Link>
-          </IconButton>
-          <IconButton>
-          <IconButton className={classes.links} onClick={logout}>LOG-OUT</IconButton>
-           
-          </IconButton>
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
-}}
+            <IconButton>
+              <Link to="/home" > <HomeIcon className={classes.home} />  </Link>
+            </IconButton>
+            <IconButton>
+              <Link className={classes.links} to="/saved"  > PROFILE </Link>
+            </IconButton>
+
+            <IconButton className={classes.links} onClick={logout}>LOG-OUT</IconButton>
+
+
+          </Toolbar>
+        </AppBar>
+      </div>
+    );
+  }
+}
