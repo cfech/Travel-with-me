@@ -156,7 +156,7 @@ export default function SignUp() {
                 required
                 fullWidth
                 id="email"
-                label="User Name"
+                label="Email Address"
                 name="userName"
                 onChange={handleInputChangeU}
                 autoComplete="email"
