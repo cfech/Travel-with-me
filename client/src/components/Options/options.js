@@ -38,7 +38,7 @@ const Options = ({ handleInterest, handleDay }) => {
     return (
         <>
             <Grid item container display="row">
-                <Grid item xs={6}>
+                <Grid item xs={12}sm={6}>
                     <Card className={classes.root}>
                         <CardActionArea onClick={(event) => { handleInterest(event) }}>
                             <CardMedia
@@ -57,7 +57,7 @@ const Options = ({ handleInterest, handleDay }) => {
                 </Grid>
                 {/* ////////////////////second card////////////////////////// */}
 
-                <Grid item xs={6}>
+                <Grid item xs={12}sm={6}>
                     <Card className={classes.root}>
                         <CardActionArea onClick={(event) => { handleDay(event) }}>
                             <CardMedia
