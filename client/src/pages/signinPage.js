@@ -152,7 +152,7 @@ if (redirect) {
               required
               fullWidth
               id="email"
-              label="Email Address"
+              label="User Name"
               name="email"
               autoComplete="email"
               autoFocus
@@ -170,10 +170,7 @@ if (redirect) {
               autoComplete="current-password"
               onChange= {handleInputChangePassword}
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
+           
             <Button
               type="submit"
               fullWidth

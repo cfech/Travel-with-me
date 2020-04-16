@@ -53,7 +53,7 @@ function Home(props) {
       },
     },
     cityRow: {
-      background: "rgb(163, 187, 230)",
+      background: "#EEC218",
       margin: 0,
       justifyContent: "space-around"
 
@@ -191,7 +191,6 @@ function Home(props) {
 
     return (
       <div>
-        <h1>five</h1>
         <Nav updateUser ={props.updateUser}/>
         <Location
           name={place.name} np
@@ -231,7 +230,6 @@ function Home(props) {
 
     return (
       <div>
-        <h1>four</h1>
         <Nav updateUser ={props.updateUser}/>
         <Location
           name={place.name}
@@ -274,7 +272,6 @@ function Home(props) {
   else if (stateOne && stateTwo && stateThree && !stateFour) {
     return (
       <div>
-        <h1>three</h1>
         <Nav updateUser ={props.updateUser} />
         <Location
           name={place.name}
@@ -284,18 +281,7 @@ function Home(props) {
         />
         <Grid item container>
           <Grid item xs={12} className={classes.cityRow}>
-
-
-
             <form style={{ postion: 'center' }}>
-
-
-              <Button variant="contained" color="primary" style={{ width: "200px", marginLeft: '35px', marginTop: '10px' }} disableElevation type="submit" onClick={handleInterest}>
-                Show Interest
-              </Button>
-              <Button variant="contained" color="primary" style={{ width: "200px", marginLeft: '10px', marginTop: '10px' }} onClick={handleDay} disableElevation >Day Trip</Button>
-
-
               <Button variant="contained" color="primary" style={{ width: "200px", marginLeft: '10px', marginTop: '10px' }} disableElevation type="submit" >Reset</Button>
             </form>
           </Grid>
@@ -319,7 +305,7 @@ function Home(props) {
 
     return (
       <div>
-        <h1>two</h1>
+   
         <Nav updateUser ={props.updateUser}/>
         <Grid item container>
           <img src={require("../img/map-1.png")} className={classes.image} ></img>
@@ -371,7 +357,7 @@ function Home(props) {
   else if (stateOne && !stateTwo && !stateThree && !stateFour) {
     // this is the default return of the component
     return (
-      <div style={{ backgroundColor: 'blue' }}>
+      <div style={{ backgroundColor: '#00355F' }}>
         <Nav updateUser ={props.updateUser}/>
         <Grid item container>
           <img src={require("../img/map-1.png")} className={classes.image} ></img>
@@ -388,9 +374,6 @@ function Home(props) {
 
                 onChange={handleInputChange}
               ></input>
-
-
-
 
               <Button variant="contained" style={{ width: "300px", position: 'center', marginTop: '10px', marginBottom: '20px', background: '#ff9800', fontFamily: 'serif' }} disableElevation type="submit" onClick={handleSubmit}>
                 Search
