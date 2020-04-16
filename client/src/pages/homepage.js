@@ -208,6 +208,7 @@ const bingFunction = () => {
     return (
       <div>
         <Nav updateUser={props.updateUser} />
+        <img src = {require("../img/dayTrip1.jpg")} className={classes.image} ></img>
         <Location
           name={place.name}
           np
@@ -249,6 +250,7 @@ const bingFunction = () => {
     return (
       <div>
         <Nav updateUser={props.updateUser} />
+        <img src = {require("../img/plan.jpg")} className={classes.image} ></img>
         <Location name={place.name} snippet={place.snippet} />
         <Grid item container>
           <Grid item xs={12} className={classes.cityRow}>
@@ -291,6 +293,7 @@ const bingFunction = () => {
     return (
       <div>
         <Nav updateUser={props.updateUser} />
+        {/* <img src="" className={classes.image} ></img> */}
         <Location name={place.name} snippet={place.snippet} />
         <Grid item container style={{ position: "center" }}>
           <Grid item xs={12} className={classes.cityRow}>
@@ -322,7 +325,7 @@ const bingFunction = () => {
       <div>
         <Nav updateUser={props.updateUser} />
         <Grid item container>
-          <img src={mapImage} className={classes.image} ></img>
+          <img src = {require("../img/seattle.jpg")} className={classes.image} ></img>
         </Grid>
 
         <Grid item container>

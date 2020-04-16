@@ -114,10 +114,17 @@ export default function SignInSide(props) {
         console.log(response)
         if (response.status === 200) {
           // update App.js state
-          props.updateUser({
-            loggedIn: true,
-            userName: response.data.userName
-          })
+          props.updateUser(
+          //   {
+          //   // loggedIn: true,
+          //   // userName: response.data.userName,
+          //   // firstName: response.data.firstName,
+          //   // lastName: response.data.lastName
+          
+          // }
+          
+          response.data
+          )
           // update the state to redirect to home
           setRedirect(
             '/home'

@@ -18,8 +18,10 @@ class App extends React.Component {
     this.state = {
       loggedIn: false,
       userName: null,
-      id:""
+      id:"",
+      user:{}
     }
+
 
     this.getUser = this.getUser.bind(this)
     this.componentDidMount = this.componentDidMount.bind(this)
@@ -34,7 +36,7 @@ class App extends React.Component {
 
   //Update the user 
   updateUser (userObject) {
-    this.setState(userObject)
+    this.setState({ user: userObject })
   }
 
   //get the user form database
@@ -62,6 +64,7 @@ class App extends React.Component {
     })
   }
 
+
   //Render the website with several different routes 
   render() {
   return (
@@ -69,7 +72,7 @@ class App extends React.Component {
       <div>
         <Switch>
           <Route exact path="/" render={() =><SignIn updateUser={this.updateUser}/>}/>
-          <Route exact path="/saved" render={() => <SavedPage loggedIn={this.state.loggedIn} userId={this.state.id} updateUser={this.updateUser}/> }/>
+          <Route exact path="/saved" render={() => <SavedPage loggedIn={this.state.loggedIn} userId={this.state.id} updateUser={this.updateUser} user={this.state.user}/> }/>
           <Route exact path="/home" render={() => <Home loggedIn={this.state.loggedIn}  userId={this.state.id} updateUser={this.updateUser} getUser = {this.getUser}/> }/>
           {/* <Route exact path="/home" component={Home} /> */}
           <Route exact path="/signUp" component={SignUp} />
