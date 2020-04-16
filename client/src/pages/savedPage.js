@@ -6,6 +6,7 @@ import { makeStyles } from "@material-ui/styles";
 import Nav from "../components/Nav"
 import tripApi from "../utils/tripApi"
 import itemApi from "../utils/item"
+import MyTrips from "../components/Mytrips/myTrips"
 
 //Saved page component
 function savedPage(props) {
@@ -59,10 +60,24 @@ function savedPage(props) {
 
   return (
     <div>
-
-
-
       <Nav updateUser={props.updateUser} />
+
+
+
+      {trips.map((trip) => (
+        <MyTrips
+          tripItem={tripItem}
+          name={trip.name}
+          country={trip.country}
+          mainId={trip._id}
+
+        />
+      ))}
+
+
+
+
+
       <h1>Your Saved Trips!</h1>
 
       <div> trips
@@ -75,7 +90,7 @@ function savedPage(props) {
 
           {tripItem.map((item) => (
             <div key={item._id}>
-                
+
               <div>{item.name}</div>
               <button onClick={itemDelete}>delete</button>
             </div>
@@ -127,7 +142,7 @@ function savedPage(props) {
           }.bind(this))
         } */}
 
-        
+
       </div>
 
 

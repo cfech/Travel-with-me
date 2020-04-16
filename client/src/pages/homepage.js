@@ -3,18 +3,19 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import API from "../components/API";
 import Poi from "../components/POI";
-import Day from "../components/DAY"
+import Day from "../components/DAY";
 import { makeStyles } from "@material-ui/styles";
 import Nav from "../components/Nav";
 import Interest from "../components/Interests/interest";
 import Location from "../components/Location/location";
-import DayTrip from "../components/Day/dayTrip"
-import Options from "../components/Options/options"
+import DayTrip from "../components/Day/dayTrip";
+import Options from "../components/Options/options";
 import { Grid } from "@material-ui/core";
 import Button from '@material-ui/core/Button';
 import City from "../components/City/city";
 import CityApi from "../components/CITY";
-import tripApi from "../utils/tripApi"
+import tripApi from "../utils/tripApi";
+import BING from "../components/BING";
 // import footer from "../components/footer"
 
 
@@ -35,6 +36,19 @@ function Home(props) {
   const [stateFour, setStateFour] = useState(false)
   const [stateFive, setStateFive] = useState(false)
   const [userId, setUserId] = useState("")
+  const [mapImage, setMapImage] = useState("")
+
+
+// Bing API Function
+const bingFunction = () => {
+  BING.ApiSearch(searchTerm)
+  .then(res => {
+    console.log(res)
+  })
+  .catch(err => {
+    console.log(err)
+  })
+}
 
   //setting the user id on load
   useEffect(() => {
@@ -137,6 +151,7 @@ function Home(props) {
   //function to ste the 2nd state to true nad call the city search api call
   const handleSubmit = (event) => {
     event.preventDefault();
+    bingFunction()
     setStateTwo(true)
     console.log("clicked");
     console.log(stateTwo)
@@ -328,7 +343,7 @@ function Home(props) {
 
         <Nav updateUser={props.updateUser} />
         <Grid item container>
-          <img src={require("../img/map-1.png")} className={classes.image} ></img>
+          <img src={mapImage} className={classes.image} ></img>
         </Grid>
 
 
@@ -371,7 +386,7 @@ function Home(props) {
                     ? item.images[0].sizes.medium.url
                     : "https://via.placeholder.com/150"
                 }
-                userId = {userId}
+                userId={userId}
               />
             </Grid>
           ))}
@@ -420,5 +435,3 @@ function Home(props) {
 }
 
 export default Home;
-
-
