@@ -45,6 +45,7 @@ const bingFunction = () => {
   .then(res => {
     console.log("==== BING ====")
     console.log(res)
+    setMapImage(res.value[0].thumbnailUrl)
   })
   .catch(err => {
     console.log(err)
