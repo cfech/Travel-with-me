@@ -1,5 +1,5 @@
 //Imports
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -15,6 +15,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { Redirect } from 'react-router-dom';
 import API from '../utils/API'
+import toast from "../components/toast.js"
 
 //Styling
 const useStyles = makeStyles((theme) => ({
@@ -86,114 +87,212 @@ export default function SignInSide(props) {
 
   //Password Hook
   const [passwordText, setPasswordText] = useState("");
-  
+
   //Setting the state of password
   const handleInputChangePassword = (event) => {
     setPasswordText(event.target.value);
     console.log(passwordText);
-    
+
   };
-  
+
   //Redirect hook
   const [redirect, setRedirect] = useState("");
 
-// Called when we click our signIn button
+  const [wrongInfo, setWrongInfo] = useState(false)
+
+  // Called when we click our signIn button
   const handleSignIn = (event) => {
     event.preventDefault()
     console.log('handleSubmit')
 
-      API.login({
-          userName: usernameText,
-          password: passwordText
+    API.login({
+      userName: usernameText,
+      password: passwordText
+    })
+      .then(response => {
+        console.log('login response: ')
+        console.log(response)
+        if (response.status === 200) {
+          // update App.js state
+          props.updateUser({
+            loggedIn: true,
+            userName: response.data.userName
+          })
+          // update the state to redirect to home
+          setRedirect(
+            '/home'
+          )
+        }
+      }).catch(error => {
+        console.log('login error: ')
+        console.log(error);
+        setWrongInfo(true)
+
       })
-        .then(response => {
-            console.log('login response: ')
-            console.log(response)
-            if (response.status === 200) {
-                // update App.js state
-                props.updateUser({
-                    loggedIn: true,
-                    userName: response.data.userName
-                })
-                // update the state to redirect to home
-                setRedirect(
-                    '/home'
-                )
-            }
-        }).catch(error => {
-            console.log('login error: ')
-            console.log(error);
-            
-        })
-}
+  }
 
 
   //If redirect is true , redirect to the path name or else show the sign in component
-if (redirect) {
-  return <Redirect to={{ pathname: redirect }} />
-} else {
-  return ( 
+  if (redirect) {
+    return <Redirect to={{ pathname: redirect }} />
+  } else if(wrongInfo){
+    return(
 
-    <Grid container component="main" className={classes.root}>
-      <CssBaseline />
-      <Grid item xs={false} sm={4} md={7} className={classes.image} />
-      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-        <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign in
+      <Grid container component="main" className={classes.root}>
+        <CssBaseline />
+        <Grid item xs={false} sm={4} md={7} className={classes.image} />
+        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+          <div className={classes.paper}>
+            <Avatar className={classes.avatar}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              Sign in
           </Typography>
-          <form className={classes.form} noValidate>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="User Name"
-              name="email"
-              autoComplete="email"
-              autoFocus
-              onChange= {handleInputChangeUserName}
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              onChange= {handleInputChangePassword}
-            />
-           
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-              onClick={handleSignIn}
-            >
-              Sign In
+       
+              <Box component="span" visibility="visible" p={1} m={1} bgcolor="background.paper">
+                Invalid user name and password combination!
+              </Box>
+          
+  
+  
+            <Typography visibility="hidden" component="h1" variant="h5" >
+
+            </Typography>
+
+            <form className={classes.form} noValidate>
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                autoFocus
+                onChange={handleInputChangeUserName}
+              />
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                onChange={handleInputChangePassword}
+              />
+              <FormControlLabel
+                control={<Checkbox value="remember" color="primary" />}
+                label="Remember me"
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+                onClick={handleSignIn}
+              >
+                Sign In
+
             </Button>
-            <Grid container>
-              <Grid item xs={3}>
+              <Grid container>
+                <Grid item xs={3}>
+                </Grid>
+                <Grid item xs={6}>
+                  <Link href="/signUp" variant="body2" className={classes.links} >
+                    {"Don't have an account? Sign Up"}
+                  </Link>
+                </Grid>
               </Grid>
-              <Grid item xs={6}>
-                <Link href="/signUp" variant="body2" className = {classes.links} >
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
-            </Grid>
-          </form>
-        </div>
+            </form>
+          </div>
+        </Grid>
       </Grid>
-    </Grid>
-  );
-}
+    );
+  } 
+  else {
+    return (
+
+      <Grid container component="main" className={classes.root}>
+        <CssBaseline />
+        <Grid item xs={false} sm={4} md={7} className={classes.image} />
+        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+          <div className={classes.paper}>
+            <Avatar className={classes.avatar}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              Sign in
+          </Typography>
+
+            
+              <Box component="span" visibility="hidden" p={1} m={1} bgcolor="background.paper">
+                Invalid user name and password combination!
+              </Box>
+          
+  
+  
+            <Typography visibility="hidden" component="h1" variant="h5" >
+
+            </Typography>
+
+            <form className={classes.form} noValidate>
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                autoFocus
+                onChange={handleInputChangeUserName}
+              />
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                onChange={handleInputChangePassword}
+              />
+              <FormControlLabel
+                control={<Checkbox value="remember" color="primary" />}
+                label="Remember me"
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+                onClick={handleSignIn}
+              >
+                Sign In
+            </Button>
+              <Grid container>
+                <Grid item xs={3}>
+                </Grid>
+                <Grid item xs={6}>
+                  <Link href="/signUp" variant="body2" className={classes.links} >
+                    {"Don't have an account? Sign Up"}
+                  </Link>
+                </Grid>
+              </Grid>
+            </form>
+          </div>
+        </Grid>
+      </Grid>
+    );
+  }
 }

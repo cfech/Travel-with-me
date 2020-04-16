@@ -21,8 +21,11 @@ import itemApi from "../../utils/item"
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
-    margin: 12,
-    boxShadow: "0px 5px 20px rgb(71, 71, 71)"
+    // margin: 12,
+    boxShadow: "0px 5px 20px rgb(71, 71, 71)",
+    marginTop: 10,
+    marginBottom: 10,
+    justifyContent: "center"
   },
   media: {
     height: 0,
@@ -75,7 +78,7 @@ const Interest = ({ name, score, snippet, image, attribution, id, userId }) => {
       .then((res) => {
         console.log(res.data)
         console.log(res.data[0]._id)
-      setTripId(res.data[0]._id)
+        setTripId(res.data[0]._id)
       })
       .catch((err) => { console.log(err) })
   }, [])
@@ -87,12 +90,6 @@ const Interest = ({ name, score, snippet, image, attribution, id, userId }) => {
       console.log("item created");
     })
   }
-  // const saveItem2  = () => {
-  //  console.log("click")
-  // }
-
-
-
 
 
   return (
