@@ -1,18 +1,36 @@
 //Imports
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import API from "../components/API";
 import { makeStyles } from "@material-ui/styles";
+import { Grid } from "@material-ui/core";
 import Nav from "../components/Nav"
 import tripApi from "../utils/tripApi"
 import itemApi from "../utils/item"
 import MyTrips from "../components/Mytrips/myTrips"
+import UserInfo from "../components/UserInfo/userInfo"
+
+
+const useStyles = makeStyles((theme) => ({
+  header: {
+    textAlign: "center",
+    color: "#03355F",
+  },
+  displayed: {
+    alignContent: "center"
+
+
+  }
+
+}));
+
+
 
 //Saved page component
 function savedPage(props) {
   console.log(props)
 
 
+  console.log("users saved page")
+  console.log(props.user)
 
   useEffect(() => {
     if (props.userId) {
@@ -21,6 +39,8 @@ function savedPage(props) {
       getUserTripItems()
     }
   }, [props.userId])
+
+
 
   const [trips, setTrips] = useState([])
 
@@ -44,104 +64,50 @@ function savedPage(props) {
       })
   }
 
-  const tripDelete = () => {
-    console.log("clicked")
-  }
-  const itemDelete = () => {
-    console.log("clicked")
-  }
-  // useEffect (() => {
-  //     console.log("getting trips and items")
-
-  //     // getUserTripItems()
-  //   },[trips])
 
   console.log(props.userId)
 
   let tripPlaces = []
-
+  const classes = useStyles();
   return (
+
     <div>
       <Nav updateUser={props.updateUser} />
 
 
 
-     
 
-      <h1>Your Saved Trips!</h1>
 
-      <div> trips
- {trips.map((trip) => (
-        <MyTrips 
-          tripItem={tripItem}
-          name={trip.name}
-          country={trip.country}
-          mainId={trip._id}
-          key = {trip._id}
-          getUserTrips = { getUserTrips
-            }
-        getTripItems = {getUserTripItems}
-        />
+
+      <Grid item container display="row">
+        <Grid item xs={2} sm={3} md={4}></Grid>
+        <Grid item xs={8} sm={6} md={4} className={classes.header} >
+          <h1 >Your Saved Trips!</h1>
+        </Grid>
+        <Grid item xs={2} sm={3} md={4}></Grid>
+      </Grid>
+
+
+      {trips.map((trip) => (
+        <Grid item container display="row" className={classes.displayed}>
+          <>
+            <Grid item xs={2} sm={3} md={4}></Grid>
+            <Grid item xs={8} sm={6} md={4}>
+              <MyTrips
+                tripItem={tripItem}
+                name={trip.name}
+                country={trip.country}
+                mainId={trip._id}
+                key={trip._id}
+                getUserTrips={getUserTrips
+                }
+                getTripItems={getUserTripItems}
+              />
+            </Grid>
+            <Grid item xs={2} sm={3} md={4}></Grid>
+          </>
+        </Grid>
       ))}
-     
-     
-     
-      {/* {trips.map((trip) => (
-        <div key={trip._id}>
-
-          <div>{trip.name}, {trip.state}, {trip.country}</div>
-          <button onClick={tripDelete}>delete</button>
-
-             
-          ))} */}
-
-  
-
-
-        {/* {trips.map((trip) => (
-        <div key={trip._id}>
-
-          <div>{trip.name}, {trip.state}, {trip.country}</div>
-          <button onClick={tripDelete}>delete</button>
-
-          { trip = tripItem.map(function (item) {
-
-            if(trip._id === item.tripId){
-            return 
-            <div key={item._id}>
-                
-              <div>{item.name}</div>
-              <button onClick={itemDelete}>delete</button>
-            </div>
-            
-          }
-          else{
-
-          }
-        })
-      }
-       
-
-        </div>
-
-      ))} */}
-        {/* {
-          row = this.props.cells.map(function (cell, i) {
-
-            if (cell.URL != null && cell.URL.length > 0) {
-              return <td className={cell.Meta.HTMLClass} key={i}>{cell.Text}</td>;
-            }
-            else {
-              return <td className={cell.Meta.HTMLClass} key={i}>{cell.Text}</td>;
-            }
-
-          }.bind(this))
-        } */}
-
-
-      </div>
-
-
     </div>
   )
 
