@@ -167,10 +167,10 @@ export default function SignInSide(props) {
                 margin="normal"
                 required
                 fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
+                id="username"
+                label="User Name"
+                name="username"
+                autoComplete="username"
                 autoFocus
                 onChange={handleInputChangeUserName}
               />
@@ -186,10 +186,7 @@ export default function SignInSide(props) {
                 autoComplete="current-password"
                 onChange={handleInputChangePassword}
               />
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-              />
+             
               <Button
                 type="submit"
                 fullWidth
@@ -247,10 +244,10 @@ export default function SignInSide(props) {
                 margin="normal"
                 required
                 fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
+                id="username"
+                label="User Name"
+                name="username"
+                autoComplete="username"
                 autoFocus
                 onChange={handleInputChangeUserName}
               />
@@ -266,10 +263,8 @@ export default function SignInSide(props) {
                 autoComplete="current-password"
                 onChange={handleInputChangePassword}
               />
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-              />
+             
+    
               <Button
                 type="submit"
                 fullWidth
