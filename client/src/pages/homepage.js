@@ -15,6 +15,7 @@ import Button from "@material-ui/core/Button";
 import City from "../components/City/city";
 import CityApi from "../components/CITY";
 import tripApi from "../utils/tripApi";
+import BING from "../components/BING";
 // import footer from "../components/footer"
 
 function Home(props) {
@@ -28,12 +29,25 @@ function Home(props) {
   const [dayTrip, setDayTrip] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [city, setCity] = useState([]);
-  const [stateOne, setStateOne] = useState(true);
-  const [stateTwo, setStateTwo] = useState(false);
-  const [stateThree, setStateThree] = useState(false);
-  const [stateFour, setStateFour] = useState(false);
-  const [stateFive, setStateFive] = useState(false);
-  //const [userId, setUserId] = useState("");
+  const [stateOne, setStateOne] = useState(true)
+  const [stateTwo, setStateTwo] = useState(false)
+  const [stateThree, setStateThree] = useState(false)
+  const [stateFour, setStateFour] = useState(false)
+  const [stateFive, setStateFive] = useState(false)
+  const [userId, setUserId] = useState("")
+  const [mapImage, setMapImage] = useState("")
+
+
+// Bing API Function
+const bingFunction = () => {
+  BING.ApiSearch(searchTerm)
+  .then(res => {
+    console.log(res)
+  })
+  .catch(err => {
+    console.log(err)
+  })
+}
 
   //setting the user id on load
   useEffect(() => {
@@ -133,7 +147,8 @@ function Home(props) {
   //function to ste the 2nd state to true nad call the city search api call
   const handleSubmit = (event) => {
     event.preventDefault();
-    setStateTwo(true);
+    bingFunction()
+    setStateTwo(true)
     console.log("clicked");
     console.log(stateTwo);
     CitySearch();
@@ -202,17 +217,9 @@ function Home(props) {
         <Grid item container>
           <Grid item xs={12} className={classes.cityRow}>
             <form>
-              <Button
-                variant="contained"
-                color="primary"
-                style={{
-                  width: "200px",
-                  marginLeft: "10px",
-                  marginTop: "10px",
-                }}
-                disableElevation
-                type="submit"
-              >
+            
+              
+  <Button variant="contained" style={{ width: "20%", marginLeft: '40%', marginRight: '40%', marginTop: '10px', marginBottom: '10px', background: '#33882D', fontFamily: 'serif'}} disableElevation type="submit" >
                 Reset
               </Button>
             </form>
@@ -247,22 +254,11 @@ function Home(props) {
           <Grid item xs={12} className={classes.cityRow}>
             <h3>Click on the heart icons to add an item to your trip</h3>
             <h4>You can restart your search by clicking the reset button</h4>
-
-            <form>
-              <Button
-                variant="contained"
-                color="primary"
-                style={{
-                  width: "200px",
-                  marginLeft: "10px",
-                  marginTop: "10px",
-                }}
-                disableElevation
-                type="submit"
-              >
+<form>
+            <Button variant="contained" style={{ width: "20%", marginLeft: '40%', marginRight: '40%', marginTop: '10px', marginBottom: '10px', background: '#33882D', fontFamily: 'serif'}} disableElevation type="submit" >
                 Reset
               </Button>
-            </form>
+              </form>
           </Grid>
         </Grid>
 
@@ -304,20 +300,8 @@ function Home(props) {
             </h3>
             <h4>You can restart your search by clicking the reset button</h4>
 
-            <form style={{ postion: "center" }}>
-              <Button
-                variant="contained"
-                color="primary"
-                style={{
-                  width: "200px",
-                  marginLeft: "10px",
-                  marginTop: "10px",
-                }}
-                disableElevation
-                type="submit"
-              >
-                Reset
-              </Button>
+            <form style={{ postion: 'center' }}>
+              <Button variant="contained" color="primary" style={{ width: "20%", marginLeft: '40%', marginRight: '40%', marginTop: '10px', backgroundColor: '#388e3c'}} disableElevation type="submit" >New Search</Button>
             </form>
           </Grid>
         </Grid>
@@ -338,62 +322,25 @@ function Home(props) {
       <div>
         <Nav updateUser={props.updateUser} />
         <Grid item container>
-          <img
-            src={require("../img/map-1.png")}
-            className={classes.image}
-          ></img>
+          <img src={mapImage} className={classes.image} ></img>
         </Grid>
 
         <Grid item container>
           <Grid item xs={12} className={classes.cityRow}>
-            <form style={{ postion: "center" }}>
+            <form style={{ postion: 'center' }}>
+
               <input
-                style={{
-                  width: "70%",
-                  height: "50px",
-                  marginLeft: "240px",
-                  marginTop: "40px",
-                  fontFamily: "serif",
-                  fontSize: "20px",
-                }}
-                placeholder="Change your mind? Choose Another Destination..."
+                style={{ width: '50%', height: '50px', marginLeft: '25%', marginRight: '25%', marginTop: '10px', fontFamily: 'serif', fontSize: '20px' }}
+                placeholder="Choose a Different Destination..."
                 onChange={handleInputChange}
               ></input>
             </form>
             <form>
-              <Button
-                variant="contained"
-                style={{
-                  width: "200px",
-                  position: "center",
-                  marginLeft: "20px",
-                  marginTop: "10px",
-                  marginBottom: "20px",
-                  background: "#ff9800",
-                  fontFamily: "serif",
-                }}
-                disableElevation
-                type="submit"
-                onClick={handleSubmit}
-              >
+      
+              <Button variant="contained" style={{ width: "20%", marginLeft: '40%', marginRight: '40%', marginTop: '10px', marginBottom: '10px', background: '#E0E0E0E0', fontFamily: 'serif'}} disableElevation type="submit" onClick={handleSubmit}>
                 Search
               </Button>
-              <Button
-                variant="contained"
-                style={{
-                  width: "200px",
-                  position: "center",
-                  marginLeft: "20px",
-                  marginTop: "10px",
-                  marginBottom: "20px",
-                  background: "#388e3c",
-                  fontFamily: "serif",
-                }}
-                disableElevation
-                type="submit"
-              >
-                Reset
-              </Button>
+
             </form>
           </Grid>
         </Grid>
@@ -449,32 +396,15 @@ function Home(props) {
           <Grid item xs={12} className={classes.cityRow}>
             <form style={{ postion: "center" }}>
               <input
-                style={{
-                  width: "70%",
-                  height: "50px",
-                  marginLeft: "240px",
-                  marginTop: "40px",
-                  fontFamily: "serif",
-                  fontSize: "20px",
-                }}
+
+                style={{ width: '50%', height: '50px', marginLeft: '25%', marginRight: '25%', marginTop: '40px', fontFamily: 'serif', fontSize: '20px' }}
                 placeholder="Please Choose a Destination..."
                 onChange={handleInputChange}
               ></input>
 
-              <Button
-                variant="contained"
-                style={{
-                  width: "300px",
-                  position: "center",
-                  marginTop: "10px",
-                  marginBottom: "20px",
-                  background: "#ff9800",
-                  fontFamily: "serif",
-                }}
-                disableElevation
-                type="submit"
-                onClick={handleSubmit}
-              >
+
+
+              <Button variant="contained" style={{ width: "20%", marginLeft: '40%', marginRight: '40%', marginTop: '10px', marginBottom: '20px', background: '#E0E0E0E0', fontFamily: 'serif'}} disableElevation type="submit" onClick={handleSubmit}>
                 Search
               </Button>
             </form>

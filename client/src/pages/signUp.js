@@ -155,11 +155,11 @@ export default function SignUp() {
                 variant="outlined"
                 required
                 fullWidth
-                id="email"
-                label="Email Address"
+                id="userName"
+                label="User Name"
                 name="userName"
                 onChange={handleInputChangeU}
-                autoComplete="email"
+                autoComplete="userName"
               />
             </Grid>
             <Grid item xs={12}>
