@@ -9,6 +9,10 @@ import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import IconButton from '@material-ui/core/IconButton'
+<<<<<<< HEAD
+import CardTravelIcon from '@material-ui/icons/CardTravel';
+=======
+>>>>>>> 1a7535e6674e66a1a3f63037f384ded83170b3f9
 import items from "../../utils/item"
 import trips from "../../utils/tripApi"
 
@@ -44,21 +48,37 @@ const MyTrips = ({ name, mainId, tripItem, country, key, getUserTrips, getTripIt
 
     const itemDelete = (id) => {
         items.deleteItem(id)
+<<<<<<< HEAD
+        
+        .then (() => {
+            console.log("item Deleted ")
+            getTripItems()
+        } )
+    
+=======
 
             .then(() => {
                 console.log("item Deleted ")
                 getTripItems()
             })
 
+>>>>>>> 1a7535e6674e66a1a3f63037f384ded83170b3f9
     }
 
     const tripDelete = (id) => {
 
         trips.deleteTrip(id)
+<<<<<<< HEAD
+        .then(() => {
+            console.log("trip Deleted")
+            getUserTrips()
+        })
+=======
             .then(() => {
                 console.log("trip Deleted")
                 getUserTrips()
             })
+>>>>>>> 1a7535e6674e66a1a3f63037f384ded83170b3f9
     }
 
 
@@ -81,7 +101,11 @@ const MyTrips = ({ name, mainId, tripItem, country, key, getUserTrips, getTripIt
 
                 <ListItem button onClick={handleClick} key={key} className={classes.top}>
                     <ListItemIcon className={classes.travelIcon}>
+<<<<<<< HEAD
+                        <CardTravelIcon onClick={() => tripDelete(mainId)} />
+=======
                         <HighlightOffIcon className={classes.delete} onClick={() => tripDelete(mainId)} />
+>>>>>>> 1a7535e6674e66a1a3f63037f384ded83170b3f9
                     </ListItemIcon>
                     <ListItemText>{name}, {country.replace(/_/g, " ").replace(/[0-9]/g, "")}</ListItemText>
                     {open ? <ExpandLess /> : <ExpandMore />}
@@ -95,7 +119,11 @@ const MyTrips = ({ name, mainId, tripItem, country, key, getUserTrips, getTripIt
                             <ListItem button className={classes.nested} key={item._id}>
                                 <IconButton className={classes.delete} onClick={() => itemDelete(item._id)}><HighlightOffIcon /></IconButton>
                                 {item.name}
+<<<<<<< HEAD
+                                <IconButton className={classes.delete} onClick={() => itemDelete(item._id)}><HighlightOffIcon /></IconButton>
+=======
 
+>>>>>>> 1a7535e6674e66a1a3f63037f384ded83170b3f9
                             </ListItem>
                         ))}
                     </List>
