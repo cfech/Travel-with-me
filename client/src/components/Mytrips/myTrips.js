@@ -9,6 +9,9 @@ import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import IconButton from '@material-ui/core/IconButton'
+import Box from '@material-ui/core/Box';
+import Container from '@material-ui/core/Container';
+import Tooltip from '@material-ui/core/Tooltip';
 import items from "../../utils/item"
 import trips from "../../utils/tripApi"
 
@@ -18,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
         width: "100%",
 
-        backgroundColor: "#9499A7",
+        backgroundColor: "white",
     },
     nested: {
         paddingLeft: theme.spacing(4),
@@ -33,7 +36,10 @@ const useStyles = makeStyles((theme) => ({
     top: {
         backgroundImage: "linear-gradient(to top, #6a85b6 0%, #bac8e0 100%)",
         color: "white",
-        boxShadow: "0px 5px 20px rgb(71, 71, 71)"
+        borderRadius:25
+    },
+    wrap:{
+    background:"white"
     }
 }));
 
@@ -64,7 +70,6 @@ const MyTrips = ({ name, mainId, tripItem, country, key, getUserTrips, getTripIt
 
     let tripPlaces = tripItem.filter(place => mainId === place.tripId)
 
-    console.log("trip places ++++++++++++++")
     console.log(tripPlaces)
     const handleClick = () => {
         setOpen(!open);
@@ -72,6 +77,7 @@ const MyTrips = ({ name, mainId, tripItem, country, key, getUserTrips, getTripIt
 
     return (
         <>
+        <Container className={classes.wrap}>
             <List
                 component="nav"
                 aria-labelledby="nested-list-subheader"
@@ -81,7 +87,7 @@ const MyTrips = ({ name, mainId, tripItem, country, key, getUserTrips, getTripIt
 
                 <ListItem button onClick={handleClick} key={key} className={classes.top}>
                     <ListItemIcon className={classes.travelIcon}>
-                        <HighlightOffIcon className={classes.delete} onClick={() => tripDelete(mainId)} />
+                    <Tooltip title="Delete Item" placement="left"><HighlightOffIcon className={classes.delete} onClick={() => tripDelete(mainId)} /></Tooltip>
                     </ListItemIcon>
                     <ListItemText>{name}, {country.replace(/_/g, " ").replace(/[0-9]/g, "")}</ListItemText>
                     {open ? <ExpandLess /> : <ExpandMore />}
@@ -93,7 +99,7 @@ const MyTrips = ({ name, mainId, tripItem, country, key, getUserTrips, getTripIt
 
                         {tripPlaces.map((item) => (
                             <ListItem button className={classes.nested} key={item._id}>
-                                <IconButton className={classes.delete} onClick={() => itemDelete(item._id)}><HighlightOffIcon /></IconButton>
+                                <IconButton className={classes.delete} onClick={() => itemDelete(item._id)}><Tooltip title="Delete Item" placement="left"><HighlightOffIcon /></Tooltip></IconButton>
                                 {item.name}
                             </ListItem>
                         ))}
@@ -101,7 +107,7 @@ const MyTrips = ({ name, mainId, tripItem, country, key, getUserTrips, getTripIt
                 </Collapse>
 
             </List>
-
+        </Container>
         </>
     )
 }
