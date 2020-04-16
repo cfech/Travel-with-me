@@ -175,12 +175,7 @@ export default function SignUp() {
                 autoComplete="current-password"
               />
             </Grid>
-            <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive travel inspirations and updates via email."
-              />
-            </Grid>
+           
           </Grid>
           <Button
             type="submit"

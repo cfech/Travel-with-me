@@ -53,7 +53,7 @@ function Home(props) {
       },
     },
     cityRow: {
-      background: "rgb(163, 187, 230)",
+      background: "#EEC218",
       margin: 0,
       justifyContent: "space-around"
 

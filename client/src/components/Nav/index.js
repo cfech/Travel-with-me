@@ -2,20 +2,20 @@
 import React, { useState } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import { Link, Redirect } from "react-router-dom"
-
+import IconButton from "@material-ui/core/IconButton";
 import Icon from '@material-ui/core/Icon';
 import HomeIcon from '@material-ui/icons/Home';
 import Api from "../../utils/API"
-// import AccountBoxIcon from '@material-ui/icons/AccountBox';
-// import SaveIcon from '@material-ui/icons/Save';
-// import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import GitHubIcon from "@material-ui/icons/GitHub";
+import LinkedInIcon from "@material-ui/icons/LinkedIn";
+import AssignmentIcon from "@material-ui/icons/Assignment";
+import Button from "@material-ui/core/Button";
+
 
 
 //styling 
@@ -28,50 +28,24 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
-    display: 'none',
-    [theme.breakpoints.up('sm')]: {
-      display: 'block',
+    color: "#00355F",
+    fontFamily: 'serif',
     },
-  },
-  search: {
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-    '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
+    links: {
+      color: "#00355F",
+      textDecoration: "none",
+      fontSize: 20,
+      fontFamily: 'serif',
     },
-    marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(1),
-      width: 'auto',
+    home: {
+      color: "#00355F",
+      fontSize: 30,
+      fontFamily: 'serif',
     },
-  },
-  searchIcon: {
-    padding: theme.spacing(0, 1),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  inputRoot: {
-    color: 'inherit',
-  },
-  inputInput: {
-    padding: theme.spacing(2, 100, 2, 20),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(10)}px)`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: '12ch',
-      '&:focus': {
-        width: '20ch',
-      },
-    },
-  },
+    navBar: {
+      background: "#F5c71a"
+    }
+    
 }));
 
 //Nav bar component
@@ -98,28 +72,25 @@ export default function SearchAppBar() {
   } else {
     return (
 
-      <div className={classes.root}>
-        <AppBar position="static">
-          <Toolbar>
-            <form> <Typography className={classes.title} style={{ fontFamily: 'serif', fontSize: "35px", position: 'left', marginLeft: '15px' }} noWrap>
-              Travel-with-Me
-            </Typography>
-            </form>
-            <Typography className={classes.title} style={{ marginLeft: "700px" }} >
+    <div className={classes.root}>
+      <AppBar position="static" className={classes.navBar}>
+        <Toolbar>
+          <Typography variant="h4" className={classes.title}>
+              Travel-with-Me 
+          </Typography>
 
-              <Link className="navbar-brand" to="/home" style={{ fontSize: '20px' }}> <HomeIcon></HomeIcon>  </Link>
-
-              <Link className="navbar-brand" to="/saved" style={{ fontFamily: 'serif', marginLeft: '10px', fontSize: "20px", postion: 'right' }} > Saved </Link>
-
-              <button onClick={logout}>Log Out</button>
-
-
-            </Typography>
-
-          </Toolbar>
-        </AppBar>
-      </div>
-    );
-  }
-
-}
+          <IconButton>
+          <Link  to="/home" > <HomeIcon className={classes.home} />  </Link>
+          </IconButton>
+          <IconButton>
+          <Link className={classes.links} to="/saved"  > PROFILE </Link>
+          </IconButton>
+          <IconButton>
+          <IconButton className={classes.links} onClick={logout}>LOG-OUT</IconButton>
+           
+          </IconButton>
+        </Toolbar>
+      </AppBar>
+    </div>
+  );
+}}
