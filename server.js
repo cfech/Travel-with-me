@@ -55,7 +55,7 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost/savedLocations`);
+mongoose.connect(process.env.MONGODB_URI || `mongodb://master:master1@ds359298.mlab.com:59298/heroku_dgwwpqkh`);
 
 
 // Start the API server
