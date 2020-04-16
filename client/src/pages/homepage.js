@@ -11,13 +11,14 @@ import Location from "../components/Location/location";
 import DayTrip from "../components/Day/dayTrip";
 import Options from "../components/Options/options";
 import { Grid } from "@material-ui/core";
-import Button from '@material-ui/core/Button';
+import Button from "@material-ui/core/Button";
 import City from "../components/City/city";
+import Credits from "../components/Credits/credits"
 import CityApi from "../components/CITY";
 import tripApi from "../utils/tripApi";
 import BING from "../components/BING";
 // import footer from "../components/footer"
-
+import Typography from "@material-ui/core/Typography";
 
 function Home(props) {
   // Setting our component's initial state
@@ -27,7 +28,7 @@ function Home(props) {
   const [place, setPlace] = useState({});
   const [interest, setInterest] = useState([]);
   const [daySearch, setDaySearch] = useState("");
-  const [dayTrip, setDayTrip] = useState([])
+  const [dayTrip, setDayTrip] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [city, setCity] = useState([]);
   const [stateOne, setStateOne] = useState(true)
@@ -54,11 +55,12 @@ const bingFunction = () => {
 
   //setting the user id on load
   useEffect(() => {
-    setUserId(props.userId)
+    props.getUser();
+    // console.log(props.userId)
+    //setUserId(props.userId);
+  }, []);
 
-  });
-
-  //styling 
+  //styling
   const useStyles = makeStyles(() => ({
     links: {
       color: "black",
@@ -71,13 +73,12 @@ const bingFunction = () => {
     cityRow: {
       background: "#EEC218",
       margin: 0,
-      justifyContent: "space-around"
-
+      justifyContent: "space-around",
     },
     media: {
       height: 300,
       margin: 0,
-      width: "100%"
+      width: "100%",
     },
     image: {
       width: "100%",
@@ -85,14 +86,12 @@ const bingFunction = () => {
     options: {
       marginBottom: 50,
     },
-    int:
-    {
-      justifyContent: "center"
-    }
-
+    int: {
+      justifyContent: "center",
+    },
   }));
 
-  //using styles 
+  //using styles
   const classes = useStyles();
   // need error validation for blank search term
 
@@ -106,7 +105,7 @@ const bingFunction = () => {
         setLat(res.data.results[0].coordinates.latitude);
         setLong(res.data.results[0].coordinates.longitude);
         setPlace(res.data.results[0]);
-        setDaySearch(res.data.results[0].id)
+        setDaySearch(res.data.results[0].id);
       })
       .catch((err) => console.log(err));
   };
@@ -127,22 +126,21 @@ const bingFunction = () => {
     Day.ApiSearch(daySearch)
       .then((res) => {
         console.log("working");
-        console.log(res.data.results)
-        console.log(res.data.results[0].days[0].itinerary_items)
-        setDayTrip(res.data.results[0].days[0].itinerary_items)
+        console.log(res.data.results);
+        console.log(res.data.results[0].days[0].itinerary_items);
+        setDayTrip(res.data.results[0].days[0].itinerary_items);
       })
-      .catch((err) => console.log(err))
-  }
+      .catch((err) => console.log(err));
+  };
 
   //city api search
   const CitySearch = () => {
-    CityApi.ApiSearch(searchTerm)
-      .then((res) => {
-        console.log("city search");
-        console.log(res.data.results)
-        setCity(res.data.results)
-      })
-  }
+    CityApi.ApiSearch(searchTerm).then((res) => {
+      console.log("city search");
+      console.log(res.data.results);
+      setCity(res.data.results);
+    });
+  };
 
   // input change for search tearm
   const handleInputChange = (event) => {
@@ -156,31 +154,28 @@ const bingFunction = () => {
     bingFunction()
     setStateTwo(true)
     console.log("clicked");
-    console.log(stateTwo)
+    console.log(stateTwo);
     CitySearch();
   };
 
-
   //User Name and Id console.log
-  console.log(props.loggedIn)
-  console.log(userId)
-
+  console.log(props.loggedIn);
+  console.log(props.userId);
 
   //Function to set the third state to true and call the place api search with the location id
   const handleThree = (event, id) => {
     event.preventDefault();
-    console.log("three!!")
-    setStateThree(true)
-    console.log(id)
-    ApiSearch(id)
-
-  }
+    console.log("three!!");
+    setStateThree(true);
+    console.log(id);
+    ApiSearch(id);
+  };
 
   // Set the state of four to true and call point of interest api search for the selected location
   const handleInterest = (event) => {
     event.preventDefault();
     PoiSearch();
-    setStateFour(true)
+    setStateFour(true);
     console.log("poisearch");
   };
 
@@ -188,49 +183,53 @@ const bingFunction = () => {
   const handleDay = (event) => {
     event.preventDefault();
     DaySearch();
-    setStateFive(true)
-    console.log("day search")
-  }
+    setStateFive(true);
+    console.log("day search");
+  };
 
-  //If error return error page 
+  //If error return error page
   if (error) {
     return (
       <>
         <Nav updateUser={props.updateUser} />
         <form>
           <input
-            style={{ width: '800px' }}
+            style={{ width: "800px" }}
             placeholder="location search4"
             onChange={handleInputChange}
           ></input>
-          <button className="searchBtn" type="submit" onClick={handleSubmit}>
-          </button>
+          <button
+            className="searchBtn"
+            type="submit"
+            onClick={handleSubmit}
+          ></button>
         </form>
       </>
     );
 
     // STATE FIVE!!  STATE FIVE!!STATE FIVE!!STATE FIVE!!STATE FIVE!!STATE FIVE!!STATE FIVE!!STATE FIVE!!STATE FIVE!!STATE FIVE!!
-  }
-  else if (stateOne && stateTwo && stateThree && !stateFour && stateFive) {
-
+  } else if (stateOne && stateTwo && stateThree && !stateFour && stateFive) {
     return (
       <div>
-
         <Nav updateUser={props.updateUser} />
+        <img src = {require("../img/dayTrip1.jpg")} className={classes.image} ></img>
         <Location
-          name={place.name} np
+          name={place.name}
+          np
           snippet={place.snippet}
         // image={place.images[0].source_url}
-
         />
         <Grid item container>
           <Grid item xs={12} className={classes.cityRow}>
             <form>
-              <Button variant="contained" color="primary" style={{ width: "200px", marginLeft: '10px', marginTop: '10px' }} disableElevation type="submit">Reset</Button>
+            
+              
+  <Button variant="contained" style={{ width: "20%", marginLeft: '40%', marginRight: '40%', marginTop: '10px', marginBottom: '10px', background: '#33882D', fontFamily: 'serif'}} disableElevation type="submit" >
+                New Search
+              </Button>
             </form>
           </Grid>
         </Grid>
-
 
         <Grid item container display="row">
           {/* map through daytrip items */}
@@ -243,34 +242,29 @@ const bingFunction = () => {
                 name={item.poi.name}
                 score={Math.round(item.poi.score)}
                 attribution={item.poi.attribution}
-
               />
             </Grid>
           ))}
         </Grid>
       </div>
-    )
+    );
 
     // STATE FOUR!! STATE FOUR!! STATE FOUR!! STATE FOUR!! STATE FOUR!! STATE FOUR!! STATE FOUR!! STATE FOUR!! STATE FOUR!! STATE FOUR!! STATE FOUR!
   } else if (stateOne && stateTwo && stateThree && stateFour) {
-
     return (
       <div>
-
         <Nav updateUser={props.updateUser} />
-        <Location
-          name={place.name}
-          snippet={place.snippet}
-        />
+        <img src = {require("../img/plan.jpg")} className={classes.image} ></img>
+        <Location name={place.name} snippet={place.snippet} />
         <Grid item container>
           <Grid item xs={12} className={classes.cityRow}>
             <h3>Click on the heart icons to add an item to your trip</h3>
             <h4>You can restart your search by clicking the reset button</h4>
-
-            <form>
-              <Button variant="contained" color="primary" style={{ width: "200px", marginLeft: '10px', marginTop: '10px' }} disableElevation type="submit">Reset</Button>
+<form>
+            <Button variant="contained" style={{ width: "20%", marginLeft: '40%', marginRight: '40%', marginTop: '10px', marginBottom: '10px', background: '#33882D', fontFamily: 'serif', color: 'white'}} disableElevation type="submit" >
+                New Search
+              </Button>
             </form>
-
           </Grid>
         </Grid>
 
@@ -289,34 +283,34 @@ const bingFunction = () => {
                     : "https://via.placeholder.com/150"
                 }
                 attribution={item.attribution}
-                userId={userId}
+                userId={props.userId}
               />
             </Grid>
           ))}
         </Grid>
       </div>
-    )
+    );
   }
 
   // STATE THREE!! STATE THREE!! STATE THREE!! STATE THREE!! STATE THREE!! STATE THREE!! STATE THREE!! STATE THREE!! STATE THREE!!
   else if (stateOne && stateTwo && stateThree && !stateFour) {
     return (
       <div>
-
         <Nav updateUser={props.updateUser} />
-        <img src={mapImage} className={classes.image} ></img>
-        <Location
-          name={place.name}
-          snippet={place.snippet}
-        />
-        <Grid item container style={{ position: 'center' }}>
+        {/* <img src="" className={classes.image} ></img> */}
+        <Location name={place.name} snippet={place.snippet} />
+        <Grid item container style={{ position: "center" }}>
           <Grid item xs={12} className={classes.cityRow}>
+          <form>
+<Typography style={{backgroundColor: "#8CBF1C", color: '#060063', width: "100%", fontFamily: 'serif', fontSize: 30, textPosition: 'center'}}> Please choose if you would like to build a custom trip, or  plan a day trip! 
+</Typography>
+<Typography style={{backgroundColor: "#8CBF1C", color: '#060063', width: "100%", fontFamily: 'serif', fontSize: 30, textPosition: 'center'}}> You can restart your search by clicking the reset button!
+</Typography>
 
-            <h3>Please choose if you would like to build a custom trip, or  plan a day trip</h3>
-            <h4>You can restart your search by clicking the reset button</h4>
+</form>
 
             <form style={{ postion: 'center' }}>
-              <Button variant="contained" color="primary" style={{ width: "200px", marginLeft: '10px', marginTop: '10px' }} disableElevation type="submit" >Reset</Button>
+              <Button variant="contained"  style={{ width: "20%", marginLeft: '40%', marginRight: '40%', marginTop: '10px', backgroundColor: '#388e3c', fontFamily: 'serif', color: 'white'}} disableElevation type="submit" >New Search</Button>
             </form>
           </Grid>
         </Grid>
@@ -324,54 +318,52 @@ const bingFunction = () => {
         <Grid item container display="row" className={useStyles.options}>
           <Grid item xs={false} sm={1} />
           <Grid item xs={12} sm={10}>
-            <Options
-              handleDay={handleDay}
-              handleInterest={handleInterest} />
+            <Options handleDay={handleDay} handleInterest={handleInterest} />
           </Grid>
           <Grid item xs={false} sm={1} />
         </Grid>
-
       </div>
-    )
+    );
   }
   // STATE TWO!!! STATE TWO!!! STATE TWO!!! STATE TWO!!! STATE TWO!!! STATE TWO!!! STATE TWO!!! STATE TWO!!! STATE TWO!!! STATE TWO!!!
   else if (stateOne && stateTwo && !stateThree && !stateFour) {
-
     return (
       <div>
-
         <Nav updateUser={props.updateUser} />
         <Grid item container>
-          <img src={mapImage} className={classes.image} ></img>
+          <img src = {require("../img/seattle.jpg")} className={classes.image} ></img>
         </Grid>
-
 
         <Grid item container>
           <Grid item xs={12} className={classes.cityRow}>
             <form style={{ postion: 'center' }}>
+
               <input
-                style={{ width: '70%', height: '50px', marginLeft: '240px', marginTop: '40px', fontFamily: 'serif', fontSize: '20px' }}
-                placeholder="Change your mind? Choose Another Destination..."
+                style={{ width: '50%', height: '50px', marginLeft: '25%', marginRight: '25%', marginTop: '10px', fontFamily: 'serif', fontSize: '20px' }}
+                placeholder="Choose a Different Destination..."
                 onChange={handleInputChange}
               ></input>
             </form>
             <form>
-              <Button variant="contained" style={{ width: "200px", position: 'center', marginLeft: '20px', marginTop: '10px', marginBottom: '20px', background: '#ff9800', fontFamily: 'serif' }} disableElevation type="submit" onClick={handleSubmit}>
+
+              <Button variant="contained" style={{ width: "20%", marginLeft: '40%', marginRight: '40%', marginTop: '10px', marginBottom: '10px', background: '#E0E0E0E0', fontFamily: 'serif' }} disableElevation type="submit" onClick={handleSubmit}>
                 Search
               </Button>
-              <Button variant="contained" style={{ width: "200px", position: 'center', marginLeft: '20px', marginTop: '10px', marginBottom: '20px', background: '#388e3c', fontFamily: 'serif' }} disableElevation type="submit">Reset</Button>
+
             </form>
           </Grid>
         </Grid>
-
-        <h2>Choose which {searchTerm} you would like to go to, or search for new destination!</h2>
-
+        <form>
+<Typography style={{backgroundColor: "#8CBF1C", color: '#060063', width: "100%", fontFamily: 'serif', fontSize: 30, marginLeft: 10 }}>  Which {searchTerm} you would like to go to? Or search for new destination!
+</Typography>
+</form>
 
 
         <Grid item container>
           {city.map((item) => (
             <Grid key={item.id} item xs={6} sm={4} md={3}>
-              <City key={item.id}
+              <City
+                key={item.id}
                 name={item.name}
                 state={item.parent_id}
                 country={item.country_id}
@@ -383,47 +375,48 @@ const bingFunction = () => {
                     ? item.images[0].sizes.medium.url
                     : "https://via.placeholder.com/150"
                 }
-                userId={userId}
+                userId={props.userId}
               />
             </Grid>
           ))}
         </Grid>
       </div>
-    )
+    );
   }
   // STATE ONE!! STATE ONE!! STATE ONE!! STATE ONE!! STATE ONE!! STATE ONE!! STATE ONE!! STATE ONE!! STATE ONE!! STATE ONE!! STATE ONE!!
   else if (stateOne && !stateTwo && !stateThree && !stateFour) {
     // this is the default return of the component
     return (
-      <div style={{ backgroundColor: 'blue' }}>
+      <div style={{ backgroundColor: "blue" }}>
         <Nav updateUser={props.updateUser} />
-        <Grid item container>
-          <img src={require("../img/map-1.png")} className={classes.image} ></img>
+        <Grid item container> 
+          <img src={require("../img/travel.png")} className={classes.image} ></img>
         </Grid>
         {/* buttons container */}
         <Grid item container>
 
-          <h3>Plan a new trip by searching for the city you would like to visit or go to the saved page to see your saved trips </h3>
+      
+<Typography style={{backgroundColor: "#8CBF1C", color: '#060063', width: "100%", fontFamily: 'serif', fontSize: 32, textPosition: 'center'}}> Pick a city! Or save trips to your Profile Page! 
+</Typography>
+          
 
           <Grid item xs={12} className={classes.cityRow}>
-            <form style={{ postion: 'center' }}>
+            <form style={{ postion: "center" }}>
               <input
 
-                style={{ width: '70%', height: '50px', marginLeft: '240px', marginTop: '40px', fontFamily: 'serif', fontSize: '20px' }}
+                style={{ width: '50%', height: '50px', marginLeft: '25%', marginRight: '25%', marginTop: '40px', fontFamily: 'serif', fontSize: '20px' }}
                 placeholder="Please Choose a Destination..."
-
                 onChange={handleInputChange}
               ></input>
 
 
 
-              <Button variant="contained" style={{ width: "300px", position: 'center', marginTop: '10px', marginBottom: '20px', background: '#ff9800', fontFamily: 'serif' }} disableElevation type="submit" onClick={handleSubmit}>
+              <Button variant="contained" style={{ width: "20%", marginLeft: '40%', marginRight: '40%', marginTop: '10px', marginBottom: '20px', background: '#E0E0E0E0', fontFamily: 'serif' }} disableElevation type="submit" onClick={handleSubmit}>
                 Search
               </Button>
             </form>
 
-            <h1> some stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuffsome stuff </h1>
-
+            <Credits />
           </Grid>
         </Grid>
       </div>
