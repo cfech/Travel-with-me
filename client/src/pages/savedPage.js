@@ -6,18 +6,29 @@ import Nav from "../components/Nav"
 import tripApi from "../utils/tripApi"
 import itemApi from "../utils/item"
 import MyTrips from "../components/Mytrips/myTrips"
-import UserInfo from "../components/UserInfo/userInfo"
+
 
 
 const useStyles = makeStyles((theme) => ({
   header: {
     textAlign: "center",
     color: "#03355F",
+    background:"white",
+    marginTop:20,
+    borderTopLeftRadius: 25,
+    borderTopRightRadius:25
+  },
+  footer:{
+    background:"white",
+    height: 30,
+    marginBottom:20,
+    borderBottomLeftRadius:25,
+    borderBottomRightRadius:25
+    
+
   },
   displayed: {
     alignContent: "center"
-
-
   }
 
 }));
@@ -74,7 +85,9 @@ function savedPage(props) {
     <div>
       <Nav updateUser={props.updateUser} />
 
-
+      <Grid item container> 
+          <img src={require("../img/saved.png")} className={classes.image} ></img>
+        </Grid>
 
 
 
@@ -108,7 +121,17 @@ function savedPage(props) {
           </>
         </Grid>
       ))}
-    </div>
+   
+
+<Grid item container display="row">
+<Grid item xs={2} sm={3} md={4}></Grid>
+<Grid item xs={8} sm={6} md={4} className={classes.footer} >
+  
+</Grid>
+<Grid item xs={2} sm={3} md={4}></Grid>
+</Grid>
+
+</div>
   )
 
 }

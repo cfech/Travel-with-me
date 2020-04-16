@@ -20,6 +20,7 @@ import BING from "../components/BING";
 // import footer from "../components/footer"
 import Typography from "@material-ui/core/Typography";
 
+
 function Home(props) {
   // Setting our component's initial state
   const [lat, setLat] = useState(0);
@@ -40,16 +41,18 @@ function Home(props) {
   const [mapImage, setMapImage] = useState("")
 
 
-  // Bing API Function
-  const bingFunction = () => {
-    BING.ApiSearch(searchTerm)
-      .then(res => {
-        console.log(res)
-      })
-      .catch(err => {
-        console.log(err)
-      })
-  }
+// Bing API Function
+const bingFunction = () => {
+  BING.ApiSearch(searchTerm)
+  .then(res => {
+    console.log("==== BING ====")
+    console.log(res)
+    setMapImage(res.value[0].contentUrl)
+  })
+  .catch(err => {
+    console.log(err)
+  })
+}
 
   //setting the user id on load
   useEffect(() => {
@@ -210,7 +213,7 @@ function Home(props) {
     return (
       <div>
         <Nav updateUser={props.updateUser} />
-        <img src = {require("../img/dayTrip1.jpg")} className={classes.image} ></img>
+        <img src = {require("../img/state-5.png")} className={classes.image} ></img>
         <Location
           name={place.name}
           np
@@ -252,7 +255,7 @@ function Home(props) {
     return (
       <div>
         <Nav updateUser={props.updateUser} />
-        <img src = {require("../img/plan.jpg")} className={classes.image} ></img>
+        <img src = {require("../img/state-4.png")} className={classes.image} ></img>
         <Location name={place.name} snippet={place.snippet} />
         <Grid item container>
           <Grid item xs={12} className={classes.cityRow}>
@@ -329,7 +332,7 @@ function Home(props) {
       <div>
         <Nav updateUser={props.updateUser} />
         <Grid item container>
-          <img src = {require("../img/seattle.jpg")} className={classes.image} ></img>
+          <img src = {require("../img/state-2.png")} className={classes.image} ></img>
         </Grid>
 
         <Grid item container>
@@ -388,7 +391,7 @@ function Home(props) {
       <div style={{ backgroundColor: "blue" }}>
         <Nav updateUser={props.updateUser} />
         <Grid item container> 
-          <img src={require("../img/travel.png")} className={classes.image} ></img>
+          <img src={require("../img/state-1.png")} className={classes.image} ></img>
         </Grid>
         {/* buttons container */}
         <Grid item container>
@@ -396,8 +399,7 @@ function Home(props) {
       
 <Typography style={{backgroundColor: "#8CBF1C", color: '#060063', width: "100%", fontFamily: 'serif', fontSize: 32, textPosition: 'center'}}> Pick a city you would like to visit! Or go to the Profile Page to see your saved trips! 
 </Typography>
-<Typography style={{backgroundColor: "#8CBF1C", color: '#060063', width: "100%", fontFamily: 'serif', fontSize: 32, textPosition: 'center'}}> Or go to the Profile Page to see your saved trips! 
-</Typography>
+
 
           
 
