@@ -380,7 +380,7 @@ const bingFunction = () => {
                     ? item.images[0].sizes.medium.url
                     : "https://via.placeholder.com/150"
                 }
-                userId = {userId}
+                userId={userId}
               />
             </Grid>
           ))}
@@ -429,5 +429,3 @@ const bingFunction = () => {
 }
 
 export default Home;
-
-
