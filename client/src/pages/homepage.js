@@ -17,6 +17,7 @@ import CityApi from "../components/CITY";
 import tripApi from "../utils/tripApi";
 import BING from "../components/BING";
 // import footer from "../components/footer"
+import Typography from "@material-ui/core/Typography";
 
 
 function Home(props) {
@@ -227,7 +228,7 @@ const bingFunction = () => {
             
               
   <Button variant="contained" style={{ width: "20%", marginLeft: '40%', marginRight: '40%', marginTop: '10px', marginBottom: '10px', background: '#33882D', fontFamily: 'serif'}} disableElevation type="submit" >
-                Reset
+                New Search
               </Button>
             </form>
           </Grid>
@@ -269,8 +270,8 @@ const bingFunction = () => {
             <h3>Click on the heart icons to add an item to your trip</h3>
             <h4>You can restart your search by clicking the reset button</h4>
 <form>
-            <Button variant="contained" style={{ width: "20%", marginLeft: '40%', marginRight: '40%', marginTop: '10px', marginBottom: '10px', background: '#33882D', fontFamily: 'serif'}} disableElevation type="submit" >
-                Reset
+            <Button variant="contained" style={{ width: "20%", marginLeft: '40%', marginRight: '40%', marginTop: '10px', marginBottom: '10px', background: '#33882D', fontFamily: 'serif', color: 'white'}} disableElevation type="submit" >
+                New Search
               </Button>
               </form>
           </Grid>
@@ -312,12 +313,16 @@ const bingFunction = () => {
         />
         <Grid item container style={{ position: 'center' }}>
           <Grid item xs={12} className={classes.cityRow}>
+          <form>
+<Typography style={{backgroundColor: "#8CBF1C", color: '#060063', width: "100%", fontFamily: 'serif', fontSize: 30, textPosition: 'center'}}> Please choose if you would like to build a custom trip, or  plan a day trip! 
+</Typography>
+<Typography style={{backgroundColor: "#8CBF1C", color: '#060063', width: "100%", fontFamily: 'serif', fontSize: 30, textPosition: 'center'}}> You can restart your search by clicking the reset button!
+</Typography>
 
-            <h3>Please choose if you would like to build a custom trip, or  plan a day trip</h3>
-            <h4>You can restart your search by clicking the reset button</h4>
+</form>
 
             <form style={{ postion: 'center' }}>
-              <Button variant="contained" color="primary" style={{ width: "20%", marginLeft: '40%', marginRight: '40%', marginTop: '10px', backgroundColor: '#388e3c'}} disableElevation type="submit" >New Search</Button>
+              <Button variant="contained"  style={{ width: "20%", marginLeft: '40%', marginRight: '40%', marginTop: '10px', backgroundColor: '#388e3c', fontFamily: 'serif', color: 'white'}} disableElevation type="submit" >New Search</Button>
             </form>
           </Grid>
         </Grid>
@@ -366,9 +371,10 @@ const bingFunction = () => {
             </form>
           </Grid>
         </Grid>
-
-        <h2>Choose which {searchTerm} you would like to go to, or search for new destination!</h2>
-
+        <form>
+<Typography style={{backgroundColor: "#8CBF1C", color: '#060063', width: "100%", fontFamily: 'serif', fontSize: 30, marginLeft: 10 }}>  Which {searchTerm} you would like to go to? Or search for new destination!
+</Typography>
+</form>
 
 
         <Grid item container>
@@ -400,13 +406,19 @@ const bingFunction = () => {
     return (
       <div style={{ backgroundColor: 'blue' }}>
         <Nav updateUser={props.updateUser} />
-        <Grid item container>
-          <img src={require("../img/map-1.png")} className={classes.image} ></img>
+        <Grid item container> 
+          <img src={require("../img/travel.png")} className={classes.image} ></img>
         </Grid>
         {/* buttons container */}
         <Grid item container>
 
-          <h3>Plan a new trip by searching for the city you would like to visit or go to the saved page to see your saved trips </h3>
+      
+<Typography style={{backgroundColor: "#8CBF1C", color: '#060063', width: "100%", fontFamily: 'serif', fontSize: 32, textPosition: 'center'}}> Pick a city you would like to visit! Or go to the Profile Page to see your saved trips! 
+</Typography>
+<Typography style={{backgroundColor: "#8CBF1C", color: '#060063', width: "100%", fontFamily: 'serif', fontSize: 32, textPosition: 'center'}}> Or go to the Profile Page to see your saved trips! 
+</Typography>
+
+          
 
           <Grid item xs={12} className={classes.cityRow}>
             <form style={{ postion: 'center' }}>
