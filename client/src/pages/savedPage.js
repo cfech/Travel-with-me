@@ -6,7 +6,7 @@ import Nav from "../components/Nav"
 import tripApi from "../utils/tripApi"
 import itemApi from "../utils/item"
 import MyTrips from "../components/Mytrips/myTrips"
-import UserInfo from "../components/UserInfo/userInfo"
+
 
 
 const useStyles = makeStyles((theme) => ({
