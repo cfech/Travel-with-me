@@ -15,6 +15,9 @@ import GitHubIcon from "@material-ui/icons/GitHub";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import AssignmentIcon from "@material-ui/icons/Assignment";
 import Button from "@material-ui/core/Button";
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import Tooltip from '@material-ui/core/Tooltip';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 
 
@@ -80,13 +83,13 @@ export default function SearchAppBar() {
           </Typography>
 
             <IconButton>
-              <Link to="/home" > <HomeIcon className={classes.home} />  </Link>
+              <Tooltip title="Home"><Link to="/home" > <HomeIcon className={classes.home} />  </Link></Tooltip>
             </IconButton>
             <IconButton>
-              <Link className={classes.links} to="/saved"  > PROFILE </Link>
+              <Tooltip title="My Trips"><Link className={classes.links} to="/saved"  > <FavoriteIcon/> </Link></Tooltip>
             </IconButton>
 
-            <IconButton className={classes.links} onClick={logout}>LOG-OUT</IconButton>
+            <Tooltip title="Log Out"><IconButton className={classes.links} onClick={logout}><ExitToAppIcon/></IconButton></Tooltip>
 
 
           </Toolbar>

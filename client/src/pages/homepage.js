@@ -20,6 +20,7 @@ import BING from "../components/BING";
 // import footer from "../components/footer"
 import Typography from "@material-ui/core/Typography";
 
+
 function Home(props) {
   // Setting our component's initial state
   const [lat, setLat] = useState(0);
@@ -396,8 +397,7 @@ function Home(props) {
       
 <Typography style={{backgroundColor: "#8CBF1C", color: '#060063', width: "100%", fontFamily: 'serif', fontSize: 32, textPosition: 'center'}}> Pick a city you would like to visit! Or go to the Profile Page to see your saved trips! 
 </Typography>
-<Typography style={{backgroundColor: "#8CBF1C", color: '#060063', width: "100%", fontFamily: 'serif', fontSize: 32, textPosition: 'center'}}> Or go to the Profile Page to see your saved trips! 
-</Typography>
+
 
           
 
