@@ -45,7 +45,7 @@ const bingFunction = () => {
   .then(res => {
     console.log("==== BING ====")
     console.log(res)
-    setMapImage(res.value[0].thumbnailUrl)
+    setMapImage(res.value[0].contentUrl)
   })
   .catch(err => {
     console.log(err)
@@ -304,6 +304,7 @@ const bingFunction = () => {
       <div>
 
         <Nav updateUser={props.updateUser} />
+        <img src={mapImage} className={classes.image} ></img>
         <Location
           name={place.name}
           snippet={place.snippet}
