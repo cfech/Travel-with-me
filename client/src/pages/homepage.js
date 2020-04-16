@@ -365,7 +365,7 @@ function Home(props) {
                     ? item.images[0].sizes.medium.url
                     : "https://via.placeholder.com/150"
                 }
-                userId = {userId}
+                userId={userId}
               />
             </Grid>
           ))}
@@ -414,5 +414,3 @@ function Home(props) {
 }
 
 export default Home;
-
-
