@@ -4,21 +4,30 @@
 
 ## Table of Contents
 
-  ## [Description](#description) &nbsp;&bull;&nbsp; [Installation](#Installation) &nbsp;&bull;&nbsp; [Usage](#Usage) &nbsp;&bull;&nbsp; [License](#License) &nbsp;&bull;&nbsp; [Technologies](#technologies) &nbsp;&bull;&nbsp; [Developers](#developers) &nbsp;&bull;&nbsp; [Tests](#Tests) &nbsp;&bull;&nbsp; [Questions](#Questions)
-  
+  ## [Login](#login) &nbsp;&bull;&nbsp; [Description](#description) &nbsp;&bull;&nbsp; [Installation](#Installation) &nbsp;&bull;&nbsp; [Usage](#Usage) &nbsp;&bull;&nbsp; [License](#License) &nbsp;&bull;&nbsp; [Technologies](#technologies) &nbsp;&bull;&nbsp; [Developers](#developers) &nbsp;&bull;&nbsp; [Tests](#Tests) &nbsp;&bull;&nbsp; [Questions](#Questions)
+
+## Login
+
+App Username: demo
+
+App Password: demo
+
+<br />
+<img src="./client/src/img/sign-in-crop.png" style="width:300px;">
+
 ## Description
 
 *Travel With Me* is a mobile application that allows users to discover cities around the world and save their destinations.
 <br />
-<img src="./client/public/picture-4.png" style="width:300px;">
+<img src="./client/src/img/picture-1.png" style="width:300px;">
 <br />
-<img src="./client/public/picture-5.png" style="width:300px;">
+<img src="./client/src/img/picture-5.png" style="width:300px;">
 <br />
-<img src="./client/public/picture-6.png" style="width:300px;">
+<img src="./client/src/img/picture-6.png" style="width:300px;">
 <br />
-<img src="./client/public/picture-1.png" style="width:300px;">
+<img src="./client/src/img/picture-1.png" style="width:300px;">
 <br />
-<img src="./client/public/picture-3.png" style="width:300px;">
+<img src="./client/src/img/picture-3.png" style="width:300px;">
 <br />
 
 

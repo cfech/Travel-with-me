@@ -8,7 +8,6 @@ import "./styles/styles.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./pages/homepage";
 import axios from "axios";
-import Credits from "./pages/credits"
 
 //App component
 class App extends React.Component {
@@ -24,7 +23,6 @@ class App extends React.Component {
       lastName: ""
     }
 
-
     this.getUser = this.getUser.bind(this)
     this.componentDidMount = this.componentDidMount.bind(this)
     this.updateUser = this.updateUser.bind(this)
@@ -32,7 +30,6 @@ class App extends React.Component {
 
   //when component mounts get user 
   componentDidMount() {
-
     this.getUser()
   }
 
@@ -69,7 +66,6 @@ class App extends React.Component {
     })
   }
 
-
   //Render the website with several different routes 
   render() {
     return (
@@ -79,14 +75,8 @@ class App extends React.Component {
             <Route exact path="/" render={() => <SignIn updateUser={this.updateUser} />} />
             <Route exact path="/saved" render={() => <SavedPage loggedIn={this.state.loggedIn} userId={this.state.id} updateUser={this.updateUser} user={this.state.user} userName={this.state.userName} firstName={this.state.firstName} lastName={this.state.lastName} />} />
             <Route exact path="/home" render={() => <Home loggedIn={this.state.loggedIn} userId={this.state.id} updateUser={this.updateUser} getUser={this.getUser} />} />
-            {/* <Route exact path="/home" component={Home} /> */}
             <Route exact path="/signUp" component={SignUp} />
-            <Route exact path="/credits" component={Credits} />
-            <Route exact path="*"
-              render={() =>
-                <SignIn
-                  updateUser={this.updateUser}
-                />}
+            <Route exact path="*"render={() => <SignIn updateUser={this.updateUser}/>}
             />
           </Switch>
           {/* <Footer /> */}

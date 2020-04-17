@@ -4,22 +4,13 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { fade, makeStyles } from '@material-ui/core/styles';
-import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
 import { Link, Redirect } from "react-router-dom"
 import IconButton from "@material-ui/core/IconButton";
-import Icon from '@material-ui/core/Icon';
 import HomeIcon from '@material-ui/icons/Home';
 import Api from "../../utils/API"
-import GitHubIcon from "@material-ui/icons/GitHub";
-import LinkedInIcon from "@material-ui/icons/LinkedIn";
-import AssignmentIcon from "@material-ui/icons/Assignment";
-import Button from "@material-ui/core/Button";
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Tooltip from '@material-ui/core/Tooltip';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-
-
 
 //styling 
 const useStyles = makeStyles((theme) => ({
@@ -48,7 +39,6 @@ const useStyles = makeStyles((theme) => ({
   navBar: {
     background: "#F5c71a"
   }
-
 }));
 
 //Nav bar component
@@ -57,12 +47,12 @@ export default function SearchAppBar() {
 
   const [redirect, setRedirect] = useState("")
 
+  //Logout functionality
   const logout = () => {
     Api.logout().then(response => {
       console.log(response.data)
       if (response.status === 200) {
         setRedirect("/")
-
       }
     }).catch(error => {
       console.log('Logout error')
@@ -70,6 +60,7 @@ export default function SearchAppBar() {
     })
   }
 
+  //If yu click logout, redirect the page, if not show the current page
   if (redirect) {
     return <Redirect to={{ pathname: redirect }} />
   } else {
@@ -81,17 +72,13 @@ export default function SearchAppBar() {
             <Typography variant="h4" className={classes.title}>
               Travel-with-Me
           </Typography>
-
             <IconButton>
               <Tooltip title="Home"><Link to="/home" > <HomeIcon className={classes.home} />  </Link></Tooltip>
             </IconButton>
             <IconButton>
               <Tooltip title="My Trips"><Link className={classes.links} to="/saved"  > <FavoriteIcon/> </Link></Tooltip>
             </IconButton>
-
             <Tooltip title="Log Out"><IconButton className={classes.links} onClick={logout}><ExitToAppIcon/></IconButton></Tooltip>
-
-
           </Toolbar>
         </AppBar>
       </div>
