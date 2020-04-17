@@ -17,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.background.paper,
         border: "1px solid gray",
         boxShadow: "0px 5px 20px rgb(71, 71, 71)"
-
     },
     nested: {
         paddingLeft: theme.spacing(4),
@@ -29,7 +28,6 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "space-around",
         backgroundImage: "linear-gradient(to top, #6a85b6 0%, #bac8e0 100%)",
         color: "white"
-
     },
     cont: {
         margin: 2
@@ -40,16 +38,13 @@ const useStyles = makeStyles((theme) => ({
         "&:hover": {
             color: "black",
         }
-    },
-
+    }
 }));
 
 //Day Trip component
 const DayTrip = ({ title, description, name, score, attribution }) => {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
-    console.log(attribution)
-
     const handleClick = () => {
         setOpen(!open);
     };
@@ -57,7 +52,6 @@ const DayTrip = ({ title, description, name, score, attribution }) => {
     return (
         <Grid item container className={classes.cont}>
             <Grid item xs={false} sm={1} md={2} />
-
             <Grid item xs={12} sm={10} md={8}>
                 <List
                     component="nav"
@@ -77,7 +71,6 @@ const DayTrip = ({ title, description, name, score, attribution }) => {
                     <Collapse in={open} timeout="auto" unmountOnExit>
                         <List component="div" disablePadding>
                             <ListItem>
-
                             </ListItem>
                             <ListItem button className={classes.nested}>
                                 <ul>
@@ -85,11 +78,6 @@ const DayTrip = ({ title, description, name, score, attribution }) => {
                                         <li className={classes.link} key={link.source_id}><a className={classes.link} target="_blank" rel="noopener noreferrer" href={link.url}>{link.source_id.charAt(0).toUpperCase() + link.source_id.slice(1)}</a></li>
                                     ))}
                                 </ul>
-
-
-
-
-
                             </ListItem>
                         </List>
                     </Collapse>

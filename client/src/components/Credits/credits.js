@@ -2,8 +2,8 @@ import React from "react";
 import { makeStyles } from "@material-ui/styles";
 import { Grid, Typography } from "@material-ui/core";
 import Box from '@material-ui/core/Box';
-import { Link } from "react-router-dom";
 
+//Styling
 const useStyles = makeStyles((theme) => ({
   sections: {
     background:"#EEC217",
@@ -32,16 +32,12 @@ const useStyles = makeStyles((theme) => ({
   space:{
     marginBottom:3
   }
-  
-
 }));
 
-
-
+//Credit component
 const Credits = () => {
   const classes = useStyles();
   return (
-
     <>
       <Grid item container display="row">
         <br />
@@ -75,16 +71,10 @@ const Credits = () => {
           </Box>
           </Grid>
         {/* third area */}
-        <Grid item xs={false} sm={4}><Box className={classes.sections}></Box></Grid>
-
-
-
-
-
-
-
+        <Grid item xs={false} sm={4}>
+          <Box className={classes.sections}></Box>
+        </Grid>
       </Grid>
-
     </>
   )
 }
