@@ -44,10 +44,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 //SignUp component
 export default function SignUp() {
-
   const classes = useStyles();
 
   //Redirect hook
@@ -79,7 +77,6 @@ export default function SignUp() {
   const handleInputChangeFirst = (event) => {
     setFirstName(event.target.value);
     console.log(firstName);
-
   };
 
   //Last name hook

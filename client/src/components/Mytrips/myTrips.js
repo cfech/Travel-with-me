@@ -15,12 +15,10 @@ import Tooltip from '@material-ui/core/Tooltip';
 import items from "../../utils/item"
 import trips from "../../utils/tripApi"
 
-
-
+//Styling
 const useStyles = makeStyles((theme) => ({
     root: {
         width: "100%",
-
         backgroundColor: "white",
     },
     nested: {
@@ -43,23 +41,19 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-
 const MyTrips = ({ name, mainId, tripItem, country, key, getUserTrips, getTripItems }) => {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
 
     const itemDelete = (id) => {
         items.deleteItem(id)
-
             .then(() => {
                 console.log("item Deleted ")
                 getTripItems()
             })
-
     }
 
     const tripDelete = (id) => {
-
         trips.deleteTrip(id)
             .then(() => {
                 console.log("trip Deleted")
@@ -67,10 +61,10 @@ const MyTrips = ({ name, mainId, tripItem, country, key, getUserTrips, getTripIt
             })
     }
 
-
+    //Filtering through trip places adn putting the correct items in the correct trip
     let tripPlaces = tripItem.filter(place => mainId === place.tripId)
-
     console.log(tripPlaces)
+    
     const handleClick = () => {
         setOpen(!open);
     };
@@ -81,10 +75,8 @@ const MyTrips = ({ name, mainId, tripItem, country, key, getUserTrips, getTripIt
             <List
                 component="nav"
                 aria-labelledby="nested-list-subheader"
-
                 className={classes.root}
             >
-
                 <ListItem button onClick={handleClick} key={key} className={classes.top}>
                     <ListItemIcon className={classes.travelIcon}>
                     <Tooltip title="Delete Item" placement="left"><HighlightOffIcon className={classes.delete} onClick={() => tripDelete(mainId)} /></Tooltip>
@@ -92,11 +84,10 @@ const MyTrips = ({ name, mainId, tripItem, country, key, getUserTrips, getTripIt
                     <ListItemText>{name}, {country.replace(/_/g, " ").replace(/[0-9]/g, "")}</ListItemText>
                     {open ? <ExpandLess /> : <ExpandMore />}
                 </ListItem>
-
                 <Collapse in={open} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
+                       
                         {/* //TRIP ITEMS // */}
-
                         {tripPlaces.map((item) => (
                             <ListItem button className={classes.nested} key={item._id}>
                                 <IconButton className={classes.delete} onClick={() => itemDelete(item._id)}><Tooltip title="Delete Item" placement="left"><HighlightOffIcon /></Tooltip></IconButton>
@@ -105,7 +96,6 @@ const MyTrips = ({ name, mainId, tripItem, country, key, getUserTrips, getTripIt
                         ))}
                     </List>
                 </Collapse>
-
             </List>
         </Container>
         </>

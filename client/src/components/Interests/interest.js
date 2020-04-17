@@ -22,7 +22,6 @@ import itemApi from "../../utils/item"
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
-    // margin: 12,
     boxShadow: "0px 5px 20px rgb(71, 71, 71)",
     marginTop: 10,
     marginBottom: 10,
@@ -63,7 +62,6 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-
 //Interest component
 const Interest = ({ name, score, snippet, image, attribution, id, userId }) => {
   const classes = useStyles();
@@ -97,14 +95,11 @@ const Interest = ({ name, score, snippet, image, attribution, id, userId }) => {
     <Card className={classes.root}>
       <CardHeader className={classes.header}
         title={name}
-
         avatar={
           <Tooltip title="Rating" placement="top-start"><Avatar aria-label="rating" className={classes.avatar}>
             {score}
           </Avatar></Tooltip>
         }
-
-
       />
       <CardMedia
         className={classes.media}
@@ -127,7 +122,6 @@ const Interest = ({ name, score, snippet, image, attribution, id, userId }) => {
           onClick={handleExpandClick}
           aria-expanded={expanded}
           aria-label="show more"
-
         >
           <ExpandMoreIcon />
         </IconButton>
@@ -136,18 +130,12 @@ const Interest = ({ name, score, snippet, image, attribution, id, userId }) => {
         <CardContent>
           <Typography paragraph>Links:</Typography>
           <CardContent>
-
             <ul>
               {attribution.map(link => (
                 <li className={classes.link} key={link.source_id}><a className={classes.link} target="_blank" rel="noopener noreferrer" href={link.url}>{link.source_id.charAt(0).toUpperCase() + link.source_id.slice(1)}</a></li>
               ))}
             </ul>
-
-
           </CardContent>
-
-
-
         </CardContent>
       </Collapse>
     </Card>

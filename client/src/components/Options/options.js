@@ -1,4 +1,4 @@
-
+//Imports
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -8,7 +8,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { Grid } from "@material-ui/core";
 
-
+//Styling
 const useStyles = makeStyles({
     root: {
         width: "97%",
@@ -28,10 +28,9 @@ const useStyles = makeStyles({
         textJustify: "center",
         color: "white"
     }
-
-
 });
 
+//Options component
 const Options = ({ handleInterest, handleDay }) => {
     const classes = useStyles();
 
@@ -52,9 +51,9 @@ const Options = ({ handleInterest, handleDay }) => {
                                 </Typography>
                             </CardContent>
                         </CardActionArea>
-
                     </Card>
                 </Grid>
+
                 {/* ////////////////////second card////////////////////////// */}
 
                 <Grid item xs={12}sm={6}>
@@ -62,29 +61,22 @@ const Options = ({ handleInterest, handleDay }) => {
                         <CardActionArea onClick={(event) => { handleDay(event) }}>
                             <CardMedia
                                 className={classes.media}
-                                image="https://liveartgalleryfabrics.com/wp-content/uploads/2017/10/day-trip-logo-transparent.png"
+                                image={require("../../img/activity.png")}
                                 title="Day Trip"
                             />
+
+
                             <CardContent className={classes.textArea}>
                                 <Typography gutterBottom variant="h5" component="h2">
                                     Day trip
                                 </Typography>
-                               
                             </CardContent>
                         </CardActionArea>
-
                     </Card>
-
                 </Grid>
-
             </Grid>
-
         </>
     )
 }
-
-
-
-
 
 export default Options

@@ -9,8 +9,7 @@ import MyTrips from "../components/Mytrips/myTrips"
 import Footer from "../components/footer/index"
 import Box from '@material-ui/core/Box';
 
-
-
+//Styling
 const useStyles = makeStyles((theme) => ({
   header: {
     textAlign: "center",
@@ -43,13 +42,9 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-
-
 //Saved page component
 function savedPage(props) {
   console.log(props)
-
-
   console.log("users saved page")
   console.log(props.user)
 
@@ -60,8 +55,6 @@ function savedPage(props) {
       getUserTripItems()
     }
   }, [props.userId])
-
-
 
   const [trips, setTrips] = useState([])
 
@@ -74,9 +67,7 @@ function savedPage(props) {
       })
   }
 
-
   const [tripItem, setTripItems] = useState([])
-
   const getUserTripItems = () => {
     itemApi.getTripItems(props.userId)
       .then((res) => {
@@ -85,13 +76,9 @@ function savedPage(props) {
       })
   }
 
-
   console.log(props.userId)
-
-  let tripPlaces = []
   const classes = useStyles();
   return (
-
     <div>
       <Nav updateUser={props.updateUser} />
 
@@ -101,9 +88,6 @@ function savedPage(props) {
           </Grid>
         </Grid>
 
-
-
-
       <Grid item container display="row">
         <Grid item xs={2} sm={3} md={4}></Grid>
         <Grid item xs={8} sm={6} md={4} className={classes.header} >
@@ -111,7 +95,6 @@ function savedPage(props) {
         </Grid>
         <Grid item xs={2} sm={3} md={4}></Grid>
       </Grid>
-
 
       {trips.map((trip) => (
         <Grid item container display="row" className={classes.displayed}>
@@ -134,13 +117,14 @@ function savedPage(props) {
         </Grid>
       ))}
    
-
 <Grid item container display="row">
-<Grid item xs={2} sm={3} md={4}></Grid>
-<Grid item xs={8} sm={6} md={4} className={classes.footer} >
-  
+<Grid item xs={2} sm={3} md={4}>
 </Grid>
-<Grid item xs={2} sm={3} md={4}></Grid>
+<Grid item xs={8} sm={6} md={4} className={classes.footer} >
+
+</Grid>
+<Grid item xs={2} sm={3} md={4}>
+</Grid>
 </Grid>
 
 <Box className={classes.filler}/>
@@ -149,7 +133,6 @@ function savedPage(props) {
 <Footer/>
 </div>
   )
-
 }
 
 export default savedPage;

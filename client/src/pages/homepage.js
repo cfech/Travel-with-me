@@ -15,7 +15,6 @@ import Button from "@material-ui/core/Button";
 import City from "../components/City/city";
 import Credits from "../components/Credits/credits"
 import CityApi from "../components/CITY";
-import tripApi from "../utils/tripApi";
 import BING from "../components/BING";
 //  import Footer from "../components/footer"
 import Typography from "@material-ui/core/Typography";
@@ -57,8 +56,6 @@ const bingFunction = () => {
   //setting the user id on load
   useEffect(() => {
     props.getUser();
-    // console.log(props.userId)
-    //setUserId(props.userId);
   }, []);
 
   //styling
@@ -94,9 +91,6 @@ const bingFunction = () => {
 
   //using styles
   const classes = useStyles();
-  // need error validation for blank search term
-
-  //search to set the city using return from city search
 
   //Function to perform the api search for location with correct id
   const ApiSearch = (id) => {
@@ -218,7 +212,6 @@ const bingFunction = () => {
           name={place.name}
           np
           snippet={place.snippet}
-        // image={place.images[0].source_url}
         />
         <Grid item container>
           <Grid item xs={12} className={classes.cityRow}>
@@ -281,7 +274,7 @@ const bingFunction = () => {
                 image={
                   item.images[0]
                     ? item.images[0].sizes.medium.url
-                    : "https://via.placeholder.com/150"
+                    : require("../img/heart-earth-small.png")
                 }
                 attribution={item.attribution}
                 userId={props.userId}
@@ -298,12 +291,11 @@ const bingFunction = () => {
     return (
       <div>
         <Nav updateUser={props.updateUser} />
-        {/* <img src="" className={classes.image} ></img> */}
         <Location name={place.name} snippet={place.snippet} />
         <Grid item container style={{ position: "center" }}>
           <Grid item xs={12} className={classes.cityRow}>
           <form>
-<Typography style={{backgroundColor: "#8CBF1C", color: '#060063', width: "100%", fontFamily: 'serif', fontSize: 30, textPosition: 'center'}}> Please choose if you would like to build a custom trip, or  plan a day trip! 
+<Typography style={{backgroundColor: "#8CBF1C", color: '#060063', width: "100%", fontFamily: 'serif', fontSize: 30, textAlign: 'center'}}> Please choose if you would like to build a custom trip, or  plan a day trip! 
 </Typography>
 <Typography style={{backgroundColor: "#8CBF1C", color: '#060063', width: "100%", fontFamily: 'serif', fontSize: 30, textPosition: 'center'}}> You can begin a new search by clicking the 'new search' button!
 </Typography>
@@ -311,7 +303,7 @@ const bingFunction = () => {
 </form>
 
             <form style={{ postion: 'center' }}>
-              <Button variant="contained"  style={{ width: "20%", marginLeft: '40%', marginRight: '40%', marginTop: '10px', backgroundColor: '#388e3c', fontFamily: 'serif', color: 'white'}} disableElevation type="submit" >New Search</Button>
+              <Button variant="contained"  style={{ width: "20%", marginLeft: '40%', marginRight: '40%', marginTop: '10px', marginBottom: '10px', backgroundColor: '#388e3c', fontFamily: 'serif', color: 'white'}} disableElevation type="submit" >New Search</Button>
             </form>
           </Grid>
         </Grid>
@@ -355,7 +347,7 @@ const bingFunction = () => {
           </Grid>
         </Grid>
         <form>
-<Typography style={{backgroundColor: "#8CBF1C", color: '#060063', width: "100%", fontFamily: 'serif', fontSize: 30, marginLeft: 10 }}>  Which {searchTerm} you would like to go to? Or search for new destination!
+<Typography style={{backgroundColor: "#8CBF1C", color: '#060063', width: "100%", fontFamily: 'serif', fontSize: 30, textAlign: 'center' }}>  Which {searchTerm} you would like to go to? Or search for new destination!
 </Typography>
 </form>
 
@@ -374,7 +366,7 @@ const bingFunction = () => {
                 image={
                   item.images[0]
                     ? item.images[0].sizes.medium.url
-                    : "https://via.placeholder.com/150"
+                    : require("../img/heart-earth-small.png")
                 }
                 userId={props.userId}
               />
@@ -397,11 +389,8 @@ const bingFunction = () => {
         <Grid item container>
 
       
-<Typography style={{backgroundColor: "#8CBF1C", color: '#060063', width: "100%", fontFamily: 'serif', fontSize: 32, textPosition: 'center'}}> Pick a city you would like to visit! Or go to the Profile Page to see your saved trips! 
+<Typography style={{backgroundColor: "#8CBF1C", color: '#060063', width: "100%", fontFamily: 'serif', fontSize: 32, textAlign: 'center'}}> Pick a city you would like to visit! Or go to the Profile Page to see your saved trips! 
 </Typography>
-
-
-          
 
           <Grid item xs={12} className={classes.cityRow}>
             <form style={{ postion: "center" }}>
@@ -411,15 +400,13 @@ const bingFunction = () => {
                 placeholder="Please Choose a Destination..."
                 onChange={handleInputChange}
               ></input>
-
-
-
               <Button variant="contained" style={{ width: "20%", marginLeft: '40%', marginRight: '40%', marginTop: '10px', marginBottom: '20px', background: '#E0E0E0E0', fontFamily: 'serif' }} disableElevation type="submit" onClick={handleSubmit}>
                 Search
               </Button>
             </form>
 
             <Credits />
+ 
           </Grid>
         </Grid>
       </div>
