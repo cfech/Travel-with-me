@@ -252,8 +252,11 @@ const bingFunction = () => {
         <Location name={place.name} snippet={place.snippet} />
         <Grid item container>
           <Grid item xs={12} className={classes.cityRow}>
-            <h3>Click on the heart icons to add an item to your trip</h3>
-            <h4>You can restart your search by clicking the reset button</h4>
+          <Typography style={{backgroundColor: "#8CBF1C", color: '#060063', width: "100%", fontFamily: 'serif', fontSize: 30, textAlign: 'center'}}> Click on the heart icons to add an item to your trip!
+</Typography>
+<Typography style={{backgroundColor: "#8CBF1C", color: '#060063', width: "100%", fontFamily: 'serif', fontSize: 30, textAlign: 'center'}}> You can restart your search by clicking the reset button!
+</Typography>
+         
 <form>
             <Button variant="contained" style={{ width: "20%", marginLeft: '40%', marginRight: '40%', marginTop: '10px', marginBottom: '10px', background: '#33882D', fontFamily: 'serif', color: 'white'}} disableElevation type="submit" >
                 New Search
@@ -295,15 +298,15 @@ const bingFunction = () => {
         <Grid item container style={{ position: "center" }}>
           <Grid item xs={12} className={classes.cityRow}>
           <form>
-<Typography style={{backgroundColor: "#8CBF1C", color: '#060063', width: "100%", fontFamily: 'serif', fontSize: 30, textPosition: 'center'}}> Please choose if you would like to build a custom trip, or  plan a day trip! 
+<Typography style={{backgroundColor: "#8CBF1C", color: '#060063', width: "100%", fontFamily: 'serif', fontSize: 30, textAlign: 'center'}}> Please choose if you would like to build a custom trip, or  plan a day trip! 
 </Typography>
-<Typography style={{backgroundColor: "#8CBF1C", color: '#060063', width: "100%", fontFamily: 'serif', fontSize: 30, textPosition: 'center'}}> You can restart your search by clicking the reset button!
+<Typography style={{backgroundColor: "#8CBF1C", color: '#060063', width: "100%", fontFamily: 'serif', fontSize: 30, textAlign: 'center'}}> You can restart your search by clicking the reset button!
 </Typography>
 
 </form>
 
             <form style={{ postion: 'center' }}>
-              <Button variant="contained"  style={{ width: "20%", marginLeft: '40%', marginRight: '40%', marginTop: '10px', backgroundColor: '#388e3c', fontFamily: 'serif', color: 'white'}} disableElevation type="submit" >New Search</Button>
+              <Button variant="contained"  style={{ width: "20%", marginLeft: '40%', marginRight: '40%', marginTop: '10px', marginBottom: '10px', backgroundColor: '#388e3c', fontFamily: 'serif', color: 'white'}} disableElevation type="submit" >New Search</Button>
             </form>
           </Grid>
         </Grid>
@@ -347,7 +350,7 @@ const bingFunction = () => {
           </Grid>
         </Grid>
         <form>
-<Typography style={{backgroundColor: "#8CBF1C", color: '#060063', width: "100%", fontFamily: 'serif', fontSize: 30, marginLeft: 10 }}>  Which {searchTerm} you would like to go to? Or search for new destination!
+<Typography style={{backgroundColor: "#8CBF1C", color: '#060063', width: "100%", fontFamily: 'serif', fontSize: 30, textAlign: 'center' }}>  Which {searchTerm} you would like to go to? Or search for new destination!
 </Typography>
 </form>
 
@@ -389,7 +392,7 @@ const bingFunction = () => {
         <Grid item container>
 
       
-<Typography style={{backgroundColor: "#8CBF1C", color: '#060063', width: "100%", fontFamily: 'serif', fontSize: 32, textPosition: 'center'}}> Pick a city you would like to visit! Or go to the Profile Page to see your saved trips! 
+<Typography style={{backgroundColor: "#8CBF1C", color: '#060063', width: "100%", fontFamily: 'serif', fontSize: 32, textAlign: 'center'}}> Pick a city you would like to visit! Or go to the Profile Page to see your saved trips! 
 </Typography>
 
           <Grid item xs={12} className={classes.cityRow}>
