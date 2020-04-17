@@ -61,9 +61,11 @@ const Options = ({ handleInterest, handleDay }) => {
                         <CardActionArea onClick={(event) => { handleDay(event) }}>
                             <CardMedia
                                 className={classes.media}
-                                image="https://liveartgalleryfabrics.com/wp-content/uploads/2017/10/day-trip-logo-transparent.png"
+                                image={require("../../img/activity.png")}
                                 title="Day Trip"
                             />
+
+
                             <CardContent className={classes.textArea}>
                                 <Typography gutterBottom variant="h5" component="h2">
                                     Day trip

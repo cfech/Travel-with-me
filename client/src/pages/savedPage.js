@@ -6,6 +6,8 @@ import Nav from "../components/Nav"
 import tripApi from "../utils/tripApi"
 import itemApi from "../utils/item"
 import MyTrips from "../components/Mytrips/myTrips"
+import Footer from "../components/footer/index"
+import Box from '@material-ui/core/Box';
 
 //Styling
 const useStyles = makeStyles((theme) => ({
@@ -26,7 +28,18 @@ const useStyles = makeStyles((theme) => ({
   },
   displayed: {
     alignContent: "center"
-  }
+  },
+  picture:{
+    width:"100%"
+  },
+  filler:{
+    height:"100%",
+    background:"white",
+    border:"1 solid black"
+
+    
+}
+
 }));
 
 //Saved page component
@@ -70,7 +83,9 @@ function savedPage(props) {
       <Nav updateUser={props.updateUser} />
 
       <Grid item container> 
-          <img src={require("../img/saved.png")} className={classes.image} ></img>
+          <Grid item xs={12}>
+          <img className={classes.picture} src={require("../img/saved.png")}  ></img>
+          </Grid>
         </Grid>
 
       <Grid item container display="row">
@@ -112,6 +127,10 @@ function savedPage(props) {
 </Grid>
 </Grid>
 
+<Box className={classes.filler}/>
+
+
+<Footer/>
 </div>
   )
 }
