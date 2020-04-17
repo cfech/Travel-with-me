@@ -5,7 +5,11 @@
 ## Table of Contents
 
   ## [Description](#description) &nbsp;&bull;&nbsp; [Installation](#Installation) &nbsp;&bull;&nbsp; [Usage](#Usage) &nbsp;&bull;&nbsp; [License](#License) &nbsp;&bull;&nbsp; [Technologies](#technologies) &nbsp;&bull;&nbsp; [Developers](#developers) &nbsp;&bull;&nbsp; [Tests](#Tests) &nbsp;&bull;&nbsp; [Questions](#Questions)
-  
+
+Demo Login (case sensitive)
+Username: demo
+Password: demo
+
 ## Description
 
 *Travel With Me* is a mobile application that allows users to discover cities around the world and save their destinations.
