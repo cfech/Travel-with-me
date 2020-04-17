@@ -9,6 +9,8 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 import Avatar from '@material-ui/core/Avatar';
 import { red } from '@material-ui/core/colors';
 import { Grid } from "@material-ui/core";
+import Tooltip from '@material-ui/core/Tooltip';
+
 
 //Styling
 const useStyles = makeStyles((theme) => ({
@@ -40,8 +42,7 @@ const useStyles = makeStyles((theme) => ({
         "&:hover": {
             color: "black",
         }
-    },
-
+    },  
 }));
 
 //Day Trip component
@@ -71,8 +72,8 @@ const DayTrip = ({ title, description, name, score, attribution }) => {
                     </ListItem>
                     <ListItem className={classes.items} button onClick={handleClick} >
                         {open ? <ExpandLess /> : <ExpandMore />}
-                        {name} {<Avatar aria-label="Trip" className={classes.avatar}>{score}</Avatar>
-                        }
+                        {name} <Tooltip title="Rating" placement="top-start">{<Avatar aria-label="Trip" className={classes.avatar}>{score}</Avatar>
+                        }</Tooltip>
                     </ListItem>
                     <Collapse in={open} timeout="auto" unmountOnExit>
                         <List component="div" disablePadding>

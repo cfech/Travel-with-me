@@ -1,8 +1,8 @@
 import React from "react";
 import { makeStyles } from "@material-ui/styles";
-import { Grid, Typography } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import Box from '@material-ui/core/Box';
-import { Link } from "react-router-dom";
+import Tooltip from '@material-ui/core/Tooltip';
 
 const useStyles = makeStyles((theme) => ({
   sections: {
@@ -14,10 +14,6 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       color: "#03355F",
     },
-  },
-  bar: {
-    backgroundImage: "linear-gradient(to top, #6a85b6 0%, #bac8e0 100%)",
-    height: 30
   },
   top:{
     background:"#EEC217",
@@ -31,11 +27,12 @@ const useStyles = makeStyles((theme) => ({
   },
   space:{
     marginBottom:3
+  },
+  test:{
+    height:100,
+    marginBottom:10
   }
-  
-
 }));
-
 
 
 const Credits = () => {
@@ -45,17 +42,18 @@ const Credits = () => {
     <>
       <Grid item container display="row">
         <br />
-        <Grid item xs={12}><Box >
-         
+        <Grid item xs={12}><Box className={classes.test}>
+        
         </Box></Grid>
         {/* first area */}
         <Grid item xs={6} sm={4}>
-          <Box className={classes.column}>
+        <Tooltip title="Check us out on Github." placement="top-end"><Box className={classes.column}>
             <Box className={classes.top}>Created By:</Box> 
-             <Box className={classes.space}><a href="https://github.com/iamha1" target="_blank"
+
+            <Box className={classes.space}><a href="https://github.com/iamha1" target="_blank"
               rel="noopener noreferrer" className={classes.sections}>Ha Nguyen</a></Box> 
 
-               <Box className={classes.space}><a href="https://github.com/cfech" target="_blank"
+            <Box className={classes.space}><a href="https://github.com/cfech" target="_blank"
               rel="noopener noreferrer" className={classes.sections}>Connor Fech</a></Box>
 
                 <Box className={classes.space}><a href="https://github.com/waltribeiro" target="_blank"
@@ -64,7 +62,8 @@ const Credits = () => {
                   <Box className={classes.space} ><a href="https://github.com/JBdunks" target="_blank"
               rel="noopener noreferrer" className={classes.sections}>Jon Butler</a></Box>
               
-              </Box></Grid>
+              </Box>
+              </Tooltip></Grid>
         {/* second area */}
         <Grid item xs={6} sm={4}><Box className={classes.sections}>
           <Box className={classes.top}>Technologies used:</Box>
@@ -76,15 +75,7 @@ const Credits = () => {
           </Grid>
         {/* third area */}
         <Grid item xs={false} sm={4}><Box className={classes.sections}></Box></Grid>
-
-
-
-
-
-
-
       </Grid>
-
     </>
   )
 }
