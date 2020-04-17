@@ -9,6 +9,7 @@ const cors = "https://cors-anywhere.herokuapp.com/"
 // const accountId = process.env.BINGKEY
 const accountId = "a9e8ad7e4ef64d6395ffb41a6d1a24a5"
 // const accountId = "644ab2d015d14d19a6d4a01c9b4d426f"
+
 //api call for state 3 picture 
 
 // return new Promise(resolve => {
