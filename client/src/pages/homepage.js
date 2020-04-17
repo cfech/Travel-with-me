@@ -5,7 +5,7 @@ import API from "../components/API";
 import Poi from "../components/POI";
 import Day from "../components/DAY";
 import { makeStyles } from "@material-ui/styles";
-import Nav from "../components/Nav";
+import Nav from "../components/Nav/index";
 import Interest from "../components/Interests/interest";
 import Location from "../components/Location/location";
 import DayTrip from "../components/Day/dayTrip";
@@ -16,7 +16,7 @@ import City from "../components/City/city";
 import Credits from "../components/Credits/credits"
 import CityApi from "../components/CITY";
 import BING from "../components/BING";
-// import footer from "../components/footer"
+//  import Footer from "../components/footer"
 import Typography from "@material-ui/core/Typography";
 
 
@@ -252,11 +252,8 @@ const bingFunction = () => {
         <Location name={place.name} snippet={place.snippet} />
         <Grid item container>
           <Grid item xs={12} className={classes.cityRow}>
-          <Typography style={{backgroundColor: "#8CBF1C", color: '#060063', width: "100%", fontFamily: 'serif', fontSize: 30, textAlign: 'center'}}> Click on the heart icons to add an item to your trip!
-</Typography>
-<Typography style={{backgroundColor: "#8CBF1C", color: '#060063', width: "100%", fontFamily: 'serif', fontSize: 30, textAlign: 'center'}}> You can restart your search by clicking the reset button!
-</Typography>
-         
+            <h3>Click on the heart icons to add an item to your trip.</h3>
+            <h4>You can restart your search by clicking the 'new search' button.</h4>
 <form>
             <Button variant="contained" style={{ width: "20%", marginLeft: '40%', marginRight: '40%', marginTop: '10px', marginBottom: '10px', background: '#33882D', fontFamily: 'serif', color: 'white'}} disableElevation type="submit" >
                 New Search
@@ -300,7 +297,7 @@ const bingFunction = () => {
           <form>
 <Typography style={{backgroundColor: "#8CBF1C", color: '#060063', width: "100%", fontFamily: 'serif', fontSize: 30, textAlign: 'center'}}> Please choose if you would like to build a custom trip, or  plan a day trip! 
 </Typography>
-<Typography style={{backgroundColor: "#8CBF1C", color: '#060063', width: "100%", fontFamily: 'serif', fontSize: 30, textAlign: 'center'}}> You can restart your search by clicking the reset button!
+<Typography style={{backgroundColor: "#8CBF1C", color: '#060063', width: "100%", fontFamily: 'serif', fontSize: 30, textPosition: 'center'}}> You can begin a new search by clicking the 'new search' button!
 </Typography>
 
 </form>
@@ -398,7 +395,8 @@ const bingFunction = () => {
           <Grid item xs={12} className={classes.cityRow}>
             <form style={{ postion: "center" }}>
               <input
-                style={{ width: '50%', height: '50px', marginLeft: '25%', marginRight: '25%', marginTop: '40px', fontFamily: 'serif', fontSize: '20px' }}
+
+                style={{ width: '62%', height: '50px', marginLeft: '19%', marginRight: '19%', marginTop: '40px', fontFamily: 'serif', fontSize: '20px' }}
                 placeholder="Please Choose a Destination..."
                 onChange={handleInputChange}
               ></input>

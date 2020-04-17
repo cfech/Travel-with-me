@@ -4,6 +4,7 @@ import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
+
 //Styling
 const useStyles = makeStyles((theme) => ({
   footer: {
@@ -12,11 +13,11 @@ const useStyles = makeStyles((theme) => ({
     color: 'white',
     fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif',
     fontSize: 15,
-    position: "fixed",
+    position: "static",
     top: 'auto',
     bottom: 0,
     width: "100%",
-    marginTop: 20
+    marginTop: 10
   }, 
 }));
 

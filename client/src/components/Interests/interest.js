@@ -14,6 +14,7 @@ import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Tooltip from '@material-ui/core/Tooltip';
 import tripApi from "../../utils/tripApi"
 import itemApi from "../../utils/item"
 
@@ -95,9 +96,9 @@ const Interest = ({ name, score, snippet, image, attribution, id, userId }) => {
       <CardHeader className={classes.header}
         title={name}
         avatar={
-          <Avatar aria-label="rating" className={classes.avatar}>
+          <Tooltip title="Rating" placement="top-start"><Avatar aria-label="rating" className={classes.avatar}>
             {score}
-          </Avatar>
+          </Avatar></Tooltip>
         }
       />
       <CardMedia
@@ -112,7 +113,7 @@ const Interest = ({ name, score, snippet, image, attribution, id, userId }) => {
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites" onClick={saveItem}>
-          <FavoriteIcon className={classes.heart} />
+          <Tooltip title="Save Trip"><FavoriteIcon className={classes.heart} /></Tooltip>
         </IconButton>
         <IconButton
           className={clsx(classes.expand, {
