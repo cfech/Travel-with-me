@@ -7,7 +7,7 @@ mongoose.promise = Promise;
 const itemSchema = new Schema({
     name: String,
     score: Number,
-    snippet: String, 
+    snippet: String,
     tripId: String,
     userId: String,
 

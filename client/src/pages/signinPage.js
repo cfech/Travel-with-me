@@ -15,7 +15,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { Redirect } from 'react-router-dom';
 import API from '../utils/API'
-import toast from "../components/toast.js"
+
 
 //Styling
 const useStyles = makeStyles((theme) => ({

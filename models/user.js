@@ -8,12 +8,12 @@ mongoose.promise = Promise;
 
 //User schema 
 const userSchema = new Schema({
-    firstName: {type: String},
-    lastName: {type: String},
-    userName: {type: String},
-    password: {type: String},
+	firstName: { type: String },
+	lastName: { type: String },
+	userName: { type: String },
+	password: { type: String },
 }, {
-    timestamps: true
+	timestamps: true
 });
 
 // Schema methods to check and hash passwords
@@ -33,7 +33,7 @@ userSchema.pre('save', function (next) {
 		next()
 	} else {
 		console.log('models/user.js hashPassword in pre save');
-		
+
 		this.password = this.hashPassword(this.password)
 		next()
 	}

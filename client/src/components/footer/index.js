@@ -23,7 +23,6 @@ const useStyles = makeStyles((theme) => ({
 //Copyright note
 function Copyright() {
   return (
-
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://github.com/cfech/TravelApp">
@@ -39,11 +38,9 @@ function Copyright() {
 function Footer() {
   const classes = useStyles()
   return (
-
     <footer className={classes.footer}>
       <Copyright />
     </footer>
-
   );
 }
 
