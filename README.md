@@ -4,30 +4,30 @@
 
 ## Table of Contents
 
-  ## [Login](#login) &nbsp;&bull;&nbsp; [Description](#description) &nbsp;&bull;&nbsp; [Installation](#Installation) &nbsp;&bull;&nbsp; [Usage](#Usage) &nbsp;&bull;&nbsp; [License](#License) &nbsp;&bull;&nbsp; [Technologies](#technologies) &nbsp;&bull;&nbsp; [Developers](#developers) &nbsp;&bull;&nbsp; [Tests](#Tests) &nbsp;&bull;&nbsp; [Questions](#Questions)
+  ## [Login](#login) &nbsp;&bull;&nbsp; [Description](#description) &nbsp;&bull;&nbsp; [Installation](#Installation) &nbsp;&bull;&nbsp; [Technologies](#technologies) &nbsp;&bull;&nbsp; [Developers](#developers) &nbsp;&bull;&nbsp; [Tests](#Tests) &nbsp;&bull;&nbsp; [Questions](#Questions)
 
 ## Login
 
-App Username: demo
+**Username**: demo
 
-App Password: demo
+**Password**: demo
 
 <br />
-<img src="./client/src/img/sign-in-crop.png" style="width:300px;">
+<a href="http://travel-with-me.herokuapp.com"><img src="./client/src/img/sign-in-crop.png" style="width:300px;"></a>
 
 ## Description
 
 *Travel With Me* is a mobile application that allows users to discover cities around the world and save their destinations.
+
+
+<br />
+<img src="./client/src/img/iphone-1.png" style="width:300px;">
+<br />
+<img src="./client/src/img/iphone-4.png" style="width:300px;">
+<br />
+<img src="./client/src/img/desktop-3.png" style="width:300px;">
 <br />
 <img src="./client/src/img/picture-1.png" style="width:300px;">
-<br />
-<img src="./client/src/img/picture-5.png" style="width:300px;">
-<br />
-<img src="./client/src/img/picture-6.png" style="width:300px;">
-<br />
-<img src="./client/src/img/picture-1.png" style="width:300px;">
-<br />
-<img src="./client/src/img/picture-3.png" style="width:300px;">
 <br />
 
 
@@ -40,9 +40,6 @@ App Password: demo
   npm start
   ```
 
-## Usage
-  The end user may need a .env file with a session key for salt hashing.
-
 ## Technologies
 * React
 * MongoDB / Mongoose
@@ -50,9 +47,6 @@ App Password: demo
 * Passport.js
 * Bcrypt
 * Material UI
-
-## License
-TBA
 
 ## Developers
 * <a href="https://github.com/cfech">Connor Fech</a>
