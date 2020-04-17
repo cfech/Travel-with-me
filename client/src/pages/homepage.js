@@ -274,7 +274,7 @@ const bingFunction = () => {
                 image={
                   item.images[0]
                     ? item.images[0].sizes.medium.url
-                    : "https://via.placeholder.com/150"
+                    : require("../img/heart-earth-small.png")
                 }
                 attribution={item.attribution}
                 userId={props.userId}
@@ -366,7 +366,7 @@ const bingFunction = () => {
                 image={
                   item.images[0]
                     ? item.images[0].sizes.medium.url
-                    : "https://via.placeholder.com/150"
+                    : require("../img/heart-earth-small.png")
                 }
                 userId={props.userId}
               />

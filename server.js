@@ -65,7 +65,7 @@ app.use(routes);
 //When you push to github comment out connection 2 and uncomment out connection 1
 
 //connection 2
-//mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost/savedLocations`);
+// mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost/savedLocations`);
 //connection 2
 
 // Connect to the Mongo DB
