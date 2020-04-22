@@ -15,6 +15,9 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { Redirect } from 'react-router-dom';
 import API from '../utils/API'
+// import IconButton from '@material-ui-core-IconButton'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowAltCircleDown } from "@fortawesome/free-solid-svg-icons";
 
 
 //Styling
@@ -231,21 +234,26 @@ export default function SignInSide(props) {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              Sign in
+
           </Typography>
 
             
               <Box component="span" visibility="hidden" p={1} m={1} bgcolor="background.paper">
                 Invalid user name and password combination!
               </Box>
-          
-  
   
             <Typography visibility="hidden" component="h1" variant="h5" >
-
             </Typography>
 
             <form className={classes.form} noValidate>
+
+            <p className="bounce">
+              <span className="bounceUpperText">
+                <FontAwesomeIcon icon={faArrowAltCircleDown}></FontAwesomeIcon>
+                &nbsp;Username:&nbsp;
+              </span>
+              <span className="bounce bounceLowerText">demo</span></p>
+
               <TextField
                 variant="outlined"
                 margin="normal"
@@ -258,6 +266,14 @@ export default function SignInSide(props) {
                 autoFocus
                 onChange={handleInputChangeUserName}
               />
+              
+            <p className="bounce">
+              <span className="bounceUpperText">
+              <FontAwesomeIcon icon={faArrowAltCircleDown}></FontAwesomeIcon>
+                &nbsp;Password:&nbsp;
+              </span>
+              <span className="bounce bounceLowerText">demo</span></p>
+
               <TextField
                 variant="outlined"
                 margin="normal"
@@ -270,8 +286,7 @@ export default function SignInSide(props) {
                 autoComplete="current-password"
                 onChange={handleInputChangePassword}
               />
-             
-    
+
               <Button
                 type="submit"
                 fullWidth
@@ -280,14 +295,14 @@ export default function SignInSide(props) {
                 className={classes.submit}
                 onClick={handleSignIn}
               >
-                Sign In
+               Sign In 
             </Button>
               <Grid container>
                 <Grid item xs={3}>
                 </Grid>
                 <Grid item xs={6}>
                   <Link href="/signUp" variant="body2" className={classes.links} >
-                    {"Don't have an account? Sign Up"}
+                    {"Need an account? Sign Up"}
                   </Link>
                 </Grid>
               </Grid>

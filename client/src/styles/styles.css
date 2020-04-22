@@ -4,3 +4,36 @@ body{
     height: 100%;
     background-color: #9499A7;
 }
+
+.bounceUpperText {
+    font-size: 16px;
+    color: black;
+    font-weight: 800;
+  margin: 0px;
+}
+
+.bounceLowerText {
+  font-size: 16px;
+  color: black;
+  font-weight: 400;
+margin: 0px;
+}
+
+.bounce {
+    animation: bounce 2s infinite;
+  }
+  
+  @keyframes bounce {
+    0%, 50%, 100% {
+      transform: translateY(0);
+    }
+    0% {
+      transform: translateX(0px);
+    }
+    50% {
+      transform: translateX(-10px);
+    }
+    100% {
+      transform: translateX(0px);
+    }
+  }
