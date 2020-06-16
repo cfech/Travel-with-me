@@ -1,7 +1,7 @@
 // Imports
 import axios from "axios";
 const accountId = "ATLA5P09"
-const token = "m7g4scv247ukxknlbfaf7kcltpl1srho"
+const token = "dsuo0sophpik8r9i7s3j2xkn9d4qri14"
 
 //api call cities with city specific id
 export default {
